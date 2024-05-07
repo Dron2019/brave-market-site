@@ -1,0 +1,159 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'project'
+    var id_page = 'home'
+    var class_page = 'home '
+    var news = [
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/1.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/2.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/3.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/4.jpg' },
+    ]
+
+block meta
+  title= 'QUADRIFOGLIO'
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(src='./assets/scripts/immediate-loading.bundle.js')
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/home.bundle.js')
+block content
+  .front-screen
+    
+    video(autoplay='' playsinline muted loop poster="./assets/images/home/video-poster.jpg").front-screen__video-bg
+      source(src='./static/3657017-hd_1920_1080_30fps (1).mp4', type='video/mp4')
+    <picture>
+      <source srcset="./assets/images/home/screen1-img.png" media="(min-width: 1920px)">
+      <source srcset="./assets/images/home/screen1-img_075.png" media="(min-width: 1240px)">
+      <source srcset="./assets/images/home/screen1-img_05.png" media="(min-width: 700px)">
+      <img src="./assets/images/home/screen1-img.png" alt="Альтернативний текст" class="front-screen__bg">
+    </picture>
+    //- +img('home/screen1-img.png').front-screen__bg
+    .front-screen__content
+      h1.front-screen__title.text-style-1920-h-1 Центральний ринок Ірпінь
+      p.front-screen__subtitle.text-style-1920-txt Ринок Ірпінь - це не лише торгова зона, але й спільнота підприємців, які об'єднуються заради успіху.
+      button.button-colored(type="button") Подати заявку
+  .home-screen2
+    .home-screen2__content
+      <svg class="home-screen2__quote" width="67" height="55" viewBox="0 0 67 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M51.87 54.796C47.7913 54.796 44.3333 53.2887 41.496 50.274C38.6587 47.082 37.24 42.826 37.24 37.506C37.24 29.8807 38.3927 23.674 40.698 18.886C43.0033 13.9207 45.5747 10.0193 48.412 7.182C51.604 3.99 55.4167 1.596 59.85 0L62.51 4.25601C59.4953 5.67467 56.8353 7.35933 54.53 9.31001C52.5793 11.0833 50.7173 13.2113 48.944 15.694C47.348 17.9993 46.55 20.8367 46.55 24.206C46.55 25.4473 46.7273 26.4227 47.082 27.132C47.2593 27.664 47.5253 28.0187 47.88 28.196C48.2347 28.0187 48.7667 27.8413 49.476 27.664C50.008 27.4867 50.54 27.3093 51.072 27.132C51.7813 26.9547 52.4907 26.866 53.2 26.866C57.2787 26.866 60.4707 28.1073 62.776 30.59C65.2587 32.8953 66.5 36.0873 66.5 40.166C66.5 44.2447 65.0813 47.7027 62.244 50.54C59.4067 53.3773 55.9487 54.796 51.87 54.796ZM14.63 54.796C10.5513 54.796 7.09333 53.2887 4.256 50.274C1.41867 47.082 0 42.826 0 37.506C0 29.8807 1.15267 23.674 3.458 18.886C5.76333 13.9207 8.33467 10.0193 11.172 7.182C14.364 3.99 18.1767 1.596 22.61 0L25.27 4.25601C22.2553 5.67467 19.5953 7.35933 17.29 9.31001C15.3393 11.0833 13.4773 13.2113 11.704 15.694C10.108 17.9993 9.31 20.8367 9.31 24.206C9.31 25.4473 9.48733 26.4227 9.842 27.132C10.0193 27.664 10.2853 28.0187 10.64 28.196C10.9947 28.0187 11.5267 27.8413 12.236 27.664C12.768 27.4867 13.3 27.3093 13.832 27.132C14.5413 26.9547 15.2507 26.866 15.96 26.866C20.0387 26.866 23.2307 28.1073 25.536 30.59C28.0187 32.8953 29.26 36.0873 29.26 40.166C29.26 44.2447 27.8413 47.7027 25.004 50.54C22.1667 53.3773 18.7087 54.796 14.63 54.796Z" fill="#F2EDDB"/>
+        </svg>
+      div.text-style-1920-h-2.home-screen2__subtitle Про нас
+      div.text-style-1920-h-1.home-screen2__title Місце, де бізнес розцвітає, а шопінг стає відпочинком
+      p.text-style-1920-txt Ми створюємо комфортні умови для бізнесу, враховуючи сучасний дизайн та розумне планування. "Центральний Ринок Ірпінь"  націлений на створення ідеального середовища для вашого шопінгу.
+      p.text-style-1920-txt Метою нашого проекту є створення простору для ком'юніті підприємців, сприяючи розвитку нових ідей та підприємницьких ініціатив, які надають якісні та конкурентоспроможні послуги.
+      <svg class="home-screen2__content-svg" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <circle cx="150" cy="150" r="150" fill="white"/>
+        <text transform="translate(299.239 149.772) rotate(93.3161)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0630946" y="24.4796">&#x414;</tspan></text>
+        <text transform="translate(298 167.711) rotate(99.4833)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(295.693 180.902) rotate(104.075)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.304929" y="24.4796">&#x442;</tspan></text>
+        <text transform="translate(293.036 191.469) rotate(108.844)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.175876" y="24.4796">&#x430;</tspan></text>
+        <text transform="translate(288.473 204.581) rotate(114.209)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.46348" y="24.4796">&#x43b;</tspan></text>
+        <text transform="translate(282.729 217.148) rotate(119.517)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.23177" y="24.4796">&#x44c;</tspan></text>
+        <text transform="translate(275.709 229.396) rotate(125.195)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43d;</tspan></text>
+        <text transform="translate(267.021 241.711) rotate(131.668)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.373055" y="24.4796">&#x44b;</tspan></text>
+        <text transform="translate(254.147 256.027) rotate(139.373)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.344612" y="24.4796">&#x448;</tspan></text>
+        <text transform="translate(238.098 269.363) rotate(146.062)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(220.956 280.229) rotate(154.087)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(207.45 286.699) rotate(160.078)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(192.366 292.055) rotate(166.361)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <text transform="translate(170.599 296.689) rotate(174.697)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(155.176 298) rotate(-179.336)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(139.215 297.695) rotate(-173.155)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <text transform="translate(123.518 295.662) rotate(-167.452)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(110.076 292.563) rotate(-162.236)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.310021" y="24.4796">&#x43a;</tspan></text>
+        <text transform="translate(98.0621 288.611) rotate(-157.716)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.304929" y="24.4796">&#x442;</tspan></text>
+        <text transform="translate(81.7114 281.725) rotate(-148.374)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0529699" y="24.4796">&#x2014;</tspan></text>
+        <text transform="translate(55.5308 264.204) rotate(-137.498)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0630946" y="24.4796">&#x414;</tspan></text>
+        <text transform="translate(42.5784 252.053) rotate(-131.46)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(33.5646 241.651) rotate(-126.66)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.304929" y="24.4796">&#x442;</tspan></text>
+        <text transform="translate(27.189 233.089) rotate(-122.047)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.175876" y="24.4796">&#x430;</tspan></text>
+        <text transform="translate(19.9712 221.409) rotate(-116.763)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.46348" y="24.4796">&#x43b;</tspan></text>
+        <text transform="translate(13.8416 209.076) rotate(-111.427)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.23177" y="24.4796">&#x44c;</tspan></text>
+        <text transform="translate(8.81293 196.079) rotate(-105.814)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43d;</tspan></text>
+        <text transform="translate(4.71783 181.643) rotate(-99.2639)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.373055" y="24.4796">&#x44b;</tspan></text>
+        <text transform="translate(1.71448 162.733) rotate(-91.548)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.344612" y="24.4796">&#x448;</tspan></text>
+        <text transform="translate(1.49835 140.817) rotate(-84.4768)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(3.89429 121.027) rotate(-76.5789)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(7.49573 106.229) rotate(-70.509)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(12.9472 91.1101) rotate(-64.2995)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <text transform="translate(22.8218 71.8556) rotate(-56.0625)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(31.5561 59.0138) rotate(-49.9988)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(41.6822 47.0479) rotate(-43.9591)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <text transform="translate(52.9037 36.3442) rotate(-38.332)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(64.2278 27.5156) rotate(-33.0978)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.310021" y="24.4796">&#x43a;</tspan></text>
+        <text transform="translate(74.5588 20.854) rotate(-28.671)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.304929" y="24.4796">&#x442;</tspan></text>
+        <text transform="translate(89.9371 12.5121) rotate(-19.2755)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0529699" y="24.4796">&#x2014;</tspan></text>
+        <text transform="translate(119.907 3.15063) rotate(-8.38529)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0630946" y="24.4796">&#x414;</tspan></text>
+        <text transform="translate(137.92 0.671753) rotate(-2.21123)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(152.214 0.240723) rotate(2.65325)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.304929" y="24.4796">&#x442;</tspan></text>
+        <text transform="translate(162.772 0.689941) rotate(7.28563)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.175876" y="24.4796">&#x430;</tspan></text>
+        <text transform="translate(177.17 2.61682) rotate(12.7666)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.46348" y="24.4796">&#x43b;</tspan></text>
+        <text transform="translate(189.976 5.53687) rotate(17.9803)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.23177" y="24.4796">&#x44c;</tspan></text>
+        <text transform="translate(203.299 9.88867) rotate(23.5681)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43d;</tspan></text>
+        <text transform="translate(217.237 15.934) rotate(30.1502)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.373055" y="24.4796">&#x44b;</tspan></text>
+        <text transform="translate(233.899 25.6719) rotate(37.9144)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.344612" y="24.4796">&#x448;</tspan></text>
+        <text transform="translate(250.063 38.5953) rotate(44.5837)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.0081954" y="24.4796">&#x435;</tspan></text>
+        <text transform="translate(264.128 53.1187) rotate(52.5034)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(273.553 65.5364) rotate(58.5849)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(281.779 79.1619) rotate(64.7253)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <text transform="translate(290.657 99.3584) rotate(73.1015)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.393364" y="24.4796">&#x43f;</tspan></text>
+        <text transform="translate(294.894 113.429) rotate(78.9823)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.270398" y="24.4796">&#x440;</tspan></text>
+        <text transform="translate(297.873 129.197) rotate(85.1385)" fill="#28282A" xml:space="preserve" style="white-space: pre" font-family="Segoe UI" font-size="22.8941" letter-spacing="0em"><tspan x="0.292756" y="24.4796">&#x43e;</tspan></text>
+        <mask id="mask0_300_1484" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="80" y="106" width="141" height="89">
+        <rect x="80" y="106" width="140.062" height="88.7062" fill="url(#pattern0_300_1484)"/>
+        </mask>
+        <g mask="url(#mask0_300_1484)">
+        <rect x="42.6494" y="12.625" width="217.826" height="293.985" fill="#7F855D"/>
+        </g>
+        <defs>
+        <pattern id="pattern0_300_1484" patternContentUnits="objectBoundingBox" width="1" height="1">
+        <use xlink:href="#image0_300_1484" transform="matrix(0.00104167 0 0 0.00164474 -0.820833 -2.11184)"/>
+        </pattern>
+        <image id="image0_300_1484" width="2551" height="3300" xlink:href="./assets/images/home/screen2-svg-img.png"/>
+        </defs>
+        </svg>
+    +img('home/screen2-img.jpg').home-screen2__bg
+  .home-screen3 
+    .text-style-1920-h-1.home-screen3__title Центральний ринок Ірпінь 
+    p.text-style-1920-txt.home-screen3__subtitle Центральний Ринок Ірпінь"  націлений на створення ідеального середовища для вашого шопінгу
+    .home-screen3__iframe-wrapper
+      iframe(src="", frameborder="0") 
+  .home-screen4
+    .home-screen4__top-content
+      .text-style-1920-h-2.home-screen4__subtitle Наші переваги
+      <svg class="home-screen4__quote" width="67" height="55" viewBox="0 0 67 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M51.87 54.796C47.7913 54.796 44.3333 53.2887 41.496 50.274C38.6587 47.082 37.24 42.826 37.24 37.506C37.24 29.8807 38.3927 23.674 40.698 18.886C43.0033 13.9207 45.5747 10.0193 48.412 7.182C51.604 3.99 55.4167 1.596 59.85 0L62.51 4.25601C59.4953 5.67467 56.8353 7.35933 54.53 9.31001C52.5793 11.0833 50.7173 13.2113 48.944 15.694C47.348 17.9993 46.55 20.8367 46.55 24.206C46.55 25.4473 46.7273 26.4227 47.082 27.132C47.2593 27.664 47.5253 28.0187 47.88 28.196C48.2347 28.0187 48.7667 27.8413 49.476 27.664C50.008 27.4867 50.54 27.3093 51.072 27.132C51.7813 26.9547 52.4907 26.866 53.2 26.866C57.2787 26.866 60.4707 28.1073 62.776 30.59C65.2587 32.8953 66.5 36.0873 66.5 40.166C66.5 44.2447 65.0813 47.7027 62.244 50.54C59.4067 53.3773 55.9487 54.796 51.87 54.796ZM14.63 54.796C10.5513 54.796 7.09333 53.2887 4.256 50.274C1.41867 47.082 0 42.826 0 37.506C0 29.8807 1.15267 23.674 3.458 18.886C5.76333 13.9207 8.33467 10.0193 11.172 7.182C14.364 3.99 18.1767 1.596 22.61 0L25.27 4.25601C22.2553 5.67467 19.5953 7.35933 17.29 9.31001C15.3393 11.0833 13.4773 13.2113 11.704 15.694C10.108 17.9993 9.31 20.8367 9.31 24.206C9.31 25.4473 9.48733 26.4227 9.842 27.132C10.0193 27.664 10.2853 28.0187 10.64 28.196C10.9947 28.0187 11.5267 27.8413 12.236 27.664C12.768 27.4867 13.3 27.3093 13.832 27.132C14.5413 26.9547 15.2507 26.866 15.96 26.866C20.0387 26.866 23.2307 28.1073 25.536 30.59C28.0187 32.8953 29.26 36.0873 29.26 40.166C29.26 44.2447 27.8413 47.7027 25.004 50.54C22.1667 53.3773 18.7087 54.796 14.63 54.796Z" fill="#F2EDDB"/>
+      </svg>
+      .text-style-1920-h-1.home-screen4__title Все для вашого комфроту
+    .home-screen4__content
+      .home-screen4__content-img1
+        +img('home/screen4/1.jpg')
+      .home-screen4__content-img2
+        +img('home/screen4/2.jpg')
+      .home-screen4__content-img3
+        +img('home/screen4/3.jpg')
+      div.home-screen4__content-text.text-style-1920-txt
+        p "Центральний Ринок Ірпінь" приваблює своїм сучасним торгівельним простором, розташованим на площі 15 000 квадратних метрів та налічуючим більше 300 торгівельних павільйонів. Розташований в потужному транспортному вузлі, ринок забезпечує зручний доступ для відвідувачів, знаходячись в хвилині їзди на автомобілі та в 7 хвилинах пішки від міського залізничного вокзалу.
+        p Крім того, комплекс вражає своїм інфраструктурним рішенням, включаючи паркінг на 500 місць на території та найбільшу набережну Київщини поруч. Тут кожен відвідувач може не тільки знайти багатий асортимент товарів, але й насолоджуватися зручністю та комфортом.
+  .home-news-screen 
+    .home-news-screen__title.text-style-1920-h-1 Новини та акції
+    .home-news-screen__subtitle Отримуйте своєчасну інформацію та насолоджуйтеся перевагами, щоб завжди бути у центрі подій ринку
+    .home-news-screen__slider
+      each val in news
+        a(href="/single-news").news-card
+          .news-card__img
+            +img(val['img'])
+          .news-card__title Ексклюзивні Знижки на Центральному Ринку Ірпінь
+          .news-card__text Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!
+    a(href="/news").button-colored.button-colored--dark Більше новин 
+  
+
+block header
+  include ../includes/header.pug
+block footer
+  include ../includes/footer.pug

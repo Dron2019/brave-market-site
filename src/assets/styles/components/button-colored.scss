@@ -1,0 +1,28 @@
+.button-colored {
+    padding: 16px 24px;
+    border-radius: 100px;
+    color: #f2eddb;
+    background-color: #7F855D;
+    @include text-style-1920-nav;
+    border: 1px solid transparent;
+    transition: .25s ease-out;
+    @include to(600px){
+        padding:16px;
+    }
+    &--dark {
+        background-color: var(--color-graphite);
+        color: var(--color-send);
+    }
+}
+
+.desktop {
+    .button-colored:hover {
+        background-color: var(--color-graphite);
+        color: var(--color-send);
+    }
+    .button-colored--dark:hover {
+        background-color: #7F855D;
+        color: #f2eddb;
+        border-color: var(--color-send);
+    }
+}

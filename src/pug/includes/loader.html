@@ -1,0 +1,220 @@
+<!-- <div class='loader-wrap'>
+    <div class="loader-wrap-bg"></div>
+    <div class="loader-wrap-wrap">
+        <div class="loader-wrap-text"><span data-load-perc>100</span>%</div>
+        <svg width="1658" height="830" viewBox="0 0 1658 830" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="0.5">
+
+            <path d="M331.59 0.142944H0C0 457.987 371.156 829.143 829 829.143C1286.84 829.143 1658 457.987 1658 0.142944H1326.39C1326.39 274.849 1103.7 497.542 828.99 497.542C554.284 497.542 331.59 274.849 331.59 0.142944Z" fill="white"/>
+            
+            </g>
+            </svg>
+    </div>
+</div> -->
+
+
+<style>
+
+    .loader-wrap {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 109px;
+    }
+    .loader-wrap.hidden {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+
+    .loader-wrap-wrap {
+        
+    }
+    .loader-wrap-bg {
+        background-image: url(./assets/images/loader-bg.jpg);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .loader-wrap-wrap {
+        /* transition: transform 1s ease-out, opacity .15s ease-out; */
+        transform-origin: 50% bottom;
+        transform: scale(1);
+        width: 100%;
+        margin-top: auto;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .loader-wrap svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .loader-wrap-text {
+        position: absolute;
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
+        font-weight: 400;
+        font-size: 236.857px;
+        line-height: 90%;
+        /* or 213px */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+
+        color: #FFFFFF;
+    }
+    @media screen and (max-width:1024px){
+        .loader-wrap-text {
+            font-size: 72px;
+        }
+    }
+</style>
+
+<style data-page-elements-style-for-loader>
+    .text-style-1920-h-2-thin-font,
+    .front-screen .delimiter,
+    .front-screen .text-style-1920-h-1-font,
+    .front-screen__subtitle {
+        opacity: 0;
+    }
+</style>
+
+<script src="./assets/scripts/gsap.min.js"></script>
+
+<script>
+    console.log(gsap);
+    let loaderStatus = {
+    isCounterAnim: true,
+    isDOMLoaded: false,
+}
+if (sessionStorage.getItem('visit') !== null) {
+    
+    window.dispatchEvent(new Event('preloaderOff'));
+    // document.querySelector('.loader-wrap').classList.add('hidden');
+    // document.querySelector('.loader-wrap').style.display = 'none';
+    loaderStatus.isCounterAnim = false;
+    loaderStatus.isCounterAnim = true;
+} else {
+    sessionStorage.setItem('visit', true);
+}
+function scaleTo1(el) {
+    const path = el;
+    let value = 1;
+    const finishVal = +el.dataset.finishVal || 0;
+    function render(value) {
+        
+        if (value <= 0.15) {
+            // el.parentElement.classList.add('transformed');
+
+        }
+        if(value <= finishVal) {
+            document.querySelector('.loader-wrap').classList.add('hidden');
+            // document.querySelector('.loader>svg').style.opacity = 0;
+            loaderStatus.isCounterAnim = false;
+            path.style.transform = `scaleY(${finishVal})`;
+            return;
+        };
+        path.style.transform = `scaleY(${value})`;
+        const newValue = value - 0.01;
+        requestAnimationFrame(() => {
+            render(newValue);
+        });
+    }
+
+    render(value);
+}
+
+    function linesTo0() {
+        for (let index = 0; index < document.querySelectorAll('.loader path:not(.static)').length; index++) {
+            const element = document.querySelectorAll('.loader path:not(.static)')[index];
+            scaleTo1(element);
+        }
+    }
+    const splitElementByWords = (text) => {
+        if (!text) return;
+        let mathM = text.innerHTML.match(/<\s*(\w+\b)(?:(?!<\s*\/\s*\1\b)[\s\S])*<\s*\/\s*\1\s*>|\S+/g);
+                if (mathM === null) return;
+                mathM = mathM.map(el => `<span style="display:inline-flex"><span>${el}</span></span>`);
+                text.innerHTML = mathM.join(' ');
+                gsap.set(text.children, { overflow: 'hidden' });
+                gsap.set(text.querySelectorAll('span>span'), { overflow: 'initial', display: 'inline-block' });
+    }
+
+
+
+
+
+    
+    let interval = setInterval(() => {
+        if (loaderStatus.isDOMLoaded === true) {
+
+            splitElementByWords(document.querySelector('.front-screen .text-style-1920-h-1-font'))
+            splitElementByWords(document.querySelector('.front-screen .text-style-1920-h-2-thin-font'))
+            splitElementByWords(document.querySelector('.front-screen__subtitle'))
+
+            let tl = gsap.timeline({
+                defaults: {
+                    ease: 'power4.out'
+                },
+                paused: true
+            })
+                .add(() => {
+                    clearInterval(interval);
+                    window.dispatchEvent(new Event('preloaderOff'));
+                    document.querySelectorAll('[data-page-elements-style-for-loader]').forEach(el => el.remove());
+                })
+                .fromTo('.front-screen .front-screen__subtitle span>span', {
+                    opacity: 0,
+                    y: 50
+                },{
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.05,
+                    duration: 0.75
+                })
+                .fromTo('.front-screen .text-style-1920-h-1-font span>span, .front-screen .text-style-1920-h-2-thin-font span>span', {
+                    opacity: 0,
+                    y: 50
+                },{
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.5
+                }, '<')
+                .from(document.querySelector('.front-screen .delimiter'), {
+                    opacity: 0
+                })      
+            clearInterval(interval);
+
+            tl.play();
+        }
+    }, 200);
+    window.addEventListener('DOMContentLoaded',function(evt){
+        setTimeout(() => {
+            loaderStatus.isDOMLoaded = true;
+        }, 500);
+    });
+</script>

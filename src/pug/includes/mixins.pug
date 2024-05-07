@@ -1,0 +1,92 @@
+mixin testCard(link, src, title, descr)
+	a(href=link).card-item
+		img.card-item__img(src=src alt='foto-1' title="title-foto")
+		h2.card-item__title=title
+		p.card-item__descr=descr
+
+mixin icon(icon, condition)
+	if(condition)
+		svg(class= icon  role="presentation")&attributes(attributes)
+			use(xlink:href="#"+ icon + "")
+	else
+		span(class='svg-wrap')&attributes(attributes)
+			svg(class="svg-icon icon--"+ icon + ""  role="presentation")
+				use(xlink:href="#"+ icon + "")
+mixin svg(icon)
+		svg(class="icon--"+ icon + ""  role="presentation")&attributes(attributes)
+			use(xlink:href="#icon-"+ icon + "")
+
+mixin link-blank(href)
+	a(herf=href rel="nofollow" target="_blank")
+mixin img(src)
+	img(src='./assets/images/'+src+'' title="foto" alt="foto")&attributes(attributes)
+
+mixin btn(text)
+	img(type="button" class="button button-reset--default-styles")&attributes(attributes)
+
+mixin SelectBox(name, id, options)
+	.u-select-box
+		.u-select-box__current(tabindex="1")
+			each option, index in options
+				.u-select-box__value
+					if(index == 0)
+						input.u-select-box__input(class='js_'+1+'checkbox js_select_checkbox' type="radio" id=id+index value=option.value name=id checked)
+					else
+						input.u-select-box__input(class='js_'+id+'checkbox js_select_checkbox' type="radio" id=id+index value=option.value name=id)
+					p.u-select-box__input-text #{option.name}
+				+svg('select-arr').u-select-box__icon
+		ul.u-select-box__list
+			each option, index in options
+				li
+					label.u-select-box__option(for=id+index aria-hidden) #{option.name}
+
+mixin RangeSlider(options)
+	each option, index in options
+		li.range-item.filter__item.js-range-item
+			h4.range-item__label.filter__label #{option.label}
+			input.js-range-init(id=option.id type="hidden" data-from=option.from data-min=option.min data-to=option.to data-max=option.max)
+			.u-range-item-nav
+				input(id=option.id+"_min" class="js_"+option.id+"_min js-current-min" name=option.id+"_min" maxlength=option.max type="number" min=option.min value=option.min max=option.max)
+				input(id=option.id+"_max" class="js_"+option.id+"_max js-current-max" name=option.id+"_max" maxlength=option.max type="number" min=option.min value=option.max max=option.max)
+
+
+mixin responsiveImage(srcset, alt, plainLoad)
+	picture&attributes(attributes)
+		each src in srcset
+			- var size = src.split(' ')[1]
+			if plainLoad
+				source(srcset=src.split(' ')[0], media=`(min-width: ${size}px)`)
+			else 
+				source(data-srcset=src.split(' ')[0], media=`(min-width: ${size}px)`)
+		if plainLoad
+			img(src=srcset[0].split(' ')[0], alt=alt)
+		else 
+			img(data-src=srcset[0].split(' ')[0], alt=alt)
+
+include ../components/form/form.pug
+
+mixin button-link(href, title)
+	a(href=href type="button").button-30.button-30--transparent-bordered&attributes(attributes) 
+		span #{title}
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+				<path stroke="#fff" d="M4.396.75h12.5m.5 0h-.5m0 0v12.5m0-12.5-16.5 16.5" class="Vector 2"/>
+			</svg>
+mixin button-link-dark(href, title)
+	a(href=href type="button").button-30.button-30--dark&attributes(attributes)
+		span #{title}
+			<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
+				<path stroke="#fff" d="M4.396.75h12.5m.5 0h-.5m0 0v12.5m0-12.5-16.5 16.5" class="Vector 2"/>
+			</svg>
+
+
+mixin front-screen(sub, title, text)
+	.container.front-screen&attributes(attributes)
+		.front-screen__content
+			p.front-screen__subtitle #{sub}
+			.text-style-1920-h-1-font #{title}
+			.delimiter
+			.text-style-1920-h-2-thin-font #{text}
+	<svg data-arrow-down="" class="front-screen__arrow"  width="43" height="60" viewBox="0 0 43 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M21.002 3.46396L20.295 2.75796C19.2355 1.69711 17.8167 1.07206 16.3187 1.00619C14.8208 0.940315 13.3526 1.43842 12.204 2.40216C11.0554 3.3659 10.3099 4.72525 10.1146 6.21184C9.91924 7.69843 10.2884 9.20422 11.149 10.432C11.4614 10.6634 11.754 10.9203 12.024 11.2L20.997 20.173L21.003 20.168L21.008 20.173L29.981 11.2C30.2512 10.9198 30.5443 10.6626 30.857 10.431C31.71 9.20272 32.0731 7.70001 31.8749 6.21782C31.6768 4.73564 30.9318 3.38103 29.7862 2.41993C28.6406 1.45883 27.1771 0.960653 25.6831 1.02319C24.189 1.08573 22.7723 1.70448 21.711 2.75796L21.004 3.46396H21.002ZM32.459 9.54496C33.0442 8.04957 33.0968 6.39836 32.6082 4.86873C32.1195 3.33909 31.1193 2.02423 29.7756 1.14503C28.4319 0.265838 26.8265 -0.124122 25.2292 0.0406661C23.6319 0.205454 22.1399 0.914949 21.004 2.04996H21.002C19.8664 0.913443 18.3741 0.20267 16.776 0.0371959C15.178 -0.128279 13.5717 0.261641 12.2273 1.14137C10.883 2.0211 9.88258 3.33696 9.39444 4.86762C8.9063 6.39828 8.96018 8.05036 9.54702 9.54596C8.05199 8.96126 6.40133 8.90865 4.87211 9.39697C3.34288 9.88528 2.02818 10.8848 1.14868 12.2277C0.269185 13.5707 -0.121573 15.1753 0.0420042 16.7722C0.205581 18.3692 0.913531 19.8612 2.04702 20.998L2.05103 21.001V21.004C0.914495 22.1391 0.203452 23.6309 0.0374495 25.2286C-0.128553 26.8263 0.260609 28.4324 1.1395 29.7769C2.0184 31.1214 3.33343 32.1223 4.86348 32.6113C6.39353 33.1003 8.04528 33.0476 9.54102 32.462C8.96056 33.9572 8.9117 35.6066 9.40262 37.1336C9.89354 38.6606 10.8944 39.9725 12.2375 40.8493C13.5806 41.7262 15.1842 42.1148 16.7797 41.95C18.3752 41.7851 19.8656 41.0769 21.001 39.944H21.004C22.1387 41.079 23.6294 41.789 25.2257 41.955C26.822 42.121 28.4269 41.7327 29.7708 40.8554C31.1147 39.9781 32.1159 38.6652 32.6063 37.137C33.0967 35.6088 33.0465 33.9585 32.464 32.463C33.9593 33.0465 35.6098 33.0979 37.1385 32.6086C38.6672 32.1193 39.9811 31.1191 40.8597 29.7758C41.7383 28.4325 42.1281 26.8279 41.9638 25.2313C41.7994 23.6346 41.0909 22.1431 39.957 21.007L39.955 21.004H39.954V21.002C41.0921 19.8668 41.8043 18.3741 41.9707 16.7753C42.1371 15.1765 41.7475 13.5692 40.8676 12.224C39.9877 10.8788 38.6711 9.87787 37.1396 9.38973C35.6081 8.90159 33.9551 8.95605 32.459 9.54396V9.54496ZM31.592 30.87C31.3486 30.5378 31.0766 30.2276 30.779 29.943L21.832 20.996L30.779 12.049C30.816 12.013 30.854 11.977 30.891 11.939C31.141 11.689 31.369 11.424 31.574 11.147C32.8023 10.2928 34.3056 9.92881 35.7886 10.1266C37.2716 10.3244 38.627 11.0696 39.5885 12.2158C40.55 13.362 41.0481 14.8263 40.9849 16.3211C40.9217 17.8159 40.3018 19.233 39.247 20.294L38.54 21.002L38.539 21.004L39.247 21.711C40.3061 22.7692 40.9306 24.1856 40.9977 25.6812C41.0648 27.1769 40.5695 28.6435 39.6093 29.7923C38.6492 30.941 37.2938 31.6887 35.81 31.8882C34.3262 32.0877 32.8214 31.7244 31.592 30.87ZM21.002 21.826L29.981 30.805C30.256 31.0901 30.5548 31.3514 30.874 31.586C31.7212 32.8162 32.0785 34.3185 31.8759 35.7984C31.6733 37.2784 30.9254 38.6293 29.7787 39.5867C28.6321 40.544 27.1693 41.0387 25.677 40.9738C24.1846 40.9089 22.7703 40.2892 21.711 39.236L21.004 38.529H21.002L20.295 39.235C19.2373 40.2944 17.8213 40.9195 16.3258 40.9872C14.8303 41.055 13.3636 40.5605 12.2145 39.6011C11.0653 38.6416 10.3169 37.2868 10.1165 35.8032C9.9162 34.3196 10.2785 32.8148 11.132 31.585C11.4507 31.3504 11.7491 31.0895 12.024 30.805L21.002 21.826ZM2.75903 11.82C3.75529 10.8241 5.07048 10.2109 6.47378 10.088C7.87709 9.96508 9.27884 10.3404 10.433 11.148C10.6719 11.4707 10.9378 11.7725 11.228 12.05L20.175 20.997L11.228 29.944C10.9309 30.228 10.6592 30.5376 10.416 30.869C9.18636 31.7181 7.68386 32.0773 6.20311 31.8761C4.72236 31.6749 3.37017 30.9279 2.41163 29.7814C1.4531 28.635 0.957369 27.1719 1.02163 25.6789C1.0859 24.1859 1.70552 22.7708 2.75903 21.711L3.46603 21.003L3.46703 21.001L2.75903 20.294C2.20261 19.7375 1.76124 19.077 1.46011 18.35C1.15898 17.623 1.00399 16.8438 1.00399 16.057C1.00399 15.2701 1.15898 14.4909 1.46011 13.7639C1.76124 13.0369 2.20261 12.3764 2.75903 11.82Z" fill="white"/>
+		<path d="M21 46V58.375M21 58.375L26.25 52.75M21 58.375L15 52.75" stroke="white"/>
+	</svg>

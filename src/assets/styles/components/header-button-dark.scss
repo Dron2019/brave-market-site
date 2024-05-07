@@ -1,0 +1,21 @@
+.header-button-dark {
+    padding: 16px 24px;
+    @include text-style-1920-nav;
+    color: var(--color-white);
+    border-radius: 100px;
+    background-color: var(--color-graphite);
+    @include to(1440px){
+        @include text-style-1366-nav;
+    }
+}
+
+@include to(600px){
+    .header-button-dark {
+        padding: 18px 16px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 130%;
+
+    }
+}   

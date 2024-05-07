@@ -1,0 +1,28 @@
+.social-link {
+    border-radius: 50%;
+    width: 43.5px;
+    height: 43.5px;
+    border: 1px solid var(--color-graphite);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s ease-out;
+    [fill] {
+        transition: fill .25s ease-out;
+    }
+    [stroke] {
+        transition: stroke .25s ease-out;
+    }
+}
+
+.desktop {
+    .social-link:hover {
+        background-color: var(--color-graphite);
+        [fill] {
+            fill: var(--color-send);
+        }
+        [stroke] {
+            stroke: var(--color-send);
+        }
+    }
+}

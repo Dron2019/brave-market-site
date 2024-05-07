@@ -1,0 +1,32 @@
+.location-page {
+    padding-top: var(--header-h);
+    text-align: center;
+    margin-bottom: var(--g-container-offset);
+    align-self: flex-start;
+    &__title {
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        justify-content: center;align-items: center;
+        &::after {
+            content: '';
+            display: inline-block;
+            height: 1px;
+            width: 65%;
+            opacity: 0.1;
+            background: #FFF;
+            margin-top: 20px;
+        }
+    }
+    &__title {
+        margin-bottom: 120px;
+    }
+}
+
+.mobile {
+    .location-page {
+        &__title {
+            margin-bottom: 40px;
+        }
+    }
+}
