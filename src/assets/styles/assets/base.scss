@@ -57,6 +57,7 @@
 
 html{
 	font-size: 14px;
+	@include scrollbars(3px, #28282a33, transparent);
 }
 body {
 	margin: 0;
@@ -67,6 +68,8 @@ body {
 	font-size: 14px;
 	background-color: var(--color-graphit-bg-color);
 	color: var(--color-black);
+
+	@include scrollbars(10px, #28282a33, transparent);
 
 }
 
@@ -99,6 +102,7 @@ body input, body textarea {
 ::-webkit-scrollbar-thumb:window-inactive {
   background: var(--color-white);
 }
+
 
 ::selection {
   background-color: #fff;

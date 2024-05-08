@@ -278,7 +278,7 @@
     &__content {
         display: grid;
         grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(10, calc((90vh - var(--header-h)) / 10) );
+        grid-template-rows: repeat(11, calc((90vh - var(--header-h)) / 10) );
         grid-column-gap: 20px;
         grid-row-gap: 20px;
         @include to(1024px){

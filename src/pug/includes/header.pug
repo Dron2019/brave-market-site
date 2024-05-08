@@ -48,7 +48,7 @@ header(class="header "+header_class)
             </div>
     .header__delimiter
     .header__bottom
-        .header__bottom-links
+        .header__bottom-links(data-lenis-prevent)
             each val in header_links
                 a(href="#" data-title=val[0]).text-style-1920-nav.color-graphite #{val[0]}
         .header__bottom-nav

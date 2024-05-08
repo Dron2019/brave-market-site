@@ -63,3 +63,30 @@ $screen-height: 720;
 		opacity: math.div($i, 10);
 	}
 }
+
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width: $size;
+		height: $size;
+		cursor: pointer;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+		border-radius: var(--space-2);
+		cursor: pointer;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	& {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}

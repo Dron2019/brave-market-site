@@ -92,6 +92,13 @@
 			white-space: nowrap;
 			display: block;
 			width: 50vw;
+			@include from-to(1025px, 1240px){
+				max-width: 45vw;
+			}
+			@include from(1025px){
+				overflow: auto;
+				@include scrollbars(3px, #28282a33, transparent);
+			}
 			a {
 				position: relative;
 				overflow: hidden;

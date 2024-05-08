@@ -215,6 +215,9 @@
   .footer__group-arrow {
     @include size(1);
     @include shift(0);
+    svg {
+      cursor: pointer;
+    }
     @include to(1024px){
       @include size(4);
       @include shift(0);
