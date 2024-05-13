@@ -1,0 +1,56 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'news'
+    var id_page = 'id-page-news'
+    var class_page = 'class-page-news'
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ];
+    var news = [
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/1.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/2.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/3.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/4.jpg' },
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  script(defer src='./assets/scripts/news.bundle.js')
+block content
+  .container.news-front-screen
+    include ../includes/breadcrumbs.pug
+    .text-style-1920-h-1.text-uppercase.color-send.news-front-screen__title Новини та Акції
+    .news-filter-label 
+      .news-filter-label__text Фільтр
+      .news-filter-label__line
+    .tabs(data-news-tabs)
+      .tabs__tab.active Всі
+      .tabs__tab Новини
+      .tabs__tab Акції
+    .news-filter-label 
+      .news-filter-label__text
+      .news-filter-label__line
+  .container.news-container
+    each val in news
+      a(href="/single-news").news-card
+        .news-card__img
+          +img(val['img'])
+        .news-card__title Ексклюзивні Знижки на Центральному Ринку Ірпінь
+        .news-card__text Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!
+  .container.news-more-container
+    a(href="/news").button-colored.button-colored--dark Більше новин
+block footer
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

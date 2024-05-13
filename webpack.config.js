@@ -6,7 +6,8 @@ const config = {
   entry: {
     'immediate-loading': './src/assets/scripts/immediate-loading.js',
     home: './src/assets/scripts/home.js',
-    index: './src/assets/scripts/index-app.js'
+    index: './src/assets/scripts/index-app.js',
+    news: './src/assets/scripts/news.js'
   },
   output: {
     filename: '[name].bundle.js',

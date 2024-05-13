@@ -6,11 +6,12 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 100%;
-  color: #C4C7CC;
+  color: var(--color-send);
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px; 
+  margin-bottom: 0;
+  
   &-list {
     display: flex;
     align-items: center;
@@ -18,7 +19,7 @@
   }
   .link__arrow {
     margin: 0 15px;
-    fill: #C4C7CC;
+    fill: var(--color-send);
     @include to(992px) {
       margin: 0 20px;
     }
@@ -39,25 +40,29 @@
   //   margin: 0 vw(20, 320) 20px auto;
   //   font-size: 10px;
   // }
-  .icon--arrow {
-    width: 4px;
-    height: 4px;
-    background-color: rgba(#fff, 0.7);
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 10px;
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    margin-left: 15px;
   }
 
   
   &-item {
     display: flex;
     align-items: center;
+    color: var(--color-send);
+    @include text-style-1920-nav;
+    a {
+      color: var(--color-send);
+      text-decoration: none;
+    }
+    &__current--color {
+      color: var(--color-graphite);
+    }
     &:last-child,
     &__link {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 140%;
-      color: var(--color-new-blue);
+      // color: var(--color-graphite);
       text-decoration: none;
 
     }

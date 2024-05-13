@@ -16,22 +16,7 @@
 
 .container {
 	@include wrapper();
-	&~& {
-		margin-top: var(--g-container-offset);
-	}
-	&:last-child {
-		margin-bottom: var(--g-container-offset);
-	}
-	&--no-offset {
-		margin-top: 0 !important;
-		margin-bottom: 0 !important;
-	}
-	&--negative-offset-b {
-		margin-bottom: calc(var(--g-container-offset) * -1);
-	}
-	&--negative-offset-t {
-		margin-top: calc(var(--g-container-offset) * -1) !important;
-	}
+
 }
 
 .tablet {

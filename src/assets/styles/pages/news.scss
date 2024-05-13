@@ -5,8 +5,15 @@
     justify-content: flex-start;
     align-items: center;
     padding-top: calc(var(--header-h) + 20px);
+    background-color: var(--color-green);
+    padding-bottom: var(--screen-offset);
+    &__title {
+        margin-bottom: 50px;
+        margin-top: 20px;
+    }
     .tabs {
-        margin-top: 40px;
+        margin-top: 35px;
+        margin-bottom: 35px;
     }
 }
 
@@ -20,8 +27,9 @@
 
 .news-container {
     @include row-flex();
-    margin-top: 80px !important;
+    align-items: flex-start;
     position: relative;
+    background-color: var(--color-green);
     &.loading {
         &::before {
             content: '';
@@ -30,7 +38,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(#fff, 0.5);
+            background-color: var(--color-green);
             z-index: 4;
         }
         &::after {
@@ -43,7 +51,7 @@
           width: 50px;
           height: 50px;
           border-radius: 50px;
-          border: 5px solid  var(--color-new-blue);
+          border: 5px solid  var(--color-graphite);
           border-top-color: #fff;
           animation: loading 2s linear infinite;
           z-index: 10;
@@ -65,11 +73,14 @@
 
     }
     .news-card {
-        @include size(12);
+        @include size(6);
         @include shift(0);
-    }
-    .news-card:nth-of-type(n+3) {
-        margin-top: 80px;
+        @include to(1360px){
+            @include size(8);
+        }
+        @include to(1024px){
+            @include size(12);
+        }
     }
 }
 .tablet,
@@ -95,4 +106,51 @@
     .news-container  {
         margin-top: 32px !important;
     }
+}
+
+
+.news-filter-label {
+    color: #F2EDDB;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__text {
+        border-radius: 100px;
+        border: 1px solid rgba(242, 237, 219, 0.20);
+        background: var(--color-green);
+        padding: 8px 16px;
+        position: relative;
+        z-index: 2;
+        &:empty {
+            opacity: 0;
+        }
+    }
+    &__line {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 100%;
+        height: 1px;
+        opacity: 0.2;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 52%, rgba(255, 255, 255, 0.00) 100%);
+    }
+}
+
+
+
+.news-more-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-green);
+    padding-top: 50px;
+    padding-bottom: var(--screen-offset);
 }
