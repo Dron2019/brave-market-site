@@ -2,7 +2,7 @@
 extends ../layout/main
 block variable
   -
-    var title_page = 'single-news'
+    var title_page = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
     var id_page = 'id-page-single-news'
     var class_page = 'class-page-single-news'
     var breadcrumbsSubitem = [
@@ -10,6 +10,10 @@ block variable
         label: 'About',
         link: pagesLink[0].about
       }
+    ];
+    var news = [
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/1.jpg' },
+      { title: 'Ексклюзивні Знижки на Центральному Ринку Ірпінь', text: 'Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!', img: 'home/news/2.jpg' }
     ]
   
 block meta
@@ -25,7 +29,38 @@ block scripts
   script(defer src='./assets/scripts/header.js')
   script(defer src='./assets/scripts/single-news.js')
 block content
-  h1 single-news
+  .container.news-front-screen
+    include ../includes/breadcrumbs.pug
+    a(href="/news").news-front-screen__back-button
+      <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" width="80" height="80" rx="40" transform="rotate(90 80 0)" fill="#28282A"/>
+        <path d="M34.8214 26.5L25.5 36.0294M25.5 36.0294L34.8214 45.5588M25.5 36.0294C31.0238 36.0294 43.2452 36.0294 47.9405 36.0294C53.8095 36.0294 54.5 42.0294 54.5 43.4412C54.5 44.5706 54.5 49.6176 54.5 53.5" stroke="#F2EDDB" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+    .text-style-h-1.text-new-blue.text-uppercase.news-front-screen__title.news-front-screen__title--small Додатково -5% для військових
+    .news-filter-label 
+      .news-filter-label__text
+      .news-filter-label__line
+  .container.single-news-container
+    .single-news-container__date
+      +svg('calendar')
+      span 24.02.2023
+    .single-news-container__title Подяка за службу: знижка від житлового комплексу для військовослужбовців.
+    .single-news-container__text Військовослужбовці заслуговують на нашу подяку та підтримку, тому ми раді повідомити про нашу спеціальну пропозицію. Відтепер у ЖК "Героїв" діє знижка в розмірі 5% для всіх військових.
+    ul.single-news-container__list
+      li Комфортне житло в новобудові зі зручним розташуванням
+      li Можливість придбання квартири в розстрочку без відсотків
+      li Безкоштовний доступ до фітнес-центру та інших інфраструктурних об'єктів ЖК "Щасливий"
+    img(src="./assets/images/home/home-page-screen1.jpg")
+  .container.other-news-container
+    .other-news-container__title Останні новини та акції
+    each val in news
+      a(href="/single-news").news-card
+        .news-card__img
+          +img(val['img'])
+        .news-card__title Ексклюзивні Знижки на Центральному Ринку Ірпінь
+        .news-card__text Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!
+
 block footer
   include ../includes/footer.pug
 

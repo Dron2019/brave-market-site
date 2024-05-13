@@ -10,10 +10,23 @@
     &__title {
         margin-bottom: 50px;
         margin-top: 20px;
+        &--small {
+            font-family: $default-font2;
+            color: var(--color-send);
+            font-size: 78px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%; /* 93.6px */
+        }
     }
     .tabs {
         margin-top: 35px;
         margin-bottom: 35px;
+    }
+    &__back-button {
+        position: absolute;
+        left: var(--page-side-fields);
+        top: calc(var(--header-h) + 50px);
     }
 }
 
