@@ -1,0 +1,35 @@
+.documents-container {
+    background-color: var(--color-green);
+    padding-top: var(--header-h);
+    padding-bottom: var(--screen-offset);
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: center;
+    align-items: center;
+    @include row-flex();
+    .breadcrumbs {
+        @include size(24);
+        @include shift(0);
+        text-align: center;
+        margin-top: 70px;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    &__title {
+        @include size(24);  
+        @include shift(0);
+        text-align: center;
+        margin-bottom: calc(var(--screen-offset) * 0.33);
+    }
+    .doc-card {
+        @include size(12);
+        @include shift(0);
+        &:nth-last-child(n+2) {
+            margin-bottom: 20px;
+        }
+    }
+    .news-filter-label {
+        margin-bottom: calc(var(--screen-offset) * 0.66);
+    }
+    
+}
