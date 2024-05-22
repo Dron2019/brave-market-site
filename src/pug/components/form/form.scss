@@ -47,11 +47,15 @@
       }
     }
   }
+}
+.overlay,
+.form {
   &.active {
     opacity: 1;
     visibility: visible;
   }
 }
+
 .form-user-info {
   width: 100%;
   display: grid;

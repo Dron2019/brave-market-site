@@ -4,28 +4,28 @@ import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import './modules/scroll/leniscroll';
 import menu from './menu3d';
 import upArrow from './modules/upArrow';
-
+import { formsHandler } from './modules/form/formsHandler';
 
 gsap.registerPlugin(ScrollTrigger);
 
-upArrow()
+upArrow();
 
-
-gsap.timeline({
+gsap
+  .timeline({
     scrollTrigger: {
-        trigger: '.home-screen4__content',
-        start: 'top center',
-        end: '20% center',
-        // markers: true,
-        scrub: 1,
+      trigger: '.home-screen4__content',
+      start: 'top center',
+      end: '20% center',
+      // markers: true,
+      scrub: 1,
     },
-})
-    .from('.home-screen4__content img', {
-        rotate: 0,
-    })
+  })
+  .from('.home-screen4__content img', {
+    rotate: 0,
+  });
 
-
-    splitToLinesAndFadeUp('.text-style-1920-h-1');
-
+splitToLinesAndFadeUp('.text-style-1920-h-1');
 
 menu();
+
+formsHandler();
