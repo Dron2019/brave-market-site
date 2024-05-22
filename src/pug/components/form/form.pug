@@ -1,41 +1,77 @@
 mixin form(attr)
+	-
+		var formInputs = [
+			{title: 'Ім\'я', id: 'name', type: 'text'},
+			{title: 'Телефон', id: 'phone', type: 'phone'},
+			{title: 'Пошта', id: 'email', type: 'email'},
+			{title: 'Вид діяльності', id: 'activity', type: 'text'},
+		];
+		var businessType = [
+			{name: 'ТОВ', value: 'tov'},
+			{name: 'ФОП', value: 'fop'},
+			{name: 'ФІЗ', value: 'fiz'},
+			{name: 'ПП', value: 'pp'},
+		]
+		var roomSize = [
+			{name: '20', value: '20'},
+			{name: '50', value: '50'},
+			{name: '100', value: '100'},
+		]
+	.overlay
 	.form-wrapper(data-form-wrapper)
 		.form-wrapper-succes-layer
 			<svg width="65" height="64" viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M32.5 4C26.9621 4 21.5486 5.64217 16.944 8.71885C12.3395 11.7955 8.75064 16.1685 6.63139 21.2849C4.51213 26.4012 3.95764 32.0311 5.03802 37.4625C6.11841 42.894 8.78515 47.8831 12.701 51.799C16.6169 55.7149 21.606 58.3816 27.0375 59.462C32.469 60.5424 38.0988 59.9879 43.2151 57.8686C48.3315 55.7494 52.7045 52.1605 55.7812 47.556C58.8578 42.9514 60.5 37.5379 60.5 32C60.5 24.5739 57.55 17.452 52.299 12.201C47.048 6.94999 39.9261 4 32.5 4ZM28.5 43.18L18.5 33.18L21.68 30L28.5 36.82L43.32 22L46.512 25.172L28.5 43.18Z" fill="#41CD9D"/>
-				</svg>
+			</svg>
 			.text-style-1920-accent-font.form-container__subtitle We will contact you in a few minutes
 			.text-style-1920-h-2-thin-font thank you for your request
-			button.button-30(data-form-wrapper-succes-layer-close)
-				<span>Close</span>
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
-					<path stroke="#fff" d="M4.396.75h12.5m.5 0h-.5m0 0v12.5m0-12.5-16.5 16.5" class="Vector 2"></path>
-				</svg>
-
+			button.form-button.button-30(data-form-wrapper-succes-layer-close)
 		form(data-form=attr autocomplete="off").form
 			.form-close(data-close-form)
-				<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M25 25L1 1M1 25L25 1L1 25Z" stroke-width="2"/>
+				<svg class="form-close__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path class="Vector 2" d="M18 6L6 18" stroke="#28282A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path class="Vector 2" d="M6 6L18 18" stroke="#28282A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 				</svg>
 			.form-delimiter
-			.form-subtitle fill out the form
-			.form-title call back form
-			.form-delimiter-big
-			.form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
-				.input-title.text-style-h-4.text-gray Ім’я:
-				input(type='text' name="name" placeholder="Ім’я:").form-field__input
-				.input-message(data-input-message)
-			.form-field.disabled.form-field-input(data-field-input data-field-phone data-status="field--inactive")
-				.input-title.text-style-h-4.text-gray Телефон:
-				input(type='text' name="phone" placeholder="Телефон:").form-field__input
-				.input-message(data-input-message)
-			.form-field.disabled.form-field-input(data-field-input data-field-comment data-status="field--inactive")
-				.input-title.text-style-h-4.text-gray Коментар:
-				textarea(type='text' name="comment" placeholder="Введіть повідомлення").form-field__input.text-input
-				.input-message(data-input-message)
-			<button class="button-30 " type="submit" data-btn-submit> 
-				<span data-btn-submit-text>Надіслати повідомлення</span>
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 18 18">
-					<path stroke="#fff" d="M4.396.75h12.5m.5 0h-.5m0 0v12.5m0-12.5-16.5 16.5" class="Vector 2"></path>
-				</svg>
-			</button>
+			.form-main
+				.form-header 
+					.form-title Залишити заявку
+					.form-subtitle Запрошуємо підприємців до співпраці!
+				.form-user-info
+					each input in formInputs
+						.form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
+							label(for= input.id).input-title.text-style-h-4.text-gray= input.title
+							input(type= input.type name= input.id id= input.id placeholder="Моя відповідь").form-field__input			
+				.form-description
+					.form-title.input-title.text-style-h-4.text-gray СПД (суб'єкт підприємницької діяльності)
+					ul.form-type-business__row
+						each item in businessType
+							li.form-type-business__item
+								input(type="radio" name="type_business" id= item.value value= item.value)
+								label(for= item.value)= item.name
+									span.form-type__checked-item
+										<svg width="24" height="24" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6.00015 10.17L2.53015 6.69995C2.34317 6.51298 2.08957 6.40793 1.82515 6.40793C1.56072 6.40793 1.30712 6.51298 1.12015 6.69995C0.933168 6.88693 0.828125 7.14053 0.828125 7.40495C0.828125 7.53589 0.853914 7.66553 0.904019 7.7865C0.954124 7.90746 1.02756 8.01737 1.12015 8.10995L5.30015 12.29C5.69015 12.68 6.32015 12.68 6.71015 12.29L17.2901 1.70996C17.4771 1.52298 17.5822 1.26938 17.5822 1.00496C17.5822 0.740529 17.4771 0.486933 17.2901 0.299955C17.1032 0.112978 16.8496 0.00793457 16.5851 0.00793457C16.3207 0.00793457 16.0671 0.112978 15.8801 0.299955L6.00015 10.17Z" fill="#F2EDDB"/>
+										</svg>
+					input(type="text" name="business-type-description" id="business-type" placeholder="Інша відповідь").form-field__input.form-description__input
+				.form-description
+					.form-title.input-title.text-style-h-4.text-gray Яку площу шукаєте
+					ul.form-type-business__row
+						each item in roomSize
+							li.form-type-business__item
+								input(type="radio" name="room_size" id= item.value value= item.value)
+
+								label(for= item.value)= item.name + ' м\u00B2'
+									span.form-type__checked-item
+										<svg width="24" height="24" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6.00015 10.17L2.53015 6.69995C2.34317 6.51298 2.08957 6.40793 1.82515 6.40793C1.56072 6.40793 1.30712 6.51298 1.12015 6.69995C0.933168 6.88693 0.828125 7.14053 0.828125 7.40495C0.828125 7.53589 0.853914 7.66553 0.904019 7.7865C0.954124 7.90746 1.02756 8.01737 1.12015 8.10995L5.30015 12.29C5.69015 12.68 6.32015 12.68 6.71015 12.29L17.2901 1.70996C17.4771 1.52298 17.5822 1.26938 17.5822 1.00496C17.5822 0.740529 17.4771 0.486933 17.2901 0.299955C17.1032 0.112978 16.8496 0.00793457 16.5851 0.00793457C16.3207 0.00793457 16.0671 0.112978 15.8801 0.299955L6.00015 10.17Z" fill="#F2EDDB"/>
+										</svg>
+
+					input(type="text" name="room-size-description" id="room-size" placeholder="Інша відповідь").form-field__input.form-description__input
+				.form-field.form-field-input(data-field-input data-field-social data-status="field--inactive").first-offset
+					label(for="social").input-title.text-style-h-4.text-gray Додаткова інформація про ваш бізнес (Instagram, Сайт, Фейсбук та інше)
+					input(type="text" name="social" id="social" placeholder="Моя відповідь").form-field__input
+				.form-delimiter
+			.form-delimiter
+			button.button-colored(type="submit" data-btn-submit)
+				span(data-btn-submit-text) Подати заявку
