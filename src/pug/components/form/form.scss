@@ -547,6 +547,8 @@ body {
       align-self: center;
       position: absolute;
       padding: 139px 50px 88px;
+      max-height: 80vh;
+      overflow-y: auto;
       .button-30 {
         border: 1px solid var(--color-total-black-color);
         color: var(--color-total-black-color);
