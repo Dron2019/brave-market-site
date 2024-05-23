@@ -28,59 +28,83 @@ export function formsHandler() {
   }
 
   // data-popup-form-call
-    const formsWithTel = ['[data-form="data-popup-form"]'];
-    formsWithTel.forEach(form => {
-      const $form = document.querySelector(form);
-      if ($form) {
-        /* eslint-disable */
-        new FormMonster({
-          /* eslint-enable */
-          elements: {
-            $form,
-            showSuccessMessage: false,
-            successAction: () => {
-              console.log(
-                'successAction !!!!',
-                document.querySelector(`${form} .form-wrapper-succes-layer`),
-              );
-              // document
-              //   .querySelector(`${form}`)
-              //   .parentElement.querySelector('.form-wrapper-succes-layer')
-              //   .classList.add('active');
+  const formsWithTel = ['[data-form="data-popup-form"]'];
+  formsWithTel.forEach(form => {
+    const $form = document.querySelector(form);
+    if ($form) {
+      /* eslint-disable */
+      new FormMonster({
+        /* eslint-enable */
+        elements: {
+          $form,
+          showSuccessMessage: false,
+          successAction: () => {
+            // console.log(
+            //   'successAction !!!!',
+            //   document.querySelector(`${form} .form-wrapper-succes-layer`),
+            // );
+            document.querySelector(`${form}`).classList.remove('active');
+            document
+              .querySelector(`${form}`)
+              .parentElement.querySelector('.form-wrapper-succes-layer')
+              .classList.add('active');
+          },
+          $btnSubmit: $form.querySelector('[data-btn-submit]'),
+          fields: {
+            name: {
+              inputWrapper: new SexyInput({
+                animation: 'none',
+                $field: $form.querySelector('[data-field-name="data-field-text"]'),
+              }),
+              rule: yup
+                .string()
+                .required(i18next.t('required'))
+                .trim(),
+              defaultMessage: i18next.t('name'),
+              valid: false,
+              error: [],
             },
-            $btnSubmit: $form.querySelector('[data-btn-submit]'),
-            fields: {
-              name: {
-                inputWrapper: new SexyInput({
-                  animation: 'none',
-                  $field: $form.querySelector('[data-field-name="data-field-text"]'),
-                }),
-                rule: yup
-                  .string()
-                  .required(i18next.t('required'))
-                  .trim(),
-                defaultMessage: i18next.t('name'),
-                valid: false,
-                error: [],
-              },
-              phone: {
-                inputWrapper: new SexyInput({
-                  animation: 'none',
-                  $field: $form.querySelector('[data-field-name="data-field-phone"]'),
-                  typeInput: 'phone',
-                }),
-                rule: yup
-                  .string()
-                  .required(i18next.t('required'))
-                  .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
+            phone: {
+              inputWrapper: new SexyInput({
+                animation: 'none',
+                $field: $form.querySelector('[data-field-name="data-field-phone"]'),
+                typeInput: 'phone',
+              }),
+              rule: yup
+                .string()
+                .required(i18next.t('required'))
+                .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
 
-                defaultMessage: i18next.t('phone'),
-                valid: false,
-                error: [],
-              },
+              defaultMessage: i18next.t('phone'),
+              valid: false,
+              error: [],
+            },
+            email: {
+              inputWrapper: new SexyInput({
+                animation: 'none',
+                $field: $form.querySelector('[data-field-name="data-field-email"]'),
+                typeInput: 'email',
+              }),
+              rule: yup.string().required(i18next.t('required')),
+
+              defaultMessage: i18next.t('email'),
+              valid: false,
+              error: [],
+            },
+            activity: {
+              inputWrapper: new SexyInput({
+                animation: 'none',
+                $field: $form.querySelector('[data-field-name="data-field-activity"]'),
+                typeInput: 'text',
+              }),
+              rule: yup.string().required(i18next.t('required')),
+              defaultMessage: i18next.t('activity'),
+              valid: false,
+              error: [],
             },
           },
-        });
-      }
-    });
+        },
+      });
+    }
+  });
 }

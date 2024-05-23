@@ -1,132 +1,133 @@
 .form-container {
-    background-color: var(--color-white-color);
-    margin-top: 0;
-    color: var(--color-black);
-    margin-bottom: calc(var(--g-container-offset) * -1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;justify-content: center;
-    &__subtitle {
-        color: rgba(#000, 0.5);
-        margin-bottom: 20px;
+  background-color: var(--color-white-color);
+  margin-top: 0;
+  color: var(--color-black);
+  margin-bottom: calc(var(--g-container-offset) * -1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__subtitle {
+    color: rgba(#000, 0.5);
+    margin-bottom: 20px;
+  }
+  .delimiter {
+    background-color: var(--color-black);
+    width: 30px;
+    height: 2px;
+    margin-bottom: 60px;
+  }
+  .delimiter-big {
+    width: 100%;
+    background-color: rgba(#000, 0.1);
+    height: 1px;
+    @include shift-padding(4);
+    margin-bottom: 40px;
+  }
+  .form-wrapper {
+    position: static;
+    left: auto;
+    top: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    height: auto;
+    background-color: transparent;
+    .form {
+      width: 100%;
+      @include shift-padding(6);
+      padding-top: 0;
     }
-    .delimiter {
-        background-color: var(--color-black);
-        width: 30px;
-        height: 2px;
-        margin-bottom: 60px;
+  }
+  .button-30 {
+    border: 1px solid var(--color-total-black-color);
+    color: var(--color-total-black-color);
+    svg {
+      [fill] {
+        fill: $color-green;
+      }
+      path {
+        stroke: $color-green;
+      }
     }
-    .delimiter-big {
-        width: 100%;
-        background-color: rgba(#000, 0.1);
-        height: 1px;
-        @include shift-padding(4);
-        margin-bottom: 40px;
-    }
-    .form-wrapper {
-        position: static;
-        left: auto;
-        top: auto;
-        visibility: visible;
-        opacity: 1;
-        transform: none;
-        height: auto;
-        background-color: transparent;
-        .form {
-            width: 100%;
-            @include shift-padding(6);
-            padding-top: 0;
-        }
-    }
-    .button-30 {
-        border: 1px solid var(--color-total-black-color);
-        color: var(--color-total-black-color);
-        svg {
-            [fill] {
-                fill: var(--color-total-black-color);
-            }
-            [stroke] {
-                stroke: var(--color-total-black-color);
-            }
-        }
-    }
-    .form-close,
-    .form-delimiter-big,
-    .form-delimiter,
-    .form-subtitle,
-    .form-title {
-        display: none;
-    }
-    
+  }
+  .form-close,
+  .form-delimiter-big,
+  .form-delimiter,
+  .form-subtitle,
+  .form-title {
+    display: none;
+  }
 }
 
-
 .form-wrapper-succes-layer {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 3;
-    display: flex;
-    flex-direction: column ;
-    align-items: center;
-    justify-content: center;
-    align-content: flex-start;
-    background-color: #fff;
-    padding: 75px 100px;
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    opacity: 0;
-    visibility: hidden;
-    color: var(--color-black);
-    &.active {
-        opacity: 1;
-        visibility: visible;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: flex-start;
+  background-color: $color-graphite;
+  padding: 75px 100px;
+  width: 100%;
+  max-width: 1206px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  color: $color-send;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  button {
+    margin-top: 40px;
+  }
+  & > svg {
+    path {
+      fill: $color-green;
     }
-    button {
-        margin-top: 40px;
-
+    margin-bottom: 40px;
+  }
+  .button-30 {
+    border: 1px solid var(--color-total-black-color);
+    color: var(--color-total-black-color);
+    svg {
+      [fill] {
+        fill: var(--color-total-black-color);
+      }
+      [stroke] {
+        stroke: var(--color-total-black-color);
+      }
     }
-    &>svg {
-        margin-bottom: 40px;
-    }
-    .button-30 {
-        border: 1px solid var(--color-total-black-color);
-        color: var(--color-total-black-color);
-        svg {
-            [fill] {
-                fill: var(--color-total-black-color);
-            }
-            [stroke] {
-                stroke: var(--color-total-black-color);
-            }
-        }
-    }
+  }
 }
 
 .tablet,
 .mobile {
-    .form-container {
-        width: 100%; 
-        .delimiter {
-            margin-bottom: 20px;
-        }
-        .delimiter-big {
-            margin-bottom: 20px;
-            @include size(16);
-            @include shift(4);
-            padding-left: 0;
-            padding-right: 0;
-        }
-        &__subtitle {
-            margin-bottom: 10px;
-        }
-        .form-wrapper {
-            .form {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
+  .form-container {
+    width: 100%;
+    .delimiter {
+      margin-bottom: 20px;
     }
+    .delimiter-big {
+      margin-bottom: 20px;
+      @include size(16);
+      @include shift(4);
+      padding-left: 0;
+      padding-right: 0;
+    }
+    &__subtitle {
+      margin-bottom: 10px;
+    }
+    .form-wrapper {
+      .form {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
 }

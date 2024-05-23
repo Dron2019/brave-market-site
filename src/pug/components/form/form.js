@@ -4,7 +4,7 @@ import axios from 'axios';
 import initView from './form-view';
 import { langDetect } from '../../../assets/scripts/modules/helpers/helpers';
 
-const sendForm = async (data) => {
+const sendForm = async data => {
   const response = await axios.post('/api/form', data);
   return response.data;
 };
@@ -25,10 +25,12 @@ const lang = langDetect();
           phone: 'Telefono:*',
           send: 'Invia',
           thank_title: 'Grazie',
-          thank_description: 'Grazie per averci contattato. Attendete una chiamata dai nostri manager. Vi auguriamo una piacevole giornata e buon umore =)',
-          thank_back_to_choose: 'Torna alla scelta dell\'appartamento',
+          thank_description:
+            'Grazie per averci contattato. Attendete una chiamata dai nostri manager. Vi auguriamo una piacevole giornata e buon umore =)',
+          thank_back_to_choose: "Torna alla scelta dell'appartamento",
           thank_back_to_site: 'Torna al sito web',
-          agreement: 'Ho letto e compreso <a target=\'_blank\' href=\'https://ramsturkiye.com.tr/{{lng}}/kvkk\'>le condizioni sulla privacy</a> (KVKK).*',
+          agreement:
+            "Ho letto e compreso <a target='_blank' href='https://ramsturkiye.com.tr/{{lng}}/kvkk'>le condizioni sulla privacy</a> (KVKK).*",
           description: 'E-mail',
           sending: 'Invio in corso',
           email: 'E-mail',
@@ -42,12 +44,16 @@ const lang = langDetect();
           sendingSuccessText: 'Attendete le risposte dai nostri manager',
           sendingErrorText: 'Attendete le risposte dai nostri manager',
           sendingErrorTitle: 'Si è verificato un errore',
-          send_fail: 'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [send_fail] ',
-          invalid_form: 'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [invalid_form] ',
-          front_error: 'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [front_error] ',
-          invalid_upload_file: 'Errore nell\'upload del file. Codice: [invalid_upload_file] ',
-          invalid_recaptcha: 'Si prega di compilare il captcha e riprovare. Codice: [invalid_recaptcha] ',
-          connectionFailed: 'Errore di connessione al server',          
+          send_fail:
+            'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [send_fail] ',
+          invalid_form:
+            'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [invalid_form] ',
+          front_error:
+            'Il messaggio non è stato inviato a causa di un errore sconosciuto del server. Codice: [front_error] ',
+          invalid_upload_file: "Errore nell'upload del file. Codice: [invalid_upload_file] ",
+          invalid_recaptcha:
+            'Si prega di compilare il captcha e riprovare. Codice: [invalid_recaptcha] ',
+          connectionFailed: 'Errore di connessione al server',
         },
       },
       uk: {
@@ -75,7 +81,7 @@ const lang = langDetect();
             'Повідомлення не було відправлено через невідому помилку сервера. Код: [front_error] ',
           invalid_upload_file: 'Помилка завантаження файлу. Код: [invalid_upload_file]',
           invalid_recaptcha: 'Заповніть капчу і спробуйте ще раз знову. Код: [invalid_recaptcha]',
-          connectionFailed: 'Помилка з\'єднання с CRM',
+          connectionFailed: "Помилка з'єднання с CRM",
         },
       },
       en: {
@@ -85,14 +91,16 @@ const lang = langDetect();
           name: 'Name:*',
           phone: 'Phone:*',
           send: 'Send',
-          thank_title: "Thank you",
-          thank_description: "Thank you for contacting us. Wait for a call from our managers. We wish you a pleasant day and good mood =)",
-          thank_back_to_choose: "Back to choose the appartment",
-          thank_back_to_site: "Back to the website",
-          agreement: "KVKK <a target='_blank' href='https://ramsturkiye.com.tr/{{lng}}/kvkk'>privacy terms</a> I read, I understand.*",
+          thank_title: 'Thank you',
+          thank_description:
+            'Thank you for contacting us. Wait for a call from our managers. We wish you a pleasant day and good mood =)',
+          thank_back_to_choose: 'Back to choose the appartment',
+          thank_back_to_site: 'Back to the website',
+          agreement:
+            "KVKK <a target='_blank' href='https://ramsturkiye.com.tr/{{lng}}/kvkk'>privacy terms</a> I read, I understand.*",
           description: 'E-mail',
           sending: 'Sanding',
-          email: "E-mail",
+          email: 'E-mail',
           field_too_short: 'phone must be at least {{cnt}} characters',
           field_too_long: 'phone must be at most {{cnt}} characters',
           field_only_letter: 'name must contain only letters',
@@ -158,7 +166,7 @@ export default class FormMonster {
   }
 
   changeInput() {
-    return (e) => {
+    return e => {
       /*  */
       e.preventDefault();
       this.watchedState.status = 'filling';
@@ -167,7 +175,7 @@ export default class FormMonster {
       /*  */
       const error = this.validate(formData);
       /*  */
-      this.fieldsKey.map((key) => {
+      this.fieldsKey.map(key => {
         const field = this.elements.fields[key];
         field.valid = true;
         field.error = [];
@@ -192,7 +200,7 @@ export default class FormMonster {
   }
 
   submitForm() {
-    return async (e) => {
+    return async e => {
       /*  */
       e.preventDefault();
       this.changeInput()(e);
@@ -203,7 +211,6 @@ export default class FormMonster {
           this.watchedState.status = 'loading';
           const formData = new FormData(this.elements.$form);
           formData.append('action', 'app');
-
 
           if (document.documentElement.dataset.status === 'local') {
             this.watchedState.status = 'successSand';
@@ -233,7 +240,7 @@ export default class FormMonster {
 
   listers() {
     this.elements.$form.addEventListener('submit', this.submitForm(this.watchedState));
-    this.fieldsKey.map((key) => {
+    this.fieldsKey.map(key => {
       const { input } = this.elements.fields[key].inputWrapper;
       input.addEventListener('input', this.changeInput(this.watchedState));
       return null;
