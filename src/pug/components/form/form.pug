@@ -1,10 +1,10 @@
 mixin form(attr)
 	-
 		var formInputs = [
-			{title: 'Ім\'я', id: 'name', type: 'text'},
-			{title: 'Телефон', id: 'phone', type: 'phone'},
-			{title: 'Пошта', id: 'email', type: 'email'},
-			{title: 'Вид діяльності', id: 'activity', type: 'text'},
+			{title: 'Ім\'я', id: 'name', type: 'text', dataAttr: 'data-field-text'},
+			{title: 'Телефон', id: 'phone', type: 'phone', dataAttr: 'data-field-phone'},
+			{title: 'Пошта', id: 'email', type: 'email', dataAttr: 'data-field-email'},
+			{title: 'Вид діяльності', id: 'activity', type: 'text', dataAttr: 'data-field-activity'},
 		];
 		var businessType = [
 			{name: 'ТОВ', value: 'tov'},
@@ -39,8 +39,8 @@ mixin form(attr)
 					.form-subtitle Запрошуємо підприємців до співпраці!
 				.form-user-info
 					each input in formInputs
-						.form-field.form-field-input(data-field-input data-field-name data-status="field--inactive").first-offset
-							label(for= input.id).input-title.text-style-h-4.text-gray= input.title
+						.form-field.form-field-input(data-field-input  data-field-name=input.dataAttr data-status="field--inactive").first-offset
+							label(for= input.id data-input-message).input-title.text-style-h-4.text-gray= input.title
 							input(type= input.type name= input.id id= input.id placeholder="Моя відповідь").form-field__input
 		
 				

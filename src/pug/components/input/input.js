@@ -115,14 +115,14 @@ export default class SexyInput {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
       input.intTelIput = intlTelInput(input, {
-        preferredCountries: ['it',"FR", "CH", "AT", "SI", "SM", "VA"],
+        preferredCountries: ['UA','US'],
         autoPlaceholder: 'off',
       });
       document.querySelectorAll('.iti').forEach(el => el.setAttribute('data-lenis-prevent', true));
       let cleave = new Cleave(input, {
         /* eslint-enable */
         numericOnly: true,
-        prefix: '+39',
+        prefix: '+38',
         blocks: [3, 3, 3, 2, 2],
         delimiters: [' ', ' ', ' ', ''],
       });
