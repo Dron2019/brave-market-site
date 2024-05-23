@@ -5,29 +5,36 @@ import FormMonster from '../../../../pug/components/form/form';
 import SexyInput from '../../../../pug/components/input/input';
 
 export function formsHandler() {
-  const overlay = document.querySelector('[data-overlay]');
-  const form = document.querySelector('[data-form="data-popup-form"]');
+  const formWrapper = document.querySelector('[data-form-wrapper]');
+  const modal = document.querySelector('[data-form="data-popup-form"]');
+  const formWrapperSuccess = document.querySelector('.form-wrapper-succes-layer');
 
   document.body.addEventListener('click', evt => {
+    const isFormWrapper = evt.target == formWrapper;
     const isOpenButton = evt.target.closest('[data-form="data-form"]');
-    const isOverlay = evt.target.closest('[data-overlay]');
     const isCloseBtn = evt.target.closest('[data-close-form="data-close-form"]');
+    const isSuccessBtn = evt.target.closest(
+      '[data-form-wrapper-succes-layer-close="data-form-wrapper-succes-layer-close"]',
+    );
 
-    if (!isOpenButton && !isOverlay && !isCloseBtn) return;
+    if (!isOpenButton && !isCloseBtn && !isSuccessBtn && !isFormWrapper) return;
 
-    isOpenButton ? toggleAnimation(true) : toggleAnimation();
+    isOpenButton ? showModal() : hiddenModal();
   });
 
-  function toggleAnimation(animation = false) {
-    animation
-      ? gsap.fromTo(form, { y: 400, opacity: 0 }, { y: 0, opacity: 1 })
-      : gsap.to(form, { y: 400, opacity: 0, duration: 0.5 });
+  const hiddenModal = () => {
+    formWrapper.classList.remove('active');
+    modal.classList.remove('active');
+    formWrapperSuccess.classList.remove('active');
+    document.body.classList.remove('active');
+  };
 
-    form.classList.toggle('active');
-    overlay.classList.toggle('active');
-  }
+  const showModal = () => {
+    formWrapper.classList.add('active');
+    modal.classList.add('active');
+    document.body.classList.add('active');
+  };
 
-  // data-popup-form-call
   const formsWithTel = ['[data-form="data-popup-form"]'];
   formsWithTel.forEach(form => {
     const $form = document.querySelector(form);
@@ -43,11 +50,9 @@ export function formsHandler() {
             //   'successAction !!!!',
             //   document.querySelector(`${form} .form-wrapper-succes-layer`),
             // );
-            document.querySelector(`${form}`).classList.remove('active');
-            document
-              .querySelector(`${form}`)
-              .parentElement.querySelector('.form-wrapper-succes-layer')
-              .classList.add('active');
+            formWrapperSuccess.classList.add('active');
+            modal.classList.remove('active');
+            setTimeout(() => hiddenModal(), 3000);
           },
           $btnSubmit: $form.querySelector('[data-btn-submit]'),
           fields: {
@@ -74,7 +79,6 @@ export function formsHandler() {
                 .string()
                 .required(i18next.t('required'))
                 .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
-
               defaultMessage: i18next.t('phone'),
               valid: false,
               error: [],
@@ -86,7 +90,6 @@ export function formsHandler() {
                 typeInput: 'email',
               }),
               rule: yup.string().required(i18next.t('required')),
-
               defaultMessage: i18next.t('email'),
               valid: false,
               error: [],

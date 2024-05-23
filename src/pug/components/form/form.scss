@@ -1,7 +1,7 @@
-.overlay {
+.form-wrapper {
   position: fixed;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
@@ -10,46 +10,38 @@
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
-}
-.form-wrapper {
-  .form {
-    position: relative;
-    top: 10vh !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 1001;
-    max-width: 1206px;
-    padding: 50px 88px;
-    width: 100%;
-    background: $color-graphite;
-    opacity: 0;
-    visibility: hidden;
+  &.active {
+    opacity: 1;
+    visibility: visible;
     overflow: hidden;
-    @include to(1440px) {
-      width: 45%;
-    }
-    @include to(1024px) {
-      width: 80%;
-      padding: 0 60px;
-    }
-    &-main {
-      margin: 50px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .button-colored {
-      display: flex;
-      justify-content: center;
-      &:hover {
-        background-color: transparentize($color-green, 0.3);
-      }
-    }
   }
 }
-.overlay,
 .form {
+  position: relative;
+  margin-top: 2%;
+  padding: 88px 50px;
+  max-width: 1206px;
+  max-height: 100%;
+  width: 100%;
+  background: $color-graphite;
+  overflow-y: auto;
+  z-index: 1002;
+  opacity: 0;
+  visibility: hidden;
+  &-main {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .button-colored {
+    display: flex;
+    justify-content: center;
+    &:hover {
+      background-color: transparentize($color-green, 0.3) !important;
+    }
+  }
   &.active {
     opacity: 1;
     visibility: visible;
@@ -58,14 +50,17 @@
 .form-user-info {
   width: 100%;
   display: grid;
-  grid-template: 141px / repeat(2, minmax(250px, 1fr));
+  grid-template: repeat(2, 141px) / repeat(2, minmax(250px, 1fr));
   grid-auto-rows: 141px;
   gap: 20px;
   margin-bottom: 40px;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
 }
 .field-inner {
   position: relative;
-  max-width: 543px;
   width: 100%;
 }
 .form-field {
@@ -77,6 +72,10 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: $color-send;
+
+  &[data-field-social='data-field-social'] {
+    height: 141px;
+  }
 }
 .form-header {
   width: 100%;
@@ -109,7 +108,7 @@
   height: 48px;
   cursor: pointer;
   border-radius: 50%;
-  z-index: 1000;
+  z-index: 1003;
   background-color: $color-send;
   transition: background-color 0.3s ease;
   &:hover {
@@ -438,23 +437,23 @@
     padding-right: 60px;
   }
 }
-.tablet,
-.mobile {
-  .form-wrapper {
-    .form {
-      width: 100%;
-      padding-left: var(--page-side-fields);
-      padding-right: var(--page-side-fields);
-      flex-wrap: wrap;
-    }
-    .form-close {
-      top: 70px;
-    }
-    .form-title {
-      margin-bottom: 16px;
-    }
-  }
-}
+// .tablet,
+// .mobile {
+//   .form-wrapper {
+//     .form {
+//       width: 100%;
+//       padding-left: var(--page-side-fields);
+//       padding-right: var(--page-side-fields);
+//       flex-wrap: wrap;
+//     }
+//     .form-close {
+//       top: 70px;
+//     }
+//     .form-title {
+//       margin-bottom: 16px;
+//     }
+//   }
+// }
 .form-popup {
   display: flex;
   position: fixed;
@@ -516,96 +515,144 @@
   width: 100%;
   background-image: linear-gradient(188deg, #ffffff00 0%, #ffffff 52%, #ffffff00 100%);
 }
-.tablet,
-.mobile {
-  .form-delimiter {
-    margin-bottom: 40px;
-  }
-}
+// .tablet,
+// .mobile {
+//   .form-delimiter {
+//     margin-bottom: 40px;
+//   }
+// }
 .form-subtitle {
   @extend .front-screen__subtitle;
   @extend .text-style-1920-txt;
 }
-.tablet,
-.mobile {
-}
+// .tablet,
+// .mobile {
+// }
 .form-delimiter-big {
   width: 100%;
   height: 1px;
   background-color: rgba(#000, 0.1);
   margin-bottom: 40px;
 }
-.tablet,
-.mobile {
-  .form-delimiter-big {
-    margin-bottom: 20px;
-  }
+// .tablet,
+// .mobile {
+//   .form-delimiter-big {
+//     margin-bottom: 20px;
+//   }
+// }
+body.active {
+  overflow: hidden !important;
 }
 body {
   & > .form-wrapper {
-    .form {
-      width: 100%;
-      max-width: 1200px;
-      top: 50%;
-      height: auto;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      align-self: center;
-      position: absolute;
-      padding: 139px 50px 88px;
-      max-height: 95vh;
-      overflow-y: auto;
-      .button-30 {
-        border: 1px solid var(--color-total-black-color);
-        color: var(--color-total-black-color);
-        svg {
-          [fill] {
-            fill: var(--color-total-black-color);
-          }
-          [stroke] {
-            stroke: var(--color-total-black-color);
-          }
-        }
-      }
-    }
+    // .form {
+    //   width: 100%;
+    //   max-width: 1200px;
+    //   top: 50%;
+    //   height: auto;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%);
+    //   align-self: center;
+    //   position: absolute;
+    //   padding: 139px 50px 88px;
+    //   height: 95vh;
+    //   overflow-y: auto;
+    //   .button-30 {
+    //     border: 1px solid var(--color-total-black-color);
+    //     color: var(--color-total-black-color);
+    //     svg {
+    //       [fill] {
+    //         fill: var(--color-total-black-color);
+    //       }
+    //       [stroke] {
+    //         stroke: var(--color-total-black-color);
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
-.tablet,
-.mobile {
-  body {
-    & > .form-wrapper {
-      .form {
-        width: 100%;
-        max-width: 1200px;
-        top: 50%;
-        height: auto;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        align-self: center;
-        position: absolute;
-        padding-top: 50px;
-        padding-bottom: 50px;
-        .button-30 {
-          border: 1px solid var(--color-total-black-color);
-          color: var(--color-total-black-color);
-          svg {
-            [fill] {
-              fill: var(--color-total-black-color);
-            }
-            [stroke] {
-              stroke: var(--color-total-black-color);
-            }
-          }
-        }
-        .form-delimiter-big {
-          @include size(16);
-          @include shift(4);
-        }
-        .form-field {
-          padding-left: 0;
-          padding-right: 0;
-        }
-      }
-    }
+// .tablet,
+// .mobile {
+//   body {
+//     & > .form-wrapper {
+//       .form {
+//         width: 100%;
+//         max-width: 1200px;
+//         top: 50%;
+//         height: auto;
+//         left: 50%;
+//         transform: translate(-50%, -50%);
+//         align-self: center;
+//         position: absolute;
+//         padding-top: 50px;
+//         padding-bottom: 50px;
+//         .button-30 {
+//           border: 1px solid var(--color-total-black-color);
+//           color: var(--color-total-black-color);
+//           svg {
+//             [fill] {
+//               fill: var(--color-total-black-color);
+//             }
+//             [stroke] {
+//               stroke: var(--color-total-black-color);
+//             }
+//           }
+//         }
+//         .form-delimiter-big {
+//           @include size(16);
+//           @include shift(4);
+//         }
+//         .form-field {
+//           padding-left: 0;
+//           padding-right: 0;
+//         }
+//       }
+//     }
+//   }
+// }
+@media (max-width: 500px) {
+  // .form {
+  //   padding: 22px;
+  // }
+}
+
+@media (max-width: 720px) {
+  .form {
+    padding: 44px 25px;
+  }
+  .form-header {
+    min-height: 260px;
+    margin-bottom: 50px;
+  }
+  .form-close {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+@media (max-width: 600px) {
+  .form {
+    padding: 44px 10px;
+    width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .form-user-info {
+    grid-template-columns: 1fr;
+  }
+  .form-description {
+    gap: 25px;
+  }
+  .form-title {
+    text-align: center;
+    margin: 0 auto 10px !important;
+  }
+  .input-title {
+    text-align: center;
+  }
+}
+@media (max-width: 1260px) {
+  .form {
+    width: 95%;
   }
 }
