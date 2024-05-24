@@ -115,7 +115,7 @@ export default class SexyInput {
       /* eslint-disable */
       input.setAttribute('inputmode', 'tel');
       input.intTelIput = intlTelInput(input, {
-        preferredCountries: ['UA','US'],
+        preferredCountries: ['UA', 'US'],
         autoPlaceholder: 'off',
       });
       document.querySelectorAll('.iti').forEach(el => el.setAttribute('data-lenis-prevent', true));
@@ -139,21 +139,21 @@ export default class SexyInput {
             break;
           case 'kz':
             maskPartForUkraine = 2;
-            
+
             break;
           case 'th':
             maskPartForUkraine = 3;
-            
+
             break;
           case 'de':
             maskPartForUkraine = 3;
-            
+
             break;
           case 'ae':
-              maskPartForUkraine = 4;
-              
+            maskPartForUkraine = 4;
+
             break;
-        
+
           default:
             break;
         }

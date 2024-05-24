@@ -23,6 +23,9 @@ const lang = langDetect();
           // Так называемый namespace по умолчанию
           name: 'Nome:*',
           phone: 'Telefono:*',
+          invalid_name: 'Inserisci un nome valido',
+          name_too_short: 'Il nome deve contenere almeno {{cnt}} caratteri',
+          name_too_long: 'Il nome deve essere inferiore a {{cnt}} caratteri',
           send: 'Invia',
           thank_title: 'Grazie',
           thank_description:
@@ -34,8 +37,10 @@ const lang = langDetect();
           description: 'E-mail',
           sending: 'Invio in corso',
           email: 'E-mail',
+          invalid_email: 'Inserisci un messaggio di posta valido',
           field_too_short: 'Il telefono deve essere lungo almeno {{cnt}} caratteri',
           field_too_long: 'Il telefono deve essere lungo al massimo {{cnt}} caratteri',
+          activity_too_short: 'Il campo deve contenere almeno {{cnt}} caratteri',
           field_only_letter: 'Il nome deve contenere solo lettere',
           field_more_letter: 'Il nome deve contenere al massimo 30 lettere',
           only_number: 'Inserire solo cifre qui',
@@ -62,9 +67,15 @@ const lang = langDetect();
           // Так называемый namespace по умолчанию
           name: 'Ім’я:*',
           phone: 'Телефон:*',
-          send: 'Надіслати',
+          invalid_name: "Будь ласка, введіть коректне ім'я",
+          name_too_short: "Ім'я має містити принаймні {{cnt}} символів",
+          name_too_long: "Ім'я має містити не більше {{cnt}} символів",
+          send: 'Подати заявку',
           sending: 'Відправлення',
+          email: 'E-mail',
+          invalid_email: 'Введіть коректну пошту',
           field_too_short: 'Телефон має містити принаймні {{cnt}} символів',
+          activity_too_short: 'Поле повинно містити принаймні {{cnt}} символів',
           field_too_long: 'Телефон має містити не більше {{cnt}} символів',
           only_number: 'Тут лише цифри',
           required: 'Це поле є обов`язковим',
@@ -90,7 +101,12 @@ const lang = langDetect();
           // Так называемый namespace по умолчанию
           name: 'Name:*',
           phone: 'Phone:*',
+          invalid_name: 'Please enter a valid name',
+          name_too_short: 'The name must contain at least {{cnt}} characters',
+          name_too_long: 'Name must be less than {{cnt}} characters',
           send: 'Send',
+          email: 'E-mail',
+          invalid_email: 'Please enter a valid mail',
           thank_title: 'Thank you',
           thank_description:
             'Thank you for contacting us. Wait for a call from our managers. We wish you a pleasant day and good mood =)',
@@ -103,6 +119,7 @@ const lang = langDetect();
           email: 'E-mail',
           field_too_short: 'phone must be at least {{cnt}} characters',
           field_too_long: 'phone must be at most {{cnt}} characters',
+          activity_too_short: 'Field must contain at least {{cnt}} characters',
           field_only_letter: 'name must contain only letters',
           field_more_letter: 'name must be at most 30 letters',
           only_number: 'only digits here',
@@ -221,7 +238,6 @@ export default class FormMonster {
 
           // if (true) {
           if (error === 0) {
-            console.log(error);
             this.watchedState.status = 'successSand';
             return true;
           }

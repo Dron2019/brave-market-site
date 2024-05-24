@@ -108,7 +108,7 @@ function paralaxWithWhiteTextLayoutAnim() {
     .from('.home-about-text__title', {
       y: 20,
       opacity: 0,
-  })
+    })
     .from('.home-about-text__text p', {
       y: 20,
       opacity: 0,
