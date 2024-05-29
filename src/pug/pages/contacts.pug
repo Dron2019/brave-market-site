@@ -1,0 +1,29 @@
+extends ../layout/main
+block variable
+  -
+    var title_page = 'Контакти'
+    var id_page = 'id-page-contacts'
+    var class_page = 'class-page-contacts'
+block meta
+    title= title_page
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+    script(defer src='./assets/scripts/vendors.bundle.js')
+    script(defer src='./assets/scripts/contacts.bundle.js')
+
+block content
+    .container.contacts-container
+        include ../includes/breadcrumbs.pug
+        .text-style-1920-h-1.text-uppercase.color-send.contacts-container__title Контакти
+        .news-filter-label 
+            .news-filter-label__text
+            .news-filter-label__line
+
+        iframe.map(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1106.9156512720906!2d30.23823880595862!3d50.52245214703836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b33d4b88a97b5%3A0xeef0de345eab8319!2z0KbQtdC90YLRgNCw0LvRjNC90LjQuSDQsdCw0LfQsNGA!5e0!3m2!1suk!2sua!4v1716978772003!5m2!1suk!2sua" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade")
+block footer
+    include ../includes/footer.pug
+
+block header
+    include ../includes/header.pug
