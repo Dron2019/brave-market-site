@@ -6,7 +6,7 @@ const baseFolder = window.location.href.match(/localhost/)
 
 const markersAdresses = {
   main: `${baseFolder}main.svg`,
-  office: `${baseFolder}office.svg`,
+  link: `${baseFolder}link.svg`,
   hotel: `${baseFolder}hotel.svg`,
   shop: `${baseFolder}shop.svg`,
   park: `${baseFolder}park.svg`,
@@ -32,7 +32,11 @@ line-height: 120%;"
 `;
 
 export async function fetchMarkersData(google) {
-  const buildLogoSize = new google.maps.Size(125, 55);
+
+  const sizes = {
+    main: new google.maps.Size(215.25,198.75),
+    link: new google.maps.Size(240,58),
+  };
   const sendData = new FormData();
   sendData.append('action', 'infrastructure');
   const url = window.location.href.match(/localhost/)
@@ -62,7 +66,7 @@ export async function fetchMarkersData(google) {
         type: el.code,
         id: marker.id,
         zIndex: 2,
-        icon: { url: markersAdresses[el.code], scaledSize: buildLogoSize },
+        icon: { url: markersAdresses[el.code], scaledSize: sizes[el.code] },
       });
     });
     return acc;
@@ -89,60 +93,32 @@ export async function fetchMarkersData(google) {
 
 function mockData() {
   return [
-    // {
-    //     "name": "RAMS City Haliç",
-    //     "code": "ramscity",
-    //     "list": [
-    //         {
-    //             "name": "RAMS City Haliç",
-    //             "id": "12312312",
-    //             "coordinations": {
-    //                 "latitude": "41.0334469",
-    //                 "elevation": "28.9212694"
-    //             }
-    //         }
-    //     ]
-    // },
-    // {
-    //     "name": "RAMS BEYOND İSTANBUL",
-    //     "code": "ramsbeyondistanbul",
-    //     "list": [
-    //         {
-    //             "name": "RAMS BEYOND İSTANBUL",
-    //             "id": "12312312",
-    //             "coordinations": {
-    //                 "latitude": "41.109657",
-    //                 "elevation": "29.023951"
-    //             }
-    //         }
-    //     ]
-    // },
     {
-      name: 'Rams Garden Bahçelievler',
+      name: 'Irpyn market',
       code: 'main',
       list: [
         {
           name:
-            "<a style='text-decoration:none; color: rgba(122,144,73,1); font-weight: bold' target='_blank' href='https://ramsgarden.com/'>Rams Garden Bahçelievler</a>",
+            "<a style='text-decoration:none; color: rgba(122,144,73,1); font-weight: bold' href='#'>Центральний ринок Ірпінь</a>",
           id: '00',
           coordinations: {
-            latitude: '41.0074626',
-            elevation: '28.8806902',
+            latitude: 50.51227376926132, 
+            elevation: 30.25349501396563,
           },
         },
       ],
     },
     {
-      name: 'Rams Türkiye',
-      code: 'office',
+      name: 'Прокласти маршрут',
+      code: 'link',
       list: [
         {
           name:
-            "<a style='text-decoration:none; color: rgba(122,144,73,1); font-weight: bold' href='https://rams-global.com/' target='_blank'>Rams Türkiye</a>",
-          id: '10',
+            "Центральний ринок Ірпінь",
+          id: '00',
           coordinations: {
-            latitude: '40.997902',
-            elevation: '29.098045',
+            latitude: 50.50915413939981, 
+            elevation: 30.25408674069066, 
           },
         },
       ],

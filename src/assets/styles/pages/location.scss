@@ -1,32 +1,54 @@
-.location-page {
-    padding-top: var(--header-h);
-    text-align: center;
-    margin-bottom: var(--g-container-offset);
-    align-self: flex-start;
-    &__title {
-        display: flex;
-        flex-direction: column;
-        align-content: flex-start;
-        justify-content: center;align-items: center;
-        &::after {
-            content: '';
-            display: inline-block;
-            height: 1px;
-            width: 65%;
-            opacity: 0.1;
-            background: #FFF;
-            margin-top: 20px;
-        }
+.location-transport-container {
+    @include row-flex();
+    row-gap: 20px;;
+    background-color: var(--color-green);
+    padding-bottom: var(--section-v-offset);
+    animation: fadeInTopAnimation 0.25s ease-in-out;
+    @include to(600px){
+        justify-content: center;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: var(--page-side-fields);
+        padding-right: var(--page-side-fields);
     }
-    &__title {
-        margin-bottom: 120px;
+    .location-card {
+        @include size(12);
+        @include shift(0);
+        @include to(1140px){
+            @include size(24);
+            @include shift(0);
+        }
+        @include to(600px){
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
-.mobile {
-    .location-page {
-        &__title {
-            margin-bottom: 40px;
-        }
+
+.location-map-container {
+    padding-bottom: var(--section-v-offset);
+    background-color: var(--color-green);
+    animation: fadeInTopAnimation 0.25s ease-in-out;
+    #map {
+        height: calc(100vh - var(--header-h));
+        border: 1px solid white;
     }
+}
+
+@keyframes fadeInTopAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.location-fade-in {
+    animation: fadeInTopAnimation 0.5s ease-in-out;
 }

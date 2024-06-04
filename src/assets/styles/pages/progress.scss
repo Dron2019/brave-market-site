@@ -4,7 +4,9 @@
     flex-wrap: wrap;
     border: none;
     &__tab~&__tab {
-        margin-left: 20px;
+        @include from(1024px){
+            margin-left: 20px;
+        }
     }
     &__tab {
         background-color: var(--color-send);
