@@ -1,8 +1,8 @@
 import markersFromPrevSite from './markersFromPrevSite';
 
-const baseFolder = window.location.href.match(/localhost/)
+const baseFolder = document.documentElement.dataset.status === 'local'
   ? './assets/images/markers/'
-  : '/wp-content/themes/rams/assets/images/markers/';
+  : '/wp-content/themes/3d/assets/images/markers/';
 
 const markersAdresses = {
   main: `${baseFolder}main.svg`,
