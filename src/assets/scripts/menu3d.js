@@ -22,6 +22,7 @@ export default function menu() {
       })
       .add(() => {
         isOpened = false;
+        document.body.classList.remove('menu-opened');
         document.querySelectorAll('[data-change-icon-on-menu]').forEach(el => {
           el.setAttribute('d', el.dataset.defaultPath);
         });
@@ -52,7 +53,7 @@ export default function menu() {
       })
         .add(() => {
           isOpened = true;
-          console.log('openMenuTl finish');
+          document.body.classList.add('menu-opened');
           document.querySelectorAll('[data-change-icon-on-menu]').forEach(el => {
             el.setAttribute('d', 'M21.6667 20.2524L22.3738 20.9595L27.1042 25.6899L31.8345 20.9595L32.5417 20.2524L33.9559 21.6667L33.2488 22.3738L28.5184 27.1042L33.2488 31.8345L33.9559 32.5417L32.5417 33.9559L31.8345 33.2488L27.1042 28.5184L22.3738 33.2488L21.6667 33.9559L20.2524 32.5417L20.9595 31.8345L25.6899 27.1042L20.9595 22.3738L20.2524 21.6667L21.6667 20.2524Z');
           });

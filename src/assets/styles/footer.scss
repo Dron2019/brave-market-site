@@ -6,6 +6,10 @@
   padding-bottom: 50px;
   @include to(600px){
     padding-top: 62px;
+    padding-left: calc(var(--page-side-fields) - 24px);
+    padding-right: calc(var(--page-side-fields) - 24px);
+    margin-left: 0;
+    margin-right: 0;
   }
   .footer__group-logo {
     @include size(4);
