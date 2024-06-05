@@ -126,7 +126,6 @@
 .tablet,
 .mobile {
   .news-container {
-    margin-top: 60px !important;
     & > [class*='text-style'] {
       margin-bottom: 60px;
     }
@@ -140,11 +139,6 @@
     .news-card:nth-of-type(n + 3) {
       margin-top: 8px;
     }
-  }
-}
-.mobile {
-  .news-container {
-    margin-top: 32px !important;
   }
 }
 

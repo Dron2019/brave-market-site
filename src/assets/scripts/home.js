@@ -28,7 +28,7 @@ gsap
 
 splitToLinesAndFadeUp('.text-style-1920-h-1');
 
-menu();
+// menu();
 
 formsHandler();
 formsScroll();
