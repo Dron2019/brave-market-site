@@ -48,7 +48,7 @@ mixin form(attr)
 				
 				.form-description
 					.form-title.input-title.text-style-h-4.text-gray СПД (суб'єкт підприємницької діяльності)
-					ul.form-type-business__row
+					ul.form-type-business__row.business-subject
 						each item in businessType
 							li.form-type-business__item
 								input(type="radio" name="type_business" id= item.value value= item.value)
