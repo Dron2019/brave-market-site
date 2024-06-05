@@ -9,13 +9,23 @@
         'Як дістатися',
         'Документи',
         'Контакти',
+    ];
+    var menuLHrefs = [
+        '/',
+        '/about.html',
+        '#',
+        '#',
+        '/news.html',
+        '/location.html',
+        '/documents.html',
+        '/contacts.html',
     ]
 
 <nav class="menu menu--active" data-lenis-prevent>
     <div class="menu__item menu__item--1" data-direction="bt">
         .menu__item-inner
-            each val in menuL
-                a(href="#" data-menu-close data-title=val).menu__link= val
+            each val, index in menuL
+                a(href=menuLHrefs[index] data-menu-close data-title=val).menu__link= val
     </div>
     .menu__header
         .text-style-1920-h-3.color-graphite.menu__header-title Телефон відділу продажів
