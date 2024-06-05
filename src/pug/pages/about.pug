@@ -33,7 +33,7 @@ block head
     link(rel='stylesheet', href="./assets/styles/main.min.css")
 block scripts
     script(defer src='./assets/scripts/vendors.bundle.js')
-    script(defer src='./assets/scripts/contacts.bundle.js')
+    script(defer src='./assets/scripts/about.bundle.js')
 
 block content
     .about-screen.front-screen
@@ -100,9 +100,9 @@ block content
             ul.about-screen5__list.about-list
                 each item in questionsList
                     li.about-item
-                        .about-item__question
-                            .text-style-1920-h-2= item.question
-                            button 
+                        button.about-item__question(aria-label=item.question data-about-item-label) 
+                            p.text-style-1920-h-2= item.question
+                            span.about-item__close-icon
                                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13 25.25V0.75M25.25 13H0.75" stroke="#F2EDDB" stroke-width="1.5" stroke-linecap="round"/>
                                 </svg>
