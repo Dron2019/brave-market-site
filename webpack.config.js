@@ -10,6 +10,7 @@ const config = {
     news: './src/assets/scripts/news.js',
     contacts: './src/assets/scripts/contacts.js',
     location: './src/assets/scripts/location.js',
+    common: './src/assets/scripts/common.js',
   },
   output: {
     filename: '[name].bundle.js',
@@ -22,7 +23,7 @@ const config = {
           name: 'vendors',
           chunks(chunk) {
             // exclude `my-excluded-chunk`
-            return chunk.name !== 'immediate-loading' && chunk.name !== 'menu3d';
+            return chunk.name !== 'immediate-loading' && chunk.name !== 'menu3d' && chunk.name !== 'common';
           },
         },
       },

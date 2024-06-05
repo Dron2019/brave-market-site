@@ -5,12 +5,14 @@
     padding-bottom: var(--section-v-offset);
     animation: fadeInTopAnimation 0.25s ease-in-out;
     @include to(600px){
+        row-gap: 16px;
         justify-content: center;
         padding: 0;
         margin-left: 0;
         margin-right: 0;
-        padding-left: var(--page-side-fields);
-        padding-right: var(--page-side-fields);
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 64px;
     }
     .location-card {
         @include size(12);
@@ -32,6 +34,9 @@
     padding-bottom: var(--section-v-offset);
     background-color: var(--color-green);
     animation: fadeInTopAnimation 0.25s ease-in-out;
+    @include to(1140px){
+        padding-bottom: 100px;
+    }
     #map {
         height: calc(100vh - var(--header-h));
         border: 1px solid white;
