@@ -116,6 +116,9 @@ $color-green: rgba(127,133,93,1);
 	line-height: 130%;
 	text-decoration: none;
 	text-transform: none;
+	@media screen and (max-width:1024px){
+		font-size: 16px;
+	}
 	@media screen and (max-width:600px){
 		font-size: 14px;
 	}

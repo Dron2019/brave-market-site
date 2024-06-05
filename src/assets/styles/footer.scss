@@ -4,6 +4,9 @@
   @include row-flex();
   padding-top: 100px;
   padding-bottom: 50px;
+  @include to(600px){
+    padding-top: 62px;
+  }
   .footer__group-logo {
     @include size(4);
     @include shift(0);

@@ -5,6 +5,9 @@
     @include to(1440px){
         @include shift-padding(2);
     }
+    @include to(600px){
+        @include shift-padding(0);
+    }
     img {
         border-radius: 10px;
         margin-bottom: 40px;
@@ -21,6 +24,13 @@
         @include size(24);
         @include shift(0);
         margin-top: 20px;
+        @include to(1024px){
+            font-size: 32px;
+            margin-top: 24px;
+        }
+        @include to(600px){
+            font-size: 20px;
+        }
     }
     &__date {
         display: flex;
@@ -76,6 +86,12 @@
     padding-top: var(--screen-offset);
     padding-bottom: calc(var(--screen-offset) * 2);
     margin-top: -2px;
+    @include to(1024px){
+        padding-bottom: var(--screen-offset);
+    }
+    @include to(600px){
+        row-gap: 16px;
+    }
 
     &__title {
         color: var(--color-send);
@@ -88,9 +104,25 @@
         @include size(24);
         @include shift(0);
         margin-bottom: calc(var(--screen-offset) * 0.66);
+        @include to(1024px){
+            font-size: 64px;
+        }
+        @include to(600px){
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
     }
     .news-card {
         @include size(6);
         @include shift(0);
+        @include to(1120px){
+            
+            @include size(12);
+            @include shift(0);
+        }
+        @include to(600px){
+            @include size(24);
+            @include shift(0);
+        }
     }
 }

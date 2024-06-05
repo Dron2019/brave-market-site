@@ -4,9 +4,10 @@
     flex-wrap: wrap;
     border: none;
     &__tab~&__tab {
-        @include from(1024px){
+        @include from(601px){
             margin-left: 20px;
         }
+        margin-left: 16px;
     }
     &__tab {
         background-color: var(--color-send);
@@ -15,6 +16,10 @@
         border-radius: 100px;
         cursor: pointer;
         transition: .25s ease-out;
+        @include to(1024px){
+            padding-left: 24px;
+            padding-right: 24px;
+        }
         &:hover,
         &.active {
             color: var(--color-white);

@@ -11,12 +11,31 @@
         "img text"
         "img link"
     ;
+    @include to(1024px){
+        grid-template-areas: 
+            "img"
+            "title"
+            "text"
+            "link"
+        ;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    @include to(600px){
+        padding: 8px;
+    }
     &__img-wrapper {
         grid-area: img;
     }
     &__img {
         padding-bottom: 80%;
         position: relative;
+        @include to(1024px){
+            padding-bottom: 46.5%;
+        }
+        @include to(600px){
+            padding-bottom: 63.1578947368421%;
+        }
         img {
             position: absolute;
             left: 0;
@@ -32,6 +51,9 @@
         font-weight: 600;
         line-height: normal;
         grid-area: title;
+        @include to(600px){
+            font-size: 24px;
+        }
     }
     &__text {
         color: var(--color-graphite);
@@ -41,6 +63,9 @@
         font-weight: 400;
         line-height: normal;
         grid-area: text;
+        @include to(600px){
+            font-size: 14px;
+        }
     }
     &__link {
         grid-area: link;
@@ -56,8 +81,15 @@
         display: flex;
         align-items: center;
         width: max-content;
+        @include to(600px){
+            font-size: 14px;
+        }
         svg {
             margin-right: 10px;
+            @include to(600px){
+                width: 24px;
+                height: 24px;
+            }
         }
     }
 }
