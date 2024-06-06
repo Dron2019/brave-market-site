@@ -57,9 +57,13 @@
 	&__info-group {
 		display: flex;
 		align-items: center;
+		transition: .25s ease-out;
 		svg {
 			margin-right: 10px;
 		}
+	}
+	a.header__info-group:hover {
+		opacity: 1;
 	}
 	&__info-group~&__info-group {
 		margin-left: 5.208vw;

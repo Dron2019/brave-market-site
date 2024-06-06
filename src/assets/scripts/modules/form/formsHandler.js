@@ -92,7 +92,7 @@ export function formsHandler() {
               rule: yup
                 .string()
                 .required(i18next.t('required'))
-                .min(15, i18next.t('field_too_short', { cnt: 19 - 8 })),
+                .min(17, i18next.t('field_too_short', { cnt: 19 - 6 })),
               defaultMessage: i18next.t('phone'),
               valid: false,
               error: [],

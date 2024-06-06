@@ -7,6 +7,12 @@
     @include to(1440px){
         @include text-style-1366-nav;
     }
+    @media (hover: hover) {
+        transition: .25s ease-out;
+        &:hover {
+            background-color: var(--color-green);
+        }
+    }
 }
 
 @include to(600px){

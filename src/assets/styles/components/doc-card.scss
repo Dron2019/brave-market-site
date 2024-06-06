@@ -91,5 +91,18 @@
                 height: 24px;
             }
         }
+        @media (hover: hover) {
+            transition: .25s ease-out;
+            [fill] {
+                transition: .25s ease-out;
+            }
+            &:hover {
+                background-color: var(--color-green);
+                [fill] {
+                    fill: var(--color-white);
+                }
+                color: var(--color-white);
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@
 }
 .sl-nav li:hover ul {
   position: absolute;
-  top:29px;
+  top:25px;
   right: 0px;
   display: block;
   background: #fff;
@@ -41,7 +41,7 @@
 .sl-nav li:hover .triangle {
   position: absolute;
   top: 15px;
-  right: -10px;
+  right: -2px;
   z-index:10;
   height: 14px;
   overflow:hidden;
@@ -66,6 +66,9 @@
   padding: 15px 15px;
   padding-bottom:0;
   z-index: 2;
+  &:hover a {
+    color: var(--color-green);
+  }
 }
 .sl-nav li ul li:last-of-type {
   padding-bottom: 15px;

@@ -124,6 +124,9 @@
         }
         p {
             width: 50%;
+            @media screen and (min-width: 1025px) {
+                padding-right: 25px;
+            }
             max-width: 593px;
         }
     }

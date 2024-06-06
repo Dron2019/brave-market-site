@@ -30,9 +30,9 @@ useNewsEffect(({ data, container }) => {
     container.innerHTML = data.map(el => newsCard(el)).join('');
 });
 useNewsEffect(({ pending, container, tabs }) => {
-    gsap.to(container, {
-        autoAlpha: pending ? 0.5 : 1,
-    });
+    // gsap.to(container, {
+    //     autoAlpha: pending ? 0.5 : 1,
+    // });
 
     pending ? 
     container.classList.add('loading') :

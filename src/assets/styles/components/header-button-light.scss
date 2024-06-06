@@ -14,4 +14,18 @@
     @include to(1440px){
         @include text-style-1366-nav;
     }
+    @media (hover: hover) {
+        transition: .25s ease-out;
+        [fill] {
+            transition: .25s ease-out;
+        }
+        &:hover {
+            background-color: var(--color-green);
+            color: var(--color-white);
+            border-color: var(--color-green);
+            [fill] {
+                fill: var(--color-white);
+            }
+        }
+    }
 }

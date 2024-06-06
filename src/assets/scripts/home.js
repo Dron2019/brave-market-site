@@ -30,8 +30,8 @@ splitToLinesAndFadeUp('.text-style-1920-h-1');
 
 // menu();
 
-formsHandler();
-formsScroll();
+// formsHandler();
+// formsScroll();
 
 
 const iframeStyle = `
