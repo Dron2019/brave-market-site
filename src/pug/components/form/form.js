@@ -5,7 +5,7 @@ import initView from './form-view';
 import { langDetect } from '../../../assets/scripts/modules/helpers/helpers';
 
 const sendForm = async data => {
-  const response = await axios.post('/api/form', data);
+  const response = await axios.post('/application.php', data);
   return response.data;
 };
 
@@ -229,7 +229,7 @@ export default class FormMonster {
           const formData = new FormData(this.elements.$form);
           formData.append('action', 'app');
 
-          if (document.documentElement.dataset.status === 'local') {
+          if (document.documentElement.dataset.status === 'local' && !/smartorange/.test(window.location.href)) {
             this.watchedState.status = 'successSand';
             return true;
           }
