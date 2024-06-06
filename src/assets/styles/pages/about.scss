@@ -2,6 +2,7 @@
   --g-about-page-grid-gap: 50px;
   --g-about-page-title-h: 300px;
 }
+
 .about {
   &-screen2 {
     &__content {
@@ -44,11 +45,14 @@
   }
   &-cards__row {
     margin-bottom: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
+    // display: flex;
+    // justify-content: center;
+    // align-items: stretch;
     padding: 0 10px;
-    gap: 20px;
+    // gap: 20px;
+    .swiper-slide {
+      max-width: 440px;
+    }
     .about-card {
       position: relative;
       display: flex;
@@ -56,7 +60,7 @@
       align-items: stretch;
       justify-content: space-between;
       gap: 40px;
-      max-width: 440px;
+      // max-width: 440px;
       color: $color-send;
       &:hover {
         img {
@@ -125,12 +129,21 @@
     position: relative;
     overflow: hidden;
     &__row {
-      display: flex;
-      gap: 20px;
-      img {
+      // display: flex;
+      // gap: 20px;
+      .swiper-slide {
         max-width: 800px;
         width: 100%;
         height: 800px;
+      }
+      img {
+        // max-width: 800px;
+        // width: 100%;
+        // height: 800px;
+        // object-fit: cover;
+        // custom
+        width: 100%;
+        height: 100%;
         object-fit: cover;
       }
     }
@@ -192,7 +205,8 @@
   }
   &-slider__buttons {
     position: absolute;
-    margin-right: 562px;
+    // margin-right: 562px;
+    margin-right: 10vw;
     max-width: 120px;
     width: 100%;
     height: 120px;
@@ -228,6 +242,9 @@
       }
     }
   }
+  &-slider__slides-count {
+    max-width: 50px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -260,15 +277,6 @@
       &__content {
         padding-bottom: 48px;
       }
-      .about-cards__row {
-        gap: 16px;
-      }
-      .about-card {
-        gap: 18px;
-        &__img {
-          margin-bottom: 10px;
-        }
-      }
     }
     &-screen5 {
       &__content {
@@ -281,6 +289,9 @@
     &-item {
       padding: 24px;
     }
+  }
+  .about-slider__buttons-min {
+    display: none;
   }
 }
 @media (max-width: 768px) {
@@ -301,6 +312,9 @@
         max-width: 699px;
         margin: 0 auto 24px;
       }
+      .about-cards__row .about-card__text {
+        font-size: 16px;
+      }
     }
     &-screen4 {
       .about-screen4__title {
@@ -308,9 +322,6 @@
       }
       .about-slider__buttons {
         display: none;
-      }
-      .about-slider__buttons-min {
-        display: flex;
       }
     }
     &-screen5 {
@@ -326,12 +337,30 @@
     }
     &-slider {
       &__row {
-        img {
-          max-width: 694px;
-          max-height: 520px;
-        }
+        // .swiper-slide {
+        //   max-width: 694px;
+        //   max-height: 520px;
+        // }
+        // img {
+        //   max-width: 694px;
+        //   max-height: 520px;
+        // }
       }
     }
+  }
+  .about-cards__row .swiper-slide {
+    max-width: 352px;
+  }
+
+  .about-cards__row .about-card {
+    gap: 18px;
+    &__img {
+      height: 420px;
+      margin-bottom: 10px;
+    }
+  }
+  .about-slider__buttons-min {
+    display: flex;
   }
 }
 @media (max-width: 600px) {
@@ -361,13 +390,18 @@
       .home-screen3__title {
         margin-bottom: 24px;
       }
-      .about-card {
-        max-width: 300px;
-        &__img {
-          height: 240px;
-          max-width: 300px;
-          margin-bottom: 16px;
+      // .swiper-slide {
+      //   width: 300px !important;
+      // }
+      .about-cards__row .about-card__img {
+        height: 240px;
+        margin-bottom: 16px;
+        img {
+          object-position: top;
         }
+      }
+      .about-cards__row .swiper-slide {
+        max-width: 300px;
       }
     }
     &-item {
@@ -387,10 +421,14 @@
   .about {
     &-slider {
       &__row {
-        img {
+        .swiper-slide {
           max-width: 320px;
           max-height: 240px;
         }
+        // img {
+        //   max-width: 320px;
+        //   max-height: 240px;
+        // }
       }
     }
   }

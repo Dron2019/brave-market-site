@@ -9,8 +9,18 @@ block variable
         {title: 'Зручне Розташування', text: 'Ринок розташований у серці Ірпеня, що робить його легко доступним для всіх мешканців міста та гостей.', img: 'assets/images/about/screen3/about-card__2.jpg'},
         {title: 'Сучасна Інфраструктура', text: 'Ми пропонуємо сучасні павільйони, обладнані всім необхідним для комфортного шопінгу та торгівлі.', img: 'assets/images/about/screen3/about-card__3.jpg'},
         {title: 'Широкий Асортимент', text: 'У нас ви знайдете широкий вибір продукції: від свіжих продуктів до одягу та аксесуарів, що задовольнить потреби кожного покупця.', img: 'assets/images/about/screen3/about-card__4.jpg'},
+        {title: 'Висока Якість Продукції', text: 'Ми співпрацюємо лише з перевіреними та ліцензованими постачальниками, гарантуючи найвищу якість товарів.', img: 'assets/images/about/screen3/about-card__1.jpg'},
+        {title: 'Зручне Розташування', text: 'Ринок розташований у серці Ірпеня, що робить його легко доступним для всіх мешканців міста та гостей.', img: 'assets/images/about/screen3/about-card__2.jpg'},
+        {title: 'Сучасна Інфраструктура', text: 'Ми пропонуємо сучасні павільйони, обладнані всім необхідним для комфортного шопінгу та торгівлі.', img: 'assets/images/about/screen3/about-card__3.jpg'},
+        {title: 'Широкий Асортимент', text: 'У нас ви знайдете широкий вибір продукції: від свіжих продуктів до одягу та аксесуарів, що задовольнить потреби кожного покупця.', img: 'assets/images/about/screen3/about-card__4.jpg'},
     ]
     var slides = [
+        {src: 'assets/images/about/screen4/about-screen4-slide__1.jpg'},
+        {src: 'assets/images/about/screen4/about-screen4-slide__2.jpg'},
+        {src: 'assets/images/about/screen4/about-screen4-slide__3.jpg'},
+        {src: 'assets/images/about/screen4/about-screen4-slide__4.jpg'},
+        {src: 'assets/images/about/screen4/about-screen4-slide__5.jpg'},
+        {src: 'assets/images/about/screen4/about-screen4-slide__6.jpg'},
         {src: 'assets/images/about/screen4/about-screen4-slide__1.jpg'},
         {src: 'assets/images/about/screen4/about-screen4-slide__2.jpg'},
         {src: 'assets/images/about/screen4/about-screen4-slide__3.jpg'},
@@ -69,22 +79,24 @@ block content
         .about-screen3__content
             .about-screen3__title.text-style-1920-h-1.home-screen3__title Чому обирають Центральний Ринок Ірпінь
             p.about-screen3__subtitle.text-style-1920-txt Центральний Ринок Ірпінь — це сучасний ринок, який пропонує найкращі умови для покупців та орендарів. Ми поєднуємо комфорт, якість та інновації, щоб задовольнити потреби кожного клієнта.
-        ul.about-cards__row 
-            each card in card_info
-                li.about-card
-                    .about-card__content
-                        .about-card__img
-                            img(src= card.img)
-                        h3.about-card__title.text-style-1920-h-3= card.title
-                        p.about-card__text= card.text
-                    .about-delimiter
+        .about-screen3__slider
+            .about-cards__row.swiper-wrapper 
+                each card in card_info
+                    .swiper-slide
+                        .about-card
+                            .about-card__content
+                                .about-card__img
+                                    img(src= card.img)
+                                h3.about-card__title.text-style-1920-h-3= card.title
+                                p.about-card__text= card.text
+                            .about-delimiter
         .about-buttons
-            button(type='button').about-button__prev#about-button__prev
+            button(type='button' data-about-button__prev).about-button__prev
                 <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.0711 8.00001L1.92893 8.00001M1.92893 8.00001L9 0.92894M1.92893 8.00001L9 15.0711" stroke="#F2EDDB" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
 
-            button(type='button').about-button__next#about-button__next
+            button(type='button' data-about-button__next).about-button__next
                 <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.928932 8.00001H15.0711M15.0711 8.00001L8 15.0711M15.0711 8.00001L8 0.92894" stroke="#F2EDDB" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
@@ -96,29 +108,30 @@ block content
                 <path d="M51.87 54.796C47.7913 54.796 44.3333 53.2887 41.496 50.274C38.6587 47.082 37.24 42.826 37.24 37.506C37.24 29.8807 38.3927 23.674 40.698 18.886C43.0033 13.9207 45.5747 10.0193 48.412 7.182C51.604 3.99 55.4167 1.596 59.85 0L62.51 4.25601C59.4953 5.67467 56.8353 7.35933 54.53 9.31001C52.5793 11.0833 50.7173 13.2113 48.944 15.694C47.348 17.9993 46.55 20.8367 46.55 24.206C46.55 25.4473 46.7273 26.4227 47.082 27.132C47.2593 27.664 47.5253 28.0187 47.88 28.196C48.2347 28.0187 48.7667 27.8413 49.476 27.664C50.008 27.4867 50.54 27.3093 51.072 27.132C51.7813 26.9547 52.4907 26.866 53.2 26.866C57.2787 26.866 60.4707 28.1073 62.776 30.59C65.2587 32.8953 66.5 36.0873 66.5 40.166C66.5 44.2447 65.0813 47.7027 62.244 50.54C59.4067 53.3773 55.9487 54.796 51.87 54.796ZM14.63 54.796C10.5513 54.796 7.09333 53.2887 4.256 50.274C1.41867 47.082 0 42.826 0 37.506C0 29.8807 1.15267 23.674 3.458 18.886C5.76333 13.9207 8.33467 10.0193 11.172 7.182C14.364 3.99 18.1767 1.596 22.61 0L25.27 4.25601C22.2553 5.67467 19.5953 7.35933 17.29 9.31001C15.3393 11.0833 13.4773 13.2113 11.704 15.694C10.108 17.9993 9.31 20.8367 9.31 24.206C9.31 25.4473 9.48733 26.4227 9.842 27.132C10.0193 27.664 10.2853 28.0187 10.64 28.196C10.9947 28.0187 11.5267 27.8413 12.236 27.664C12.768 27.4867 13.3 27.3093 13.832 27.132C14.5413 26.9547 15.2507 26.866 15.96 26.866C20.0387 26.866 23.2307 28.1073 25.536 30.59C28.0187 32.8953 29.26 36.0873 29.26 40.166C29.26 44.2447 27.8413 47.7027 25.004 50.54C22.1667 53.3773 18.7087 54.796 14.63 54.796Z" fill="#F2EDDB"/>
             </svg>
             .text-style-1920-h-1.about-screen4__title Загляньте у Життя Центрального Ринку Ірпеня
-        .about-screen4__slider.about-slider
-            .about-slider__buttons
-                button(type='button')#about-slider__button-prev
-                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.828 6.636L7.778 11.586L6.364 13L-2.78179e-07 6.636L6.364 0.271999L7.778 1.686L2.828 6.636Z" fill="#F2EDDB"/>
-                    </svg>
-                p 02/13
-                button(type='button')#about-slider__button-next
-                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.172 6.364L0.222 1.414L1.636 -2.78179e-07L8 6.364L1.636 12.728L0.222 11.314L5.172 6.364Z" fill="#F2EDDB"/>
-                    </svg>
-
-            .about-slider__row 
-                each slide in slides
-                    img(src= slide.src, alt="Some text")
-            
+        .about-screen4__slider
+            .about-slider
+                .about-slider__buttons
+                    button(type='button' data-button-gallery-slider-prev)
+                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.828 6.636L7.778 11.586L6.364 13L-2.78179e-07 6.636L6.364 0.271999L7.778 1.686L2.828 6.636Z" fill="#F2EDDB"/>
+                        </svg>
+                    .about-slider__slides-count
+                    button(type='button' data-button-gallery-slider-next)
+                        <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.172 6.364L0.222 1.414L1.636 -2.78179e-07L8 6.364L1.636 12.728L0.222 11.314L5.172 6.364Z" fill="#F2EDDB"/>
+                        </svg>
+                .about-slider__row.swiper-wrapper
+                    each slide in slides
+                        .swiper-slide
+                            img(src= slide.src, alt="Some text")
+                
             .about-slider__buttons-min
-                button(type='button').about-button__prev#about-button__prev
+                button(type='button' data-button-gallery-slider-min-prev).about-button__prev
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.0711 8.00001L1.92893 8.00001M1.92893 8.00001L9 0.92894M1.92893 8.00001L9 15.0711" stroke="#F2EDDB" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
 
-                button(type='button').about-button__next#about-button__next
+                button(type='button' data-button-gallery-slider-min-next).about-button__next
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.928932 8.00001H15.0711M15.0711 8.00001L8 15.0711M15.0711 8.00001L8 0.92894" stroke="#F2EDDB" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>

@@ -1,17 +1,16 @@
-@import './assets/vars';  // переменные
-@import './assets/smart-grid';  // mixins smartgrid.js
+@import './assets/vars'; // переменные
+@import './assets/smart-grid'; // mixins smartgrid.js
 // libraries
 @import './libs';
 
 // assets
-@import './assets/mixins';  // миксины
-@import './assets/fonts';  // шрифты
-@import './assets/base';  // общие стили
-@import './assets/animation';  // анимации
+@import './assets/mixins'; // миксины
+@import './assets/fonts'; // шрифты
+@import './assets/base'; // общие стили
+@import './assets/animation'; // анимации
 @import './assets/class'; // main style
 @import './assets/interface'; // main style
 @import './assets/breadcrubs'; // main style
-
 
 // sass dima
 @import './header';
@@ -26,16 +25,14 @@
 @import './components/delimiter';
 @import './blocks/form-container';
 
-
-
 //@import 'pages/contacts';
 //@import 'pages/contact';
 //@import 'pages/home';
 @import './assets/templates'; // main style
 
-
 @import './components/lang-block';
-@import './components/modal';@import 'components/social-link';
+@import './components/modal';
+@import 'components/social-link';
 @import 'components/header-button-dark';
 @import 'components/header-button-light';
 @import 'components/button-colored';
