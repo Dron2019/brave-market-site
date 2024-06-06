@@ -2,7 +2,7 @@
   --g-about-page-grid-gap: 50px;
   --g-about-page-title-h: 300px;
 }
-
+@import '../pages2/about';
 .about {
   &-screen2 {
     &__content {
@@ -219,6 +219,7 @@
     border-radius: 50%;
     background-color: $color-green;
     z-index: 100;
+    display: none; 
     @extend .text-style-1366-nav;
     &-min {
       @extend .about-buttons;

@@ -1,5 +1,6 @@
 import Swiper from 'swiper/bundle';
 import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import sideSwitchArrow from './modules/side-switch-arrow';
 // import 'swiper/swiper.scss';
 
 const questionList = document.querySelector('.about-screen5__list.about-list');
@@ -60,11 +61,13 @@ const initSLider = (
   prevBtnSelector,
   adaptObj,
   paginationSelector = '',
+  simulateTouch = false,
 ) => {
   const swiper = new Swiper(sliderSelector, {
     loop: true,
     autoplay: true,
     preloadImages: false,
+    simulateTouch: !simulateTouch,
     lazy: true,
     speed: 800,
     watchSlidesVisibility: true,
@@ -132,11 +135,44 @@ document.addEventListener('DOMContentLoaded', () => {
     '[data-about-button__prev]',
     breakpointsForScreenSlide3,
   );
-  initSLider(
+  const aboutSwiper = initSLider(
     '.about-slider',
     nextButton,
     prevButton,
     breakpointsForScreenSlider4,
     '.about-slider__slides-count',
+    true,
   );
+
+  if (document.documentElement.classList.contains('desktop')) {
+
+    const $movingArrow = document.querySelector('[data-gallery-switcher]');
+    const $movingArrowCurrentIndex = document.querySelector('[data-gallery-switcher-current]');
+    const $movingArrowSlidesLength = document.querySelector('[data-gallery-switcher-all]');
+    const $containerForMovingArrow = document.querySelector('.about-slider');
+
+
+    $movingArrowSlidesLength.textContent = aboutSwiper.slides.length;
+    $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+
+    window.aboutSwiper = aboutSwiper;
+    sideSwitchArrow({
+      onPrev: () => {
+        aboutSwiper.slidePrev();
+        $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+      },
+      onNext: () => {
+        aboutSwiper.slideNext();
+        $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+      }
+    },
+      $movingArrow,
+      $containerForMovingArrow
+    )
+  }
 });
+
+
+function pad(num) {
+  return num < 10 ? "0"+num : num;
+}

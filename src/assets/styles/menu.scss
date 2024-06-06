@@ -58,13 +58,16 @@
             transform: none;
         }
 
-        &:hover:after {
-            transform: translateY(0);
+        @media (hover: hover) {
+            &:hover:after {
+                transform: translateY(0);
+            }
+    
+            &:hover:before {
+                transform: translateY(100%);
+            }
         }
 
-        &:hover:before {
-            transform: translateY(100%);
-        }
     }
 
     &__item-inner {
