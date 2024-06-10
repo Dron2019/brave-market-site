@@ -1,5 +1,4 @@
 import Swiper, { EffectFade, Lazy, Navigation } from 'swiper';
-import menu from './modules/menu';
 import { lenis } from './modules/scroll/leniscroll';
 import Headroom from 'headroom.js';
 import 'current-device';
@@ -8,7 +7,7 @@ import './modules/form';
 import getNews from './modules/news/getNews';
 import { newsCard } from './modules/news/newsCard';
 import { gsap } from 'gsap/all';
-menu();
+
 
 new Headroom(document.querySelector('.header')).init();
 

@@ -20,6 +20,7 @@ block head
 block scripts
   script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/home.bundle.js')
+  script(defer src='./assets/scripts/interactive-map.bundle.js')
 block content
   .front-screen
     
@@ -120,7 +121,7 @@ block content
   .home-screen3 
     .text-style-1920-h-1.home-screen3__title Центральний ринок Ірпінь 
     p.text-style-1920-txt.home-screen3__subtitle Центральний Ринок Ірпінь"  націлений на створення ідеального середовища для вашого шопінгу
-    .home-screen3__iframe-wrapper
+    .home-screen3__iframe-wrapper(data-lenis-prevent)
       //- iframe(src="/assets/image-006.jpg", frameborder="0") 
       img(src="./assets/images/home/map-temp.jpg")
   .home-screen4
@@ -154,6 +155,30 @@ block content
   
 
 block header
+  .interactive-map-infobox(data-interactive-map-infobox)
+      .interactive-map-infobox__left-label(data-interactive-map-infobox-left-label) ряд: 4, № 243
+      .interactive-map-infobox__right-label(data-interactive-map-infobox-right-label) right
+      .interactive-map-infobox__image
+        img(src="./assets/images/home/map-temp.jpg" data-interactive-map-infobox-image)
+      .interactive-map-infobox__content
+        .interactive-map-infobox__title(data-interactive-map-infobox-title) Ряд: 4, № 243
+        .interactive-map-infobox__row
+          .interactive-map-infobox__row-title Статус
+          .interactive-map-infobox__row-value 
+            span(data-interactive-map-infobox-sale) 35 
+            span м²
+        .interactive-map-infobox__row
+          .interactive-map-infobox__row-title Площа
+          .interactive-map-infobox__row-value
+            span(data-interactive-map-infobox-area) 35 
+            span м²
+        .interactive-map-infobox__row
+          .interactive-map-infobox__row-title Ціна
+          .interactive-map-infobox__row-value 
+            span $
+            span(data-interactive-map-infobox-price) 35 
+            span / міс
+        button(type="button" data-form="data-form").interactive-map-infobox__button Подати заявку
   include ../includes/header.pug
 block footer
   include ../includes/footer.pug

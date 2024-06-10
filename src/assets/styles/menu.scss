@@ -41,6 +41,9 @@
             font-family: $default-font2;
             transition: .25s ease-out;
             transform: translateY(-100%);
+            @include to(600px){
+                opacity: 0 !important;
+            }
         }
 
         &:before {

@@ -1,0 +1,12 @@
+.interactive-map {
+    polygon {
+        fill: rgba(127, 133, 93, 0.40);
+        stroke-width: 2px;
+        stroke: #F2EDDB;
+        cursor: pointer;
+        transition: fill 0.3s, stroke 0.3s;
+        &:hover {
+            fill: rgba(127, 133, 93, 0.70);
+        }
+    }
+}

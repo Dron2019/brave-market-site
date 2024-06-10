@@ -11,6 +11,7 @@ const config = {
     contacts: './src/assets/scripts/contacts.js',
     about: './src/assets/scripts/about.js',
     location: './src/assets/scripts/location.js',
+    'interactive-map': './src/assets/scripts/interactive-map.js',
     common: './src/assets/scripts/common.js',
   },
   output: {

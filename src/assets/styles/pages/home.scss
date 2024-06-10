@@ -221,13 +221,20 @@
     }
     &__iframe-wrapper {
         margin-top: 100px;
-        padding-bottom: 52.5%;
+        padding-bottom: 42.5%;
         position: relative;
+        overflow-y: auto;
         @include to(1024px){
             margin-top: 50px;
         }
         @include to(600px){
             margin-top: 30px;
+        }
+        svg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;height: auto;
         }
         img,
         iframe {
@@ -299,7 +306,7 @@
             grid-template-rows: repeat(10, 67px) auto;
         }
         @include to(600px){
-            grid-template-rows: repeat(10, 28px) auto;
+            grid-template-rows: repeat(10, 20px) auto;
         }
         &-img1 {
             grid-area: 4/2/11/5;
@@ -307,7 +314,7 @@
                 grid-area: 4/2/11/7;
             }
             @include to(600px){
-                grid-area: 4/1/11/7;
+                grid-area: 4/2/11/7;
             }
             img {
                 width: 100%;
