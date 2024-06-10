@@ -50,9 +50,10 @@
     // align-items: stretch;
     padding: 0 10px;
     // gap: 20px;
-    .swiper-slide {
-      max-width: 440px;
-    }
+    // Here
+    // .swiper-slide {
+    //   max-width: 440px;
+    // }
     .about-card {
       position: relative;
       display: flex;
@@ -219,7 +220,7 @@
     border-radius: 50%;
     background-color: $color-green;
     z-index: 100;
-    display: none; 
+    display: none;
     @extend .text-style-1366-nav;
     &-min {
       @extend .about-buttons;
@@ -349,9 +350,10 @@
       }
     }
   }
-  .about-cards__row .swiper-slide {
-    max-width: 352px;
-  }
+  // Here
+  // .about-cards__row .swiper-slide {
+  //   max-width: 352px;
+  // }
 
   .about-cards__row .about-card {
     gap: 18px;
@@ -401,6 +403,7 @@
           object-position: top;
         }
       }
+      // Here
       .about-cards__row .swiper-slide {
         max-width: 300px;
       }

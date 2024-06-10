@@ -1,5 +1,6 @@
 .contacts-container {
   @extend .documents-container;
+  padding-bottom: 0 !important;
   .breadcrumbs {
     width: calc(100% - 20px);
     margin-left: calc(0% + 10px);
@@ -12,6 +13,8 @@
   &__title {
     @extend .documents-container__title;
   }
+}
+.contacts-container {
 }
 
 .map {

@@ -143,7 +143,6 @@ function initMap() {
   });
   console.log(ajaxMarkers);
 
-
   function putMarkersOnMap(markers, map) {
     const infowindow = new google.maps.InfoWindow({
       content: '',
@@ -168,7 +167,10 @@ function initMap() {
       google.maps.event.addListener(mapMarker, 'click', function() {
         if (mapMarker.category === 'link') {
           // to do ---> get this link from income marker data
-          window.open("https://www.google.com/maps/dir//''/@50.5126895,30.2432543,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x472b33c976ed30eb:0xbbb752ac7aa526de!2m2!1d30.253554!2d50.5126763!3e0?entry=ttu", '_blank');
+          window.open(
+            "https://www.google.com/maps/dir//''/@50.5126895,30.2432543,15z/data=!4m9!4m8!1m0!1m5!1m1!1s0x472b33c976ed30eb:0xbbb752ac7aa526de!2m2!1d30.253554!2d50.5126763!3e0?entry=ttu",
+            '_blank',
+          );
           return;
         }
         infowindow.setContent(marker.content);
@@ -183,7 +185,7 @@ function initMap() {
     // filterMarkers('main', choosedCategories);
     markersHightlight(google, map, infowindow);
 
-    // const newCenter = 
+    // const newCenter =
 
     map.setCenter(initedMarkers[0].getPosition());
     // markersHandler();

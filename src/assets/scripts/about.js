@@ -13,7 +13,7 @@ const breakpointsForScreenSlide3 = {
   },
   600: {
     slidesPerGroup: 1,
-    slidesPerView: 2,
+    slidesPerView: 1.3,
     spaceBetween: 16,
   },
   800: {
@@ -33,11 +33,11 @@ const breakpointsForScreenSlide3 = {
 };
 const breakpointsForScreenSlider4 = {
   350: {
-    centeredSlides: true,
     slidesPerView: 1,
     spaceBetween: 5,
   },
   480: {
+    slidesPerGroup: 1,
     slidesPerView: 1,
     spaceBetween: 8,
   },
@@ -145,34 +145,32 @@ document.addEventListener('DOMContentLoaded', () => {
   );
 
   if (document.documentElement.classList.contains('desktop')) {
-
     const $movingArrow = document.querySelector('[data-gallery-switcher]');
     const $movingArrowCurrentIndex = document.querySelector('[data-gallery-switcher-current]');
     const $movingArrowSlidesLength = document.querySelector('[data-gallery-switcher-all]');
     const $containerForMovingArrow = document.querySelector('.about-slider');
 
-
     $movingArrowSlidesLength.textContent = aboutSwiper.slides.length;
     $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
 
     window.aboutSwiper = aboutSwiper;
-    sideSwitchArrow({
-      onPrev: () => {
-        aboutSwiper.slidePrev();
-        $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+    sideSwitchArrow(
+      {
+        onPrev: () => {
+          aboutSwiper.slidePrev();
+          $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+        },
+        onNext: () => {
+          aboutSwiper.slideNext();
+          $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
+        },
       },
-      onNext: () => {
-        aboutSwiper.slideNext();
-        $movingArrowCurrentIndex.textContent = pad(aboutSwiper.realIndex + 1);
-      }
-    },
       $movingArrow,
-      $containerForMovingArrow
-    )
+      $containerForMovingArrow,
+    );
   }
 });
 
-
 function pad(num) {
-  return num < 10 ? "0"+num : num;
+  return num < 10 ? '0' + num : num;
 }
