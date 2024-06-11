@@ -8,7 +8,6 @@ import buttonHover from './modules/buttonHover';
 import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 import { gsap, ScrollTrigger } from 'gsap/all';
 import deviceInfo from 'current-device';
-import menu from './modules/menu';
 import './modules/form';
 import { useState } from './modules/helpers/helpers';
 import { sideSwitchArrow } from './modules/effects/sideSwitchArrow';
@@ -146,7 +145,7 @@ document.body.addEventListener('click', function(evt) {
   });
 });
 
-menu();
+
 
 splitToLinesAndFadeUp('section:not(.section-1) .text-style-h-1, section  .text-style-h-3');
 
