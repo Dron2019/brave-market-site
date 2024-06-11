@@ -98,28 +98,6 @@ export default function menu() {
       .progress(0)
       .play();
   });
-
-  window.addEventListener('resize', changeText);
-
-  window.addEventListener('DOMContentLoaded', changeText);
-
-  function changeText() {
-    const headerButton = document.querySelector('.header-not-desktop [data-form] span');
-    const screenWidth = window.screen.width;
-
-    const text = {
-      lg: 'Подати заявку на оренду',
-      sm: 'Подати заявку',
-    };
-
-    if (screenWidth <= 540 || (screenWidth <= 840 && screenWidth > 768)) {
-      headerButton.textContent = text.sm;
-    } else if (screenWidth < 840 && screenWidth > 540) {
-      headerButton.textContent = text.lg;
-    } else {
-      headerButton.textContent = text.lg;
-    }
-  }
 }
 
 /** Mobile callback popup */
