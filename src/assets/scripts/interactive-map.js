@@ -16,29 +16,26 @@ const [ infoboxView, setInfoboxView, useInfoboxViewEffect ] = useState({
 });
 
 const [ infoboxState, setInfoboxState, useInfoboxStateEffect ] = useState({
-  show: false,
-  coords: { x: 0, y: 0 },
   data: {
     ...setNewApartmentData({}),
   },
 });
 
 container.addEventListener('scroll', (e) => {
-  setInfoboxView({
-    ...infoboxView(),
-    show: false,
-  });
+  closeInfobox();
 });
 
 document.body.addEventListener('click', (e) => {
+  
   const target = e.target.closest('[data-id]');
-  if (!target) {
-    setInfoboxView({
-      ...infoboxView(),
-      show: false,
-    });
+  const infobox = e.target.closest('[data-interactive-map-infobox]');
+  if (!target && !infobox) {
+    closeInfobox();
     return; 
   }
+
+  if (infobox) return;
+
   const id = target.dataset.id;
   const appartment = appartments().find(appartment => appartment.id == id) || {};
 
@@ -53,6 +50,14 @@ document.body.addEventListener('click', (e) => {
       ...setNewApartmentData(appartment),
     }
   })
+});
+
+infobox.addEventListener('click', (e) => {
+  const target = e.target.closest('[data-interactive-map-infobox-close]');
+  if (!target) {
+    return; 
+  }
+  closeInfobox();
 });
 
 container.addEventListener('mouseover', (e) => {
@@ -89,7 +94,8 @@ container.addEventListener('mousemove', (e) => {
 
 useInfoboxViewEffect((view) => {
   infobox.classList.toggle('active', view.show);
-  const position = placeElemInWrapperNearMouse(infobox, container, { pageX: view.coords.x, pageY: view.coords.y })
+  const position = placeElemInWrapperNearMouse(infobox, container, { pageX: view.coords.x, pageY: view.coords.y });
+  if (window.matchMedia('(max-width: 1024px)').matches) return;
   infobox.style.transform = `translate(${position.x}px, ${position.y}px)`;
 });
 
@@ -109,14 +115,21 @@ function getApartments(id) {
   return axios.get(`./static/appartments.json`);
 }
 
+function closeInfobox() {
+  setInfoboxView({
+    ...infoboxView(),
+    show: false,
+  });
+}
+
 function setNewApartmentData(apartment) {
   return {
-    title: apartment.title,
+    title: 'Павільйон №' + apartment.number,
     appartment: apartment.number,
     area: apartment.all_room,
     price: apartment.price,
     img: apartment.img_big,
-    sale: apartment.sale,
+    sale: apartment.statu_text,
     rightLabel: apartment.statu_text,
   }
 }
@@ -134,7 +147,7 @@ async function initInteractiveMap() {
     imgSize.onload = function() {
         console.log(imgSize.width, imgSize.height);
         container.appendChild(createSvg(imgURL, imgSize.width, imgSize.height, polygons));
-        container.scrollTo(0, 5000);
+        container.scrollTo(container.scrollWidth / 2 - container.getBoundingClientRect().width / 2, 5000);
     }
     const apartmentsRequest = await getApartments();
     const apartments = apartmentsRequest.data;
