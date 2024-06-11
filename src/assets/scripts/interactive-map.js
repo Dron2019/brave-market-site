@@ -104,7 +104,7 @@ useInfoboxStateEffect((state) => {
   document.querySelector('[data-interactive-map-infobox-right-label]').textContent = state.data.rightLabel;
   document.querySelector('[data-interactive-map-infobox-image]').src = state.data.img;
   document.querySelector('[data-interactive-map-infobox-title]').textContent = state.data.title;
-  document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
+  // document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
   document.querySelector('[data-interactive-map-infobox-area]').textContent = state.data.area;
   document.querySelector('[data-interactive-map-infobox-price]').textContent = state.data.price;
 });
@@ -124,13 +124,14 @@ function closeInfobox() {
 
 function setNewApartmentData(apartment) {
   return {
-    title: 'Павільйон №' + apartment.number,
+    title: 'Ряд: ' + apartment.type + ', №' + apartment.number,
     appartment: apartment.number,
     area: apartment.all_room,
     price: apartment.price,
     img: apartment.img_big,
     sale: apartment.statu_text,
     rightLabel: apartment.statu_text,
+    leftLabel: 'Ряд: ' + apartment.type + ', №' + apartment.number,
   }
 }
 
