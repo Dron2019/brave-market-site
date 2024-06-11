@@ -285,60 +285,61 @@
     width: 1rem;
   }
 
-  .menu {
-    text-align: center;
-    width: 100%;
-    max-height: calc(100vh - var(--header-h));
-    overflow-y: auto;
-    background-color: var(--color-white);
-    position: fixed;
-    left: 0;
-    z-index: 2001;
-    pointer-events: none;
-    visibility: hidden;
-    top: var(--header-h);
-    display: grid;
-    grid-template-areas:
-      'menu-links contacts'
-      'menu-links socials';
+}
 
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr auto;
-    padding-top: 12px;
-    overflow-y: auto;
+.menu {
+  text-align: center;
+  width: 100%;
+  max-height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  background-color: var(--color-white);
+  position: fixed;
+  left: 0;
+  z-index: 2001;
+  pointer-events: none;
+  visibility: hidden;
+  top: var(--header-h);
+  display: grid;
+  grid-template-areas:
+    'menu-links contacts'
+    'menu-links socials';
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+  padding-top: 12px;
+  overflow-y: auto;
+
+  @include to(600px) {
+    grid-template-areas:
+      'menu-links'
+      'contacts'
+      'socials';
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: auto;
+    height: calc((var(--vh, 1vh) * 100) - var(--header-h));
+    top: var(--header-h);
+  }
+
+  .menu__item--1 {
+    grid-area: menu-links;
+
+    @include from(601px) {
+      border-right: 1px solid #d9d9d9;
+    }
 
     @include to(600px) {
-      grid-template-areas:
-        'menu-links'
-        'contacts'
-        'socials';
-      grid-template-rows: repeat(3, auto);
-      grid-template-columns: auto;
-      height: calc((var(--vh, 1vh) * 100) - var(--header-h));
-      top: var(--header-h);
-    }
-
-    .menu__item--1 {
-      grid-area: menu-links;
-
-      @include from(601px) {
-        border-right: 1px solid #d9d9d9;
-      }
-
-      @include to(600px) {
-        border-bottom: 1px solid #d9d9d9;
-      }
-    }
-
-    .menu__header {
-      grid-area: contacts;
-      text-align: left;
+      border-bottom: 1px solid #d9d9d9;
     }
   }
 
-  .mobile,
-  .tablet {
-    .menu {
-    }
+  .menu__header {
+    grid-area: contacts;
+    text-align: left;
+  }
+}
+
+.mobile,
+.tablet {
+  .menu {
   }
 }
