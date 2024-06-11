@@ -1,31 +1,31 @@
 .header-button-light {
-    padding: 16px 24px;
-    @include text-style-1920-nav;
-    color: var(--color-black);
-    border-radius: 100px;
-    border: 1px solid var(--color-black);
-    background-color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    svg {
-        margin-right: 10px;
+  padding: 16px 24px;
+  @include text-style-1920-nav;
+  color: var(--color-black);
+  border-radius: 100px;
+  border: 1px solid var(--color-black);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    margin-right: 10px;
+  }
+  @include to(1440px) {
+    @include text-style-1366-nav;
+  }
+  @media (hover: hover) {
+    transition: 0.25s ease-out;
+    [fill] {
+      transition: 0.25s ease-out;
     }
-    @include to(1440px){
-        @include text-style-1366-nav;
+    &:hover {
+      background-color: var(--color-green);
+      color: var(--color-white);
+      border-color: var(--color-green);
+      [fill] {
+        fill: var(--color-white);
+      }
     }
-    @media (hover: hover) {
-        transition: .25s ease-out;
-        [fill] {
-            transition: .25s ease-out;
-        }
-        &:hover {
-            background-color: var(--color-green);
-            color: var(--color-white);
-            border-color: var(--color-green);
-            [fill] {
-                fill: var(--color-white);
-            }
-        }
-    }
+  }
 }

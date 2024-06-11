@@ -1,298 +1,337 @@
-$default-font: "Segoe UI",
-sans-serif;
-$default-font2: "Oranienbaum",
-sans-serif;
-$default-font3: "Portrait Script",
-sans-serif;
-
-
-
-
+$default-font: 'Segoe UI', sans-serif;
+$default-font2: 'Oranienbaum', sans-serif;
+$default-font3: 'Portrait Script', sans-serif;
 
 :root {
-	--color-black: rgba(0,0,0,1);
-	--color-white: #ffffff;
-	--color-send: #f2eddb;
-	--color-graphite: #28282a;
-	--color-green: #7f855d;
-	--screen-offset: 150px;
+  --color-black: rgba(0, 0, 0, 1);
+  --color-white: #ffffff;
+  --color-send: #f2eddb;
+  --color-graphite: #28282a;
+  --color-green: #7f855d;
+  --screen-offset: 150px;
 }
 
-.color-black {color:var(--color-black)}
-.color-white {color:var(--color-white)}
-.color-send {color:var(--color-send)}
-.color-graphite {color:var(--color-graphite)}
-.color-green {color:var(--color-green)}
+.color-black {
+  color: var(--color-black);
+}
+.color-white {
+  color: var(--color-white);
+}
+.color-send {
+  color: var(--color-send);
+}
+.color-graphite {
+  color: var(--color-graphite);
+}
+.color-green {
+  color: var(--color-green);
+}
 
-
-$color-black: rgba(0,0,0,1);
-$color-white: rgba(255,255,255,1);
-$color-send: rgba(242,237,219,1);
-$color-graphite: rgba(40,40,42,1);
-$color-green: rgba(127,133,93,1);
+$color-black: rgba(0, 0, 0, 1);
+$color-white: rgba(255, 255, 255, 1);
+$color-send: rgba(242, 237, 219, 1);
+$color-graphite: rgba(40, 40, 42, 1);
+$color-green: rgba(127, 133, 93, 1);
 @mixin text-style-1366-h-1() {
-	font-size: 76px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 90%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 76px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 90%;
+  text-decoration: none;
+  text-transform: none;
 }
 @mixin text-style-1366-h-2() {
-	font-size: 32px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 32px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  text-decoration: none;
+  text-transform: none;
 }
 @mixin text-style-1366-txt() {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 400;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
-	line-height: 130%;
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 130%;
 }
 @mixin text-style-1366-nav() {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 600;
-	font-style: normal;
-	line-height: 130%;
-	text-decoration: none;
-	text-transform: none;
-	@media screen and (max-width:600px){
-		font-size: 14px;
-	}
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 130%;
+  text-decoration: none;
+  text-transform: none;
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 @mixin text-style-1920-h-1() {
-	font-size: 120px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 90%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 120px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 90%;
+  text-decoration: none;
+  text-transform: none;
 }
 @mixin text-style-1920-h-2() {
-	font-size: 32px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 32px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  text-decoration: none;
+  text-transform: none;
 }
 @mixin text-style-1920-txt() {
-	font-size: Min(1.25vw, 18px);
-	font-family: Segoe UI;
-	font-weight: 400;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
-	line-height: 130%;
-	@media screen and (max-width:1420px){
-		@include text-style-1366-txt();
-	}
+  font-size: Min(1.25vw, 18px);
+  font-family: Segoe UI;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 130%;
+  @media screen and (max-width: 1420px) {
+    @include text-style-1366-txt();
+  }
 }
 @mixin text-style-1920-h-3() {
-	font-size: 24px;
-	font-family: Segoe UI;
-	font-weight: 600;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
-	line-height: 130%;
+  font-size: 24px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 130%;
 }
 @mixin text-style-1920-nav() {
-	font-size: 20px;
-	font-family: Segoe UI;
-	font-weight: 600;
-	font-style: normal;
-	line-height: 130%;
-	text-decoration: none;
-	text-transform: none;
-	@media screen and (max-width:1024px){
-		font-size: 16px;
-	}
-	@media screen and (max-width:600px){
-		font-size: 14px;
-	}
+  font-size: 20px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 130%;
+  text-decoration: none;
+  text-transform: none;
+  @media screen and (max-width: 1024px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 @mixin text-style-1920-description() {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 400;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
-	line-height: 130%;
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
+  line-height: 130%;
 }
 
 .text-style-1366-h-1 {
-	font-size: 76px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 90%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 76px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 90%;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1366-h-2 {
-	font-size: 32px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 32px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1366-txt {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 400;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1366-nav {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 600;
-	font-style: normal;
-	line-height: 130%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 130%;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1920-h-1 {
-	@include text-style-1920-h-1();
+  @include text-style-1920-h-1();
 
-	@media screen and (max-width:1420px){
-		@include text-style-1366-h-1();
-	}
-	@media screen and (max-width:1024px){
-		font-size: 64px;
-	}
-	@media screen and (max-width:600px){
-		font-size: 42px;
-	}
+  @media screen and (max-width: 1420px) {
+    @include text-style-1366-h-1();
+  }
+  @media screen and (max-width: 1024px) {
+    font-size: 64px;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 42px;
+  }
 }
 .text-style-1920-h-2 {
-	font-size: 32px;
-	font-family: Oranienbaum;
-	font-weight: 400;
-	font-style: normal;
-	line-height: 100%;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 32px;
+  font-family: Oranienbaum;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 100%;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1920-txt {
-	@include text-style-1920-txt();
+  @include text-style-1920-txt();
 }
 .text-style-1920-h-3 {
-	font-size: 24px;
-	font-family: Segoe UI;
-	font-weight: 600;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 24px;
+  font-family: Segoe UI;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
 }
 .text-style-1920-nav {
-	@include text-style-1920-nav();
-	@media screen and (max-width:1360px){
-		@include text-style-1366-nav();
-	}
+  @include text-style-1920-nav();
+  @media screen and (max-width: 1360px) {
+    @include text-style-1366-nav();
+  }
 }
 .text-style-1920-description {
-	font-size: 18px;
-	font-family: Segoe UI;
-	font-weight: 400;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: none;
+  font-size: 18px;
+  font-family: Segoe UI;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: none;
 }
 
 :root {
-	--in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
-	--header-h: 222px;
-	--logo-w: 155px;
-	--sliceFigure: 239px;
-	--sliceFigure-big: 541px;
-	
-	--page-side-fields: 60px;
-	--section-v-offset: 150px;
-	--button-color: #001A58;
+  --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
+  --header-h: 222px;
+  --logo-w: 155px;
+  --sliceFigure: 239px;
+  --sliceFigure-big: 541px;
+
+  --page-side-fields: 60px;
+  --section-v-offset: 150px;
+  --button-color: #001a58;
 }
 
-@media screen and (max-width: 1440px){
+@media screen and (max-width: 1440px) {
   :root {
     --header-h: 187px;
     --logo-w: 120px;
     --sliceFigure-big: 362px;
-	--screen-offset: 100px;
-	--page-side-fields: 30px;
+    --screen-offset: 100px;
+    --page-side-fields: 30px;
   }
 }
 
-
-
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1240px) {
   :root {
-    --header-h: 112px;
+    // БЫЛО
+    // --header-h: 134px;
+
+    // Добавил
+    --header-h: 154px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    // БЫЛО
+    // --header-h: 80px;
+
+    // Добавил
+    // --header-h: 154px;
     --logo-w: 90px;
     --sliceFigure-big: 44px;
-	--page-side-fields: 24px;
+    --page-side-fields: 24px;
   }
 }
-@media screen and (max-width: 600px){
+// НЕ БЫЛО
+@media screen and (max-width: 768px) {
   :root {
-    --header-h: 79px;
+    --header-h: 118px;
+    // --header-h: 60px;
+  }
+}
+// НЕ БЫЛО
+// @media screen and (max-width: 600px) {
+//   :root {
+//     --header-h: 118px;
+//   }
+// }
+@media screen and (max-width: 600px) {
+  :root {
+    // БЫЛО
+    // --header-h: 79px;
+
+    // Добавил
+    --header-h: 110px;
     --sliceFigure: 100px;
     --sliceFigure-big: 100px;
-	--screen-offset: 64px;
+    --screen-offset: 64px;
   }
 }
 
+@media screen and (max-width: 400px) {
+  :root {
+    --header-h: 88px;
+    // --header-h: 60px;
+  }
+}
 
 .tablet {
-	--page-side-fields: 20px;
-	--section-v-offset: 50px;
-	// --header-h: 80px;
-	--g-container-offset: 100px;
-	.page__inner {
-		max-width: 100vw;
-		overflow: hidden;
-	}
+  --page-side-fields: 20px;
+  --section-v-offset: 50px;
+  --header-h: 80px;
+  --g-container-offset: 100px;
+  .page__inner {
+    max-width: 100vw;
+    overflow: hidden;
+  }
 }
 
 .mobile {
-	--page-side-fields: 10px;
-	--section-v-offset: 50px;
-	--header-h: 85px;
-	--g-container-offset: 60px;
-	.page__inner {
-		max-width: 100vw;
-		overflow: hidden;
-	}
+  --page-side-fields: 10px;
+  --section-v-offset: 50px;
+  // БЫЛО
+  // --header-h: 85px;
+
+  // --header-h: 118px;
+  --g-container-offset: 60px;
+  .page__inner {
+    max-width: 100vw;
+    overflow: hidden;
+  }
 }
 
 :root {
-	--color-black: rgba(0,0,0,1);
-	--color-blue: rgba(35,43,62,1);
-	--color-white: rgba(255,255,255,1);
-	--color-new-blue: rgba(0,26,88,1);
-	--color-light-blue: rgba(77,95,139,1);
-	--color-gray-bg: #E6ECF2;
+  --color-black: rgba(0, 0, 0, 1);
+  --color-blue: rgba(35, 43, 62, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-new-blue: rgba(0, 26, 88, 1);
+  --color-light-blue: rgba(77, 95, 139, 1);
+  --color-gray-bg: #e6ecf2;
 }
 
-
-.ios { 
-	overscroll-behavior-y: none;
-	body {
-		overscroll-behavior-y: none;
-	}
+.ios {
+  overscroll-behavior-y: none;
+  body {
+    overscroll-behavior-y: none;
+  }
 }

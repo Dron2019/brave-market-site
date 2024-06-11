@@ -1,456 +1,467 @@
 .front-screen {
-    position: relative;
+  position: relative;
 
-    padding-left: 0;
-    padding-right: 0;
-    height: calc(100vw / 1920 * 1061);
-    margin-top: var(--header-h);
-    padding-top: 70px;
-    @include to(1024px){
-        height: 100vh;
-    }
-    @include to(600px){
-        padding-top: 30px;
-    }
-    &__subtitle {
-        @include from(601px){
-            width: 50%;
-        }
-        @include to(600px){
-            padding-left: 12px;
-            padding-right: 12px;
-        }
-    }
-    &__content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        margin-top: 70px;
-        @include to(600px){
-            margin-top: 0;
-        }
-    }
-    .button-30 {
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 32px;
-    }
-    &__title {
-        color: #F2EDDB;
-        margin-bottom: 20px;
-    }
-    &__subtitle {
-        color: #F2EDDB;
-        margin-bottom: 40px;
-        
-    }
-    &__bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        object-fit: cover;
-        object-position: bottom;
-        // opacity: 0;
-    }
+  padding-left: 0;
+  padding-right: 0;
+  height: calc(100vw / 1920 * 1061);
+  margin-top: var(--header-h);
+  padding-top: 70px;
+  //   @include to(1240px) {
+  //     margin-top: 112px;
+  //   }
+  // @include to(1024px){
+  //     height: 100vh;
+  // }
+  @include to(763px) {
+    height: 100vh;
+  }
 
-    &__video-bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        object-fit: cover;
-        object-position: top;
+  // @include to(830px) {
+  //   padding-top: 30px;
+  // }
+  @include to(600px) {
+    padding-top: 30px;
+  }
+
+  &__subtitle {
+    @include from(601px) {
+      width: 50%;
     }
+    @include to(600px) {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 70px;
+    @include to(763px) {
+      margin-top: 0;
+    }
+    @include to(600px) {
+      margin-top: 31px;
+    }
+    // @include to(600px) {
+    //   margin-top: 0;
+    // }
+  }
+  .button-30 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+  }
+  &__title {
+    color: #f2eddb;
+    margin-bottom: 20px;
+  }
+  &__subtitle {
+    color: #f2eddb;
+    margin-bottom: 40px;
+  }
+  &__bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: bottom;
+    // opacity: 0;
+  }
+
+  &__video-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: top;
+  }
 }
 
-
 .home-screen2 {
-    background-color: #7f855d;
-    color: #F2EDDB;
-    --side-offset: 200px;
-    @include to(1440px){
-        --side-offset: 140px;
-    }
+  background-color: #7f855d;
+  color: #f2eddb;
+  --side-offset: 200px;
+  @include to(1440px) {
+    --side-offset: 140px;
+  }
 
-    padding-top: var(--screen-offset);
-    &__quote {
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translateX(100%) translateY(100%);
-        @include to(1440px){
-            width: 50px;
-            height: 41px;
-            transform: translateX(100%) translateY(200%);
-        }
-        @include to(1024px){
-            transform: none;
-            position: static;
-        }
-        @include to(600px){
-            display: none;
-        }
+  padding-top: var(--screen-offset);
+  &__quote {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(100%) translateY(100%);
+    @include to(1440px) {
+      width: 50px;
+      height: 41px;
+      transform: translateX(100%) translateY(200%);
     }
-    &__content {
-        display: flex;
-        flex-wrap: wrap;
-        padding-left: var(--side-offset);
-        padding-right: var(--side-offset);
-        position: relative;
-        &-svg {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 300px;
-            height: 300px;
-            transform: translate(-100%, 100%);
-            @include to(1440px){
-                width: 200px;
-                height: 200px;
-                transform: translate(-50%, 100%);
-            }
-            @include to(1024px){
-                width: 168px;
-                height: 168px;
-                transform: translate(-50%, 120%);
-            }
-        }
-        p {
-            width: 50%;
-            @media screen and (min-width: 1025px) {
-                padding-right: 25px;
-            }
-            max-width: 593px;
-        }
+    @include to(1024px) {
+      transform: none;
+      position: static;
     }
-    &__bg {
-        width: 100vw;
-        height: calc(100vw / 1920 * 953);
+    @include to(600px) {
+      display: none;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: var(--side-offset);
+    padding-right: var(--side-offset);
+    position: relative;
+    &-svg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 300px;
+      height: 300px;
+      transform: translate(-100%, 100%);
+      @include to(1440px) {
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, 100%);
+      }
+      @include to(1024px) {
+        width: 168px;
+        height: 168px;
+        transform: translate(-50%, 120%);
+      }
+    }
+    p {
+      width: 50%;
+      @media screen and (min-width: 1025px) {
+        padding-right: 25px;
+      }
+      max-width: 593px;
+    }
+  }
+  &__bg {
+    width: 100vw;
+    height: calc(100vw / 1920 * 953);
+  }
+  &__subtitle {
+    margin-bottom: 40px;
+  }
+  &__title {
+    margin-bottom: 50px;
+  }
+
+  @include to(1024px) {
+    --side-offset: 24px;
+    @include row-flex();
+    &__title {
+      @include size(24);
+      @include shift(0);
+      @include shift-padding-left(2);
     }
     &__subtitle {
-        margin-bottom: 40px;
+      @include size(24);
+      @include shift(0);
+      @include shift-padding-left(2);
+    }
+    p {
+      @include size(10);
+      @include shift(0);
+      @include shift-padding(0);
+    }
+    p:first-of-type {
+      @include shift-left(2);
+    }
+    &__bg {
+      margin-top: 75px;
+    }
+    &__quote {
+      position: absolute;
+      left: var(--side-offset);
+      top: 80px;
+      width: 25px;
+      height: 21px;
+    }
+  }
+  @include to(600px) {
+    --side-offset: 8px;
+    p,
+    &__subtitle,
+    &__title {
+      @include size(24);
+      @include shift(0);
+      padding-left: 0;
+      padding-right: 0;
+    }
+    p:first-of-type {
+      @include shift(0);
+      margin-bottom: 8px;
     }
     &__title {
-        margin-bottom: 50px;
+      margin-bottom: 16px;
     }
-
-    @include to(1024px){
-        --side-offset: 24px;
-        @include row-flex();
-        &__title {
-            @include size(24);
-            @include shift(0);
-            @include shift-padding-left(2);
-        }
-        &__subtitle {
-            @include size(24);
-            @include shift(0);
-            @include shift-padding-left(2);
-        }
-        p {
-            @include size(10);
-            @include shift(0);
-            @include shift-padding(0);
-        }
-        p:first-of-type {
-            @include shift-left(2);
-        }
-        &__bg {
-            margin-top: 75px;
-        }
-        &__quote {
-            position: absolute;
-            left: var(--side-offset);
-            top: 80px;
-            width: 25px;
-            height: 21px;
-        }
+    &__bg {
+      @include size(24);
+      @include shift(0);
+      height: 105.635417vw;
+      object-fit: cover;
+      object-position: center;
     }
-    @include to(600px){
-        --side-offset: 8px;
-        p,
-        &__subtitle,
-        &__title {
-            @include size(24);
-            @include shift(0);
-            padding-left: 0;
-            padding-right: 0;
-        }
-        p:first-of-type {
-            @include shift(0);
-            margin-bottom: 8px;
-        }
-        &__title {
-            margin-bottom: 16px;
-        }
-        &__bg {
-            @include size(24);
-            @include shift(0);
-            height: 105.635417vw;
-            object-fit: cover;
-            object-position: center;
-        }
-        &__content-svg {
-            display: none;
-        }
+    &__content-svg {
+      display: none;
     }
+  }
 }
 
 .home-screen3 {
-    background-color: var(--color-green);
-    padding-top: var(--screen-offset);
-    padding-bottom: var(--screen-offset);
-    padding-left: var(--page-side-fields);
-    padding-right: var(--page-side-fields);
-    text-align: center;
-    color: var(--color-send);
-    &__title {
-        margin-bottom: 50px;
+  background-color: var(--color-green);
+  padding-top: var(--screen-offset);
+  padding-bottom: var(--screen-offset);
+  padding-left: var(--page-side-fields);
+  padding-right: var(--page-side-fields);
+  text-align: center;
+  color: var(--color-send);
+  &__title {
+    margin-bottom: 50px;
+  }
+  &__subtitle {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__iframe-wrapper {
+    margin-top: 100px;
+    padding-bottom: 52.5%;
+    position: relative;
+    @include to(1024px) {
+      margin-top: 50px;
     }
-    &__subtitle {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
+    @include to(600px) {
+      margin-top: 30px;
     }
-    &__iframe-wrapper {
-        margin-top: 100px;
-        padding-bottom: 52.5%;
-        position: relative;
-        @include to(1024px){
-            margin-top: 50px;
-        }
-        @include to(600px){
-            margin-top: 30px;
-        }
-        img,
-        iframe {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-        img {
-            object-fit: contain;
-        }
+    img,
+    iframe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
+    img {
+      object-fit: contain;
+    }
+  }
 }
 
 .home-screen4 {
-    color: var(--color-send);
-    background-color: var(--color-graphite);
-    padding-top: var(--screen-offset);
-    padding-bottom: var(--screen-offset);
-    padding-left: var(--page-side-fields);
-    padding-right: var(--page-side-fields);
-    &__top-content {
-        @include row-flex();
-        align-items: flex-start;
+  color: var(--color-send);
+  background-color: var(--color-graphite);
+  padding-top: var(--screen-offset);
+  padding-bottom: var(--screen-offset);
+  padding-left: var(--page-side-fields);
+  padding-right: var(--page-side-fields);
+  &__top-content {
+    @include row-flex();
+    align-items: flex-start;
+  }
+  &__title {
+    @include size(12);
+    @include shift(0);
+    @include to(1024px) {
+      @include size(19);
     }
-    &__title {
-        @include size(12);
-        @include shift(0);
-        @include to(1024px){
-            @include size(19);
-        }
+  }
+  &__subtitle {
+    @include size(20);
+    @include shift-left(3);
+    @include shift-right(0);
+    margin-bottom: 40px;
+    @include to(1024px) {
+      margin-bottom: 24px;
     }
-    &__subtitle {
-        @include size(20);
-        @include shift-left(3);
-        @include shift-right(0);
-        margin-bottom: 40px;
-        @include to(1024px){
-            margin-bottom: 24px;
-        }
-        @include to(600px){
-            @include size(24);
-            @include shift(0);
-        }
+    @include to(600px) {
+      @include size(24);
+      @include shift(0);
     }
-    &__quote {
-        @include size(1);
-        @include shift-right(2);
-        @include shift-left(0);
-        height: auto;
-        @include to(1024px){
-            @include shift-right(1);
-            @include size(2);
+  }
+  &__quote {
+    @include size(1);
+    @include shift-right(2);
+    @include shift-left(0);
+    height: auto;
+    @include to(1024px) {
+      @include shift-right(1);
+      @include size(2);
+    }
+    @include to(600px) {
+      display: none;
+    }
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(11, calc((90vh - var(--header-h)) / 10));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    @include to(1024px) {
+      grid-template-rows: repeat(10, 67px) auto;
+    }
+    @include to(600px) {
+      grid-template-rows: repeat(10, 28px) auto;
+    }
+    &-img1 {
+      grid-area: 4/2/11/5;
+      @include to(1024px) {
+        grid-area: 4/2/11/7;
+      }
+      @include to(600px) {
+        grid-area: 4/1/11/7;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform-origin: center;
+        transform: rotate(-10deg);
+      }
+    }
+    &-img2 {
+      grid-area: 2/4/9/8;
+      @include to(1440px) {
+        grid-area: 2 / 4 / 9 / 7;
+      }
 
-        }
-        @include to(600px){
-            display: none;
-        }
+      @include to(1024px) {
+        grid-area: 2 / 4 / 9 / 9;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: rotate(0deg);
+      }
     }
-    &__content {
-        display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(11, calc((90vh - var(--header-h)) / 10) );
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        @include to(1024px){
-            grid-template-rows: repeat(10, 67px) auto;
-        }
-        @include to(600px){
-            grid-template-rows: repeat(10, 28px) auto;
-        }
-        &-img1 {
-            grid-area: 4/2/11/5;
-            @include to(1024px){
-                grid-area: 4/2/11/7;
-            }
-            @include to(600px){
-                grid-area: 4/1/11/7;
-            }
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transform-origin: center;
-                transform: rotate(-10deg);
-            }
-        }
-        &-img2 {
-            grid-area: 2/4/9/8;
-            @include to(1440px){
-                grid-area: 2 / 4 / 9 / 7;
-            }
-            
-            @include to(1024px){
-                grid-area: 2 / 4 / 9 / 9;
-            }
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transform: rotate(0deg);
-            }
-        }
-        &-img3 {
-            grid-area: 2/7/6/10;
-            @include to(1440px){
-                grid-area: 2 / 6 / 5 / 8;
-            }
-            @include to(1024px){
-                grid-area: 2 / 7 / 5 / 11;
-            }
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                margin-top: -40px;
-                transform: rotate(6deg);
-            }
-            
-        }
-        &-text {
-            grid-area: 7/8/10/11;
-            @include to(1440px){
-                grid-area: 7/7/10/11;
-                padding-left: 50px;
-                padding-top: 40px;
-            }
-            @include to(1024px){
-                grid-area: 11/2/12/10;
-                column-count: 2;
-                column-gap: 12px;
-                padding-left: 0;
-                p {
-                    break-inside: avoid-column;
-                }
-            }
-            @include to(600px){
-                column-count: 1;
-                column-gap: 0;
-                grid-area: 11 / 1 / 12 / 12;
-            }
-            p~p {
-                margin-top: 20px;
-            }
-        }
+    &-img3 {
+      grid-area: 2/7/6/10;
+      @include to(1440px) {
+        grid-area: 2 / 6 / 5 / 8;
+      }
+      @include to(1024px) {
+        grid-area: 2 / 7 / 5 / 11;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-top: -40px;
+        transform: rotate(6deg);
+      }
     }
+    &-text {
+      grid-area: 7/8/10/11;
+      @include to(1440px) {
+        grid-area: 7/7/10/11;
+        padding-left: 50px;
+        padding-top: 40px;
+      }
+      @include to(1024px) {
+        grid-area: 11/2/12/10;
+        column-count: 2;
+        column-gap: 12px;
+        padding-left: 0;
+        p {
+          break-inside: avoid-column;
+        }
+      }
+      @include to(600px) {
+        column-count: 1;
+        column-gap: 0;
+        grid-area: 11 / 1 / 12 / 12;
+      }
+      p ~ p {
+        margin-top: 20px;
+      }
+    }
+  }
 }
-
 
 .delimiter {
-    // background: var(--line-color, #262626);
-    width: 100%;
-    height: 1px;
-    width: calc(100% - (var(--page-side-fields) * 2));
-    max-width: 900px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    flex-shrink: 0;
+  // background: var(--line-color, #262626);
+  width: 100%;
+  height: 1px;
+  width: calc(100% - (var(--page-side-fields) * 2));
+  max-width: 900px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
-
 .home-news-screen {
-    background-color: var(--color-green);
-    padding-left: var(--page-side-fields);
-    padding-right: var(--page-side-fields);
-    padding-top: var(--screen-offset);
-    padding-bottom: var(--screen-offset);
-    text-align: center;
-    &__title {
-        color: var(--color-send);
-        margin-bottom: 50px;
-        @include to(600px){
-            margin-bottom: 8px;
-        }
+  background-color: var(--color-green);
+  padding-left: var(--page-side-fields);
+  padding-right: var(--page-side-fields);
+  padding-top: var(--screen-offset);
+  padding-bottom: var(--screen-offset);
+  text-align: center;
+  &__title {
+    color: var(--color-send);
+    margin-bottom: 50px;
+    @include to(600px) {
+      margin-bottom: 8px;
     }
-    &__subtitle {
-        color: var(--color-send);
-        @include text-style-1920-txt;
-        max-width: 600px;
-        margin: auto;
-        margin-bottom: 100px;
-        @include to(1024px){
-            margin-bottom: 48px;
-        }
-        @include to(600px){
-            margin-bottom: 24px;
-        }
+  }
+  &__subtitle {
+    color: var(--color-send);
+    @include text-style-1920-txt;
+    max-width: 600px;
+    margin: auto;
+    margin-bottom: 100px;
+    @include to(1024px) {
+      margin-bottom: 48px;
     }
-    &__slider {
-        @include row-flex();
-        margin-bottom: 50px;
-        &>* {
-            @include size(6);
-            @include shift(0);
-        }
-        @include to(1360px){
-            &>* {
-                @include size(8);
-                @include shift(0);
-            }
-            &>:nth-child(n+4) {
-                display: none;
-            }
-        }
-        @include to(1024px){
-            &>* {
-                @include size(12);
-                @include shift(0);
-            }
-            &>:nth-child(n+3) {
-                display: none;
-            }
-        }
-        @include to(600px){
-            &>* {
-                @include size(24);
-                @include shift(0);
-            }
-            &>:nth-child(n+2) {
-                margin-top: 16px;
-            }
-        }
+    @include to(600px) {
+      margin-bottom: 24px;
     }
+  }
+  &__slider {
+    @include row-flex();
+    margin-bottom: 50px;
+    & > * {
+      @include size(6);
+      @include shift(0);
+    }
+    @include to(1360px) {
+      & > * {
+        @include size(8);
+        @include shift(0);
+      }
+      & > :nth-child(n + 4) {
+        display: none;
+      }
+    }
+    @include to(1024px) {
+      & > * {
+        @include size(12);
+        @include shift(0);
+      }
+      & > :nth-child(n + 3) {
+        display: none;
+      }
+    }
+    @include to(600px) {
+      & > * {
+        @include size(24);
+        @include shift(0);
+      }
+      & > :nth-child(n + 2) {
+        margin-top: 16px;
+      }
+    }
+  }
 }

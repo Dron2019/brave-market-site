@@ -4,7 +4,7 @@
   @include row-flex();
   padding-top: 100px;
   padding-bottom: 50px;
-  @include to(600px){
+  @include to(600px) {
     padding-top: 62px;
     padding-left: calc(var(--page-side-fields) - 24px);
     padding-right: calc(var(--page-side-fields) - 24px);
@@ -14,16 +14,16 @@
   .footer__group-logo {
     @include size(4);
     @include shift(0);
-    @include to(1024px){
+    @include to(1024px) {
       @include size(20);
       @include shift(0);
       @include shift-padding-right(14);
       order: 1;
     }
-    @include to(600px){
+    @include to(600px) {
       @include shift-padding-right(10);
       svg {
-        margin-left: -18px;
+        // margin-left: -18px;
       }
     }
     svg {
@@ -38,19 +38,19 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 20px;
-    
-    @include to(1440px){
+
+    @include to(1440px) {
       @include size(5);
     }
-    @include to(1024px){
+    @include to(1024px) {
       @include size(24);
       @include shift(0);
       order: 5;
       flex-direction: row;
       padding-bottom: 60px;
-      border-bottom: 1px solid #D9D9D9;
+      border-bottom: 1px solid #d9d9d9;
       margin-bottom: 24px;
-      &>.footer-link-with-icon {
+      & > .footer-link-with-icon {
         display: none;
       }
       .footer__not-desktop-title {
@@ -60,13 +60,13 @@
         }
       }
     }
-    @include to(600px){
+    @include to(600px) {
       flex-wrap: wrap;
       padding-bottom: 0;
       border: none;
       .footer__not-desktop-title {
         width: 100%;
-        border-bottom: 1px solid #D9D9D9;
+        border-bottom: 1px solid #d9d9d9;
         padding-bottom: 16px;
       }
     }
@@ -77,13 +77,13 @@
     @include shift-padding-left(1);
     @include shift-padding-right(1);
     column-count: 2;
-    @include to(1440px){
+    @include to(1440px) {
       @include size(6);
       padding-left: 0;
       padding-right: 0;
     }
-    
-    @include to(1024px){
+
+    @include to(1024px) {
       @include size(12);
       @include shift(0);
       order: 5;
@@ -94,16 +94,16 @@
         width: 50%;
       }
     }
-    @include to(600px){
+    @include to(600px) {
       @include size(24);
       @include shift(0);
-      border-bottom: 1px solid #D9D9D9;
+      border-bottom: 1px solid #d9d9d9;
       padding-bottom: 16px;
     }
-    &>a {
+    & > a {
       break-inside: avoid-column;
       display: block;
-      color: var(--graphite, #28282A);
+      color: var(--graphite, #28282a);
       font-family: $default-font;
       font-size: 20px;
       font-style: normal;
@@ -112,10 +112,10 @@
       text-decoration: none;
       margin-bottom: 20px;
       color: transparent;
-      @include to(1440px){
+      @include to(1440px) {
         @include text-style-1366-nav;
       }
-      @include to(1024px){
+      @include to(1024px) {
         margin-bottom: 10px;
       }
     }
@@ -131,7 +131,7 @@
       width: 100%;
       height: 100%;
       color: var(--color-graphite);
-      transition: .25s ease-out;
+      transition: 0.25s ease-out;
       transform: none;
     }
     a:hover:before {
@@ -141,21 +141,21 @@
       transform: translateY(0);
     }
     a:after {
-        content: attr(data-title);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        color: var(--color-green);
-        transition: .25s ease-out;
-        transform: translateY(-100%);
+      content: attr(data-title);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--color-green);
+      transition: 0.25s ease-out;
+      transform: translateY(-100%);
     }
   }
   .footer__group-buttons {
     @include size(4);
     @include shift(0);
-    @include to(1024px){
+    @include to(1024px) {
       @include size(24);
       @include shift(0);
       display: flex;
@@ -164,7 +164,7 @@
       display: flex;
       flex-wrap: wrap;
       padding-bottom: 24px;
-      border-bottom: 1px solid #D9D9D9;
+      border-bottom: 1px solid #d9d9d9;
       margin-bottom: 24px;
       margin-top: 60px;
       column-gap: 20px;
@@ -177,26 +177,25 @@
         }
       }
     }
-    @include to(600px){
+    @include to(600px) {
       @include size(24);
       @include shift(0);
       margin-bottom: 16px;
       margin-top: 42px;
       .footer__not-desktop-title {
         width: 100%;
-        border-top: 1px solid #D9D9D9;
+        border-top: 1px solid #d9d9d9;
         padding-top: 16px;
         margin-top: 16px;
       }
       .footer-button-dark,
       .footer-button-light {
-        order: -1
+        order: -1;
       }
-      .footer-button-light  {
+      .footer-button-light {
         margin-left: auto;
       }
     }
-    
   }
   .footer__group-social {
     @include size(3);
@@ -204,20 +203,19 @@
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    @include to(1024px){
+    @include to(1024px) {
       @include size(12);
       @include shift(0);
       order: 6;
       flex-wrap: wrap;
       align-content: flex-start;
     }
-    @include to(600px){
+    @include to(600px) {
       margin-top: 16px;
       .footer__not-desktop-title {
         margin-bottom: 8px;
       }
     }
-
   }
   .footer__group-arrow {
     @include size(1);
@@ -225,7 +223,7 @@
     svg {
       cursor: pointer;
     }
-    @include to(1024px){
+    @include to(1024px) {
       @include size(4);
       @include shift(0);
       order: 2;
@@ -236,7 +234,7 @@
         display: block;
       }
     }
-    @include to(600px){
+    @include to(600px) {
       svg {
         width: 42px;
         height: 42px;
@@ -251,7 +249,7 @@
     display: none;
     width: 100%;
     margin-bottom: 10px;
-    @include to(1024px){
+    @include to(1024px) {
       display: block;
     }
   }
@@ -263,7 +261,6 @@
   }
 }
 
-
 .footer-button-dark {
   border-radius: 100px;
   background-color: var(--color-graphite);
@@ -274,18 +271,18 @@
   text-decoration: none;
   @include text-style-1920-nav;
   width: max-content;
-  transition: .25s ease-out;
-  @include to(1440px){
+  transition: 0.25s ease-out;
+  @include to(1440px) {
     @include text-style-1366-nav;
   }
-  @include to(600px){
+  @include to(600px) {
     padding: 16px;
   }
   [fill] {
-    transition: fill .25s ease-out;
+    transition: fill 0.25s ease-out;
   }
   [stroke] {
-    transition: stroke .25s ease-out;
+    transition: stroke 0.25s ease-out;
   }
   svg {
     margin-right: 10px;
@@ -305,7 +302,6 @@
   }
 }
 
-
 .footer-button-light {
   color: var(--color-graphite);
   padding: 17px 24px;
@@ -315,20 +311,20 @@
   @include text-style-1920-nav;
   width: max-content;
   border-bottom: 1px solid var(--color-graphite);
-  transition: .25s ease-out;
-  @include to(1440px){
+  transition: 0.25s ease-out;
+  @include to(1440px) {
     @include text-style-1366-nav;
   }
-  @include to(1024px){
+  @include to(1024px) {
     padding-left: 0;
     padding-right: 0;
   }
-  @include to(600px){
+  @include to(600px) {
     padding-top: 14px;
     padding-bottom: 14px;
   }
   [fill] {
-    transition: .25s ease-out;
+    transition: 0.25s ease-out;
   }
   svg {
     margin-right: 10px;
@@ -348,7 +344,6 @@
   }
 }
 
-
 .footer-link-with-icon {
   display: flex;
   align-items: center;
@@ -356,10 +351,10 @@
   color: var(--color-graphite);
   text-decoration: none;
   @include text-style-1920-nav;
-  @include to(1440px){
+  @include to(1440px) {
     @include text-style-1366-nav;
   }
-  @include to(1024px){
+  @include to(1024px) {
     svg {
       display: none;
     }
@@ -372,7 +367,7 @@
   }
   span:first-child {
     margin-left: calc(24px + 10px);
-    @include to(1024px){
+    @include to(1024px) {
       margin-left: 0;
     }
   }

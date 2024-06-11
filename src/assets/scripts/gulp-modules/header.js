@@ -30,7 +30,7 @@ function menuInit() {
 }
 
 function init() {
-  const unSelectHandler = (container) => {
+  const unSelectHandler = container => {
     const elem = container.querySelector('.select-items');
     if (!elem.classList.contains('select-hide')) {
       container.classList.remove('select-arrow-active');
@@ -38,7 +38,7 @@ function init() {
     }
     window.removeEventListener('click', unSelectHandler);
   };
-  const selectHandler = (event) => {
+  const selectHandler = event => {
     event.stopPropagation();
     const container = event.target.closest('[data-lang]');
     container.classList.add('select-arrow-active');
