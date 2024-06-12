@@ -27,23 +27,3 @@ gsap
   });
 
 splitToLinesAndFadeUp('.text-style-1920-h-1');
-
-// menu();
-
-// formsHandler();
-// formsScroll();
-
-
-const iframeStyle = `
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const style = document.createElement('style')
-
-style.textContent = iframeStyle
-
-frames[0].document.head.appendChild(style)

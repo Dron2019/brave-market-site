@@ -79,7 +79,12 @@
         margin-top: 32px;
         width: 100%;
         font-family: $default-font;
-        
+        transition: .25s ease-out;
+        @media (hover: hover) {
+            &:hover {
+                background: #6A6F4F;
+            }
+        }
     }
     &__left-label  {
         position: absolute;

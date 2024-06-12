@@ -111,7 +111,26 @@ useInfoboxStateEffect((state) => {
 
 initInteractiveMap();
 
+
+function getPolygons() {
+  if (document.documentElement.dataset.status !== 'local') {
+    const fd = new FormData();
+    fd.append('action', 'getFloor');
+    fd.append('floor', 1);
+    fd.append('section', 1);
+    fd.append('build', 1);
+    return axios.post('/wp-admin/admin-ajax.php', fd);
+  }
+  return axios.get('./static/polygons.txt');
+
+}
+
 function getApartments(id) { 
+  if (document.documentElement.dataset.status !== 'local') { 
+    const fd = new FormData();
+    fd.append('action', 'getFlats');
+    return axios.post('/wp-admin/admin-ajax.php', fd);
+  }
   return axios.get(`./static/appartments.json`);
 }
 
@@ -128,7 +147,8 @@ function setNewApartmentData(apartment) {
     appartment: apartment.number,
     area: apartment.all_room,
     price: apartment.price,
-    img: apartment.img_big,
+    // img: apartment.img_big,
+    img: document.documentElement.dataset.status === 'local' ? apartment.img_big : '/wp-content/themes/3d/assets/images/interactive-map/infobox.jpg',
     sale: apartment.statu_text,
     rightLabel: apartment.statu_text,
     leftLabel: 'Ряд: ' + apartment.type + ', №' + apartment.number,
@@ -136,11 +156,14 @@ function setNewApartmentData(apartment) {
 }
 
 async function initInteractiveMap() {
-    const img = await fetch('./assets/images/interactive-map/Master_Plan_Irpin.jpg');
+    const imgUrl = document.documentElement.dataset.status === 'local' ? './assets/images/interactive-map/Master_Plan_Irpin.jpg' : '/wp-content/themes/3d/assets/images/interactive-map/Master_Plan_Irpin.jpg';
+    const img = await fetch(imgUrl);
     const imgBlob = await img.blob();
     const imgURL = URL.createObjectURL(imgBlob);
-    const polygonsRequest = await axios.get('./static/polygons.txt');
+    const polygonsRequest = await getPolygons();
     const polygons = polygonsRequest.data;
+
+    console.log(polygons);
 
     //get image size
     const imgSize = new Image();
@@ -156,14 +179,39 @@ async function initInteractiveMap() {
 }
 
 function createSvg(imgURL, width, height, polygons = '') {
-  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  svg.classList.add('interactive-map');
-  svg.setAttribute("width", "100%");
-  svg.setAttribute("height", "100%");
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    svg.insertAdjacentHTML('beforeend', `<image href="${imgURL}" width="${width}" height="${height}" />`);
-    svg.insertAdjacentHTML('beforeend', polygons);
-    container.innerHTML = '';  
-  return svg;
+
+  const isPolygonsFromServer = typeof polygons === 'object';
+  let polygonsFromServer = '';
+
+  if (isPolygonsFromServer) {
+    polygonsFromServer = Object.entries(polygons.cords).reduce((acc, [key, value], index) => {
+      return acc + `<polygon data-id="${polygons.flatsIds[index]}" points="${value}" />`;
+    }, '');
+
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.classList.add('interactive-map');
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+      svg.setAttribute("viewBox", `0 0 ${polygons.size[0]} ${polygons.size[1]}`);
+      svg.insertAdjacentHTML('beforeend', `<image href="${document.documentElement.dataset.base}/assets${polygons['url']}" width="${polygons.size[0]}" height="${polygons.size[1]}" />`);
+      svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
+      container.innerHTML = '';  
+    return svg;
+  } else {
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.classList.add('interactive-map');
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "100%");
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+      svg.insertAdjacentHTML('beforeend', `<image href="${imgURL}" width="${width}" height="${height}" />`);
+      svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
+      container.innerHTML = '';  
+    return svg;
+
+  }
+
+
+
 }
 

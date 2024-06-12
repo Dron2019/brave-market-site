@@ -1,4 +1,4 @@
-export function newsCard({ type, typeTitle, title, date, text, href, image } = {}) {
+export function newsCard({ type, typeTitle, title, date, text, url, img } = {}) {
     // return `
     
     // <a class="news-card ${type ? type : 'news'}" href="${href}"><img class="news-card__image" src="${image}">
@@ -15,9 +15,9 @@ export function newsCard({ type, typeTitle, title, date, text, href, image } = {
     // </a>
     // `;
     return `
-        <a class="news-card" href="${href}">
+        <a class="news-card" href="${url}">
             <div class="news-card__img">
-                <img src="${image}" title="foto" alt="foto">
+                <img src="${img}" title="foto" alt="foto">
             </div>
             <div class="news-card__title">${title}</div>
             <div class="news-card__text">${text}</div>
