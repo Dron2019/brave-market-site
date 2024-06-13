@@ -281,3 +281,27 @@
     background-color: #d9d9d9;
   }
 }
+
+
+/*headeroom.js styles*/
+.header {
+  will-change: transform;
+  &.headroom--not-bottom.headroom--not-top.headroom--unpinned {
+    transform: translateY(-100%);
+  }
+  
+  &.headroom:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    pointer-events: none;
+    cursor: pointer;
+  }
+  &.headroom--unpinned:after {
+    pointer-events: all;
+  }
+}
