@@ -1,6 +1,7 @@
 import Swiper from 'swiper/bundle';
 import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import sideSwitchArrow from './modules/side-switch-arrow';
+import splitToLinesAndFadeUp from './modules/effects/splitLinesAndFadeUp';
 // import 'swiper/swiper.scss';
 
 const questionList = document.querySelector('.about-screen5__list.about-list');
@@ -174,3 +175,5 @@ document.addEventListener('DOMContentLoaded', () => {
 function pad(num) {
   return num < 10 ? '0' + num : num;
 }
+
+splitToLinesAndFadeUp('.text-style-1920-h-1');

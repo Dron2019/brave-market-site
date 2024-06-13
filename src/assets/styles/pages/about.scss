@@ -293,7 +293,7 @@
     }
   }
   .about-slider__buttons-min {
-    display: none;
+    display: flex;
   }
 }
 @media (max-width: 768px) {
@@ -361,9 +361,6 @@
       height: 420px;
       margin-bottom: 10px;
     }
-  }
-  .about-slider__buttons-min {
-    display: flex;
   }
 }
 @media (max-width: 600px) {
