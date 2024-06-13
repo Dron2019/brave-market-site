@@ -47,6 +47,10 @@ export function formsHandler() {
     modal.classList.toggle('active', isShow);
     formWrapperSuccess.classList.toggle('active', isShow);
     document.body.classList.toggle('active', isShow);
+
+    if (!formWrapper.classList.contains('active')) {
+      window.dispatchEvent(new CustomEvent('form-close'));
+    }
   }
 
   const formsWithTel = ['[data-form="data-popup-form"]'];
@@ -145,7 +149,7 @@ function hiddenFieldsHandler() {
       el.value = evt.detail.place_number;
     });
   });
-  window.addEventListener('interactive-map-infobox-close', (evt) => {
+  window.addEventListener('form-close', (evt) => {
     rowField.forEach((el) => {
       el.value = '';
     });

@@ -143,8 +143,6 @@ function closeInfobox() {
     ...infoboxView(),
     show: false,
   });
-
-  window.dispatchEvent(new CustomEvent('interactive-map-infobox-close', {}));
 }
 
 function setNewApartmentData(apartment) {
