@@ -107,6 +107,10 @@ useInfoboxStateEffect((state) => {
   // document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
   document.querySelector('[data-interactive-map-infobox-area]').textContent = state.data.area;
   document.querySelector('[data-interactive-map-infobox-price]').textContent = state.data.price;
+
+  window.dispatchEvent(new CustomEvent('interactive-map-infobox-open', {
+    detail: state.data,
+  }));
 });
 
 initInteractiveMap();
@@ -139,6 +143,8 @@ function closeInfobox() {
     ...infoboxView(),
     show: false,
   });
+
+  window.dispatchEvent(new CustomEvent('interactive-map-infobox-close', {}));
 }
 
 function setNewApartmentData(apartment) {
@@ -152,6 +158,8 @@ function setNewApartmentData(apartment) {
     sale: apartment.statu_text,
     rightLabel: apartment.statu_text,
     leftLabel: 'Ряд: ' + apartment.type + ', №' + apartment.number,
+    row_number: apartment.type,
+    place_number: apartment.number,
   }
 }
 

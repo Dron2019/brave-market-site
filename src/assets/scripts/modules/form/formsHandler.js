@@ -130,4 +130,27 @@ export function formsHandler() {
       });
     }
   });
+  hiddenFieldsHandler();
+}
+
+function hiddenFieldsHandler() {
+  const rowField = document.querySelectorAll('input[name="row_number"]');
+  const placeField = document.querySelectorAll('input[name="place_number"]');
+
+  window.addEventListener('interactive-map-infobox-open', (evt) => {
+    rowField.forEach((el) => {
+      el.value = evt.detail.row_number;
+    });
+    placeField.forEach((el) => {
+      el.value = evt.detail.place_number;
+    });
+  });
+  window.addEventListener('interactive-map-infobox-close', (evt) => {
+    rowField.forEach((el) => {
+      el.value = '';
+    });
+    placeField.forEach((el) => {
+      el.value ='';
+    });
+  });
 }
