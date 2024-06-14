@@ -4,14 +4,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: calc(var(--header-h) + 20px);
+  padding-top: calc(var(--header-h));
   background-color: var(--color-green);
   padding-bottom: var(--screen-offset);
-  @include to(1024px){
+  .breadcrumbs {
+    margin-top: 70px;
+  }
+  @include to(1024px) {
     padding-bottom: 48px;
     padding-top: calc(var(--header-h) + 70px);
+    .breadcrumbs {
+      margin-top: 0;
+    }
   }
-  @include to(600px){
+  @include to(600px) {
     padding-top: calc(var(--header-h) + 30px);
     padding-bottom: 16px;
   }
@@ -19,7 +25,7 @@
     margin-bottom: 50px;
     margin-top: 20px;
     text-align: center;
-    @include to(600px){
+    @include to(600px) {
       margin-bottom: 16px;
     }
     &--small {
@@ -29,10 +35,10 @@
       font-style: normal;
       font-weight: 400;
       line-height: 120%; /* 93.6px */
-      @include to(1024px){
+      @include to(1024px) {
         font-size: 40px;
       }
-      @include to(600px){
+      @include to(600px) {
         font-size: 26px;
       }
     }
@@ -48,7 +54,7 @@
     position: absolute;
     left: var(--page-side-fields);
     top: calc(var(--header-h) + 50px);
-    @include to(600px){
+    @include to(600px) {
       display: none;
     }
   }
@@ -118,7 +124,7 @@
     @include to(1024px) {
       @include size(12);
     }
-    @include to(600px){
+    @include to(600px) {
       @include size(24);
     }
   }

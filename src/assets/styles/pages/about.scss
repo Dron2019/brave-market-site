@@ -195,9 +195,9 @@
       }
     }
     &__answer {
-      display: none;
+      height: 0;
+      overflow-y: hidden;
       max-width: 588px;
-      margin-top: 20px;
       text-align: left;
     }
     &__close-icon {
@@ -206,7 +206,6 @@
   }
   &-slider__buttons {
     position: absolute;
-    // margin-right: 562px;
     margin-right: 10vw;
     max-width: 120px;
     width: 100%;
@@ -920,4 +919,12 @@
   .about-one-title-block {
     height: calc(100vh - var(--header-h));
   }
+}
+
+.accordion-drawer {
+  // display: none;
+  overflow-y: hidden;
+  height: 0;
+  background: lightpink;
+  // padding: 20px 0;
 }
