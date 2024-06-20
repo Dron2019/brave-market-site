@@ -185,13 +185,16 @@ function createTimeline(accordion) {
       {
         marginTop: 20,
         height: 'auto',
-        duration: 0.8,
+        duration: 0.35,
+        ease: 'power4.inOut',
       },
     )
     .fromTo(
       accordion.querySelector('[data-about-item-close-icon]'),
       { rotate: 0 },
-      { rotate: -45 },
+      { rotate: -45, 
+        duration: 0.35,
+        ease: 'power4.inOut', },
       '<',
     );
 
