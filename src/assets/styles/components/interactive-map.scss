@@ -1,4 +1,5 @@
 .interactive-map {
+    
     polygon {
         fill: rgba(127, 133, 93, 0.40);
         stroke-width: 2px;
@@ -8,5 +9,33 @@
         &:hover {
             fill: rgba(127, 133, 93, 0.85);
         }
+    }
+}
+
+@media (min-width: 768px) {}
+
+.mini-map {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 160px;
+    height: 181px;
+    z-index: 20000;
+    border-radius: 12px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+    border: 1px solid black;
+    // background: url(https://images.unsplash.com/photo-1622090860720-c4a77e146284?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzE2NDQwMDY&ixlib=rb-4.0.3&q=80) top left no-repeat;
+    background-size: cover;
+}
+
+.mini-map-marker {
+    position: absolute;
+    border: 2px solid #fff;
+}
+
+@include to(768px) {
+    .mini-map {
+        width: 80px;
+        height: 90.5px;
     }
 }

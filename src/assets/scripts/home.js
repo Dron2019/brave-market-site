@@ -26,4 +26,4 @@ gsap
     rotate: 0,
   });
 
-splitToLinesAndFadeUp('.text-style-1920-h-1');
+splitToLinesAndFadeUp('.text-style-1920-h-1', gsap);

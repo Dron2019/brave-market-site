@@ -1,7 +1,10 @@
 import axios from 'axios';
+import gsap from 'gsap';
+import Draggable from 'gsap/Draggable';
 const { useState } = require("./modules/helpers/helpers");
 const { default: placeElemInWrapperNearMouse } = require("./modules/helpers/placeElemNearMouse");
 
+gsap.registerPlugin(Draggable);
 //Master_Plan_Irpin
 
 const container = document.querySelector('.home-screen3__iframe-wrapper');
@@ -178,6 +181,7 @@ async function initInteractiveMap() {
         console.log(imgSize.width, imgSize.height);
         container.appendChild(createSvg(imgURL, imgSize.width, imgSize.height, polygons));
         container.scrollTo(container.scrollWidth / 2 - container.getBoundingClientRect().width / 2, 5000);
+        initMiniScroll(imgUrl);
     }
     const apartmentsRequest = await getApartments();
     const apartments = apartmentsRequest.data;
@@ -221,3 +225,63 @@ function createSvg(imgURL, width, height, polygons = '') {
 
 }
 
+
+
+function initMiniScroll(imageUrl) {
+  let bigImage = document.querySelector(".interactive-map"),
+    smallImage = document.querySelector("#miniMap"),
+    marker = document.querySelector("#mapMarker"),
+    smallX = gsap.quickSetter(marker, "x", "px"),
+    smallY = gsap.quickSetter(marker, "y", "px"),
+    bigX = gsap.quickSetter(bigImage, "x", "px"),
+    bigY = gsap.quickSetter(bigImage, "y", "px"),
+    imageScale;
+  const container = document.querySelector('.home-screen3__iframe-wrapper');
+
+    smallImage.style.backgroundImage = `url(${imageUrl})`;
+  function setupSizing() {
+    const bigImageWidth = bigImage.getBoundingClientRect().width;
+
+    imageScale = smallImage.offsetWidth / bigImageWidth;
+    let screenToBigRatio = container.offsetWidth / bigImageWidth,
+      aspectRatio = container.offsetWidth / container.getBoundingClientRect().height;
+    gsap.set(marker, {
+      width: screenToBigRatio * smallImage.offsetWidth,
+      height: screenToBigRatio * smallImage.offsetWidth / aspectRatio
+    });
+  }
+  setupSizing();
+  window.addEventListener("resize", setupSizing);
+
+  let bigDraggable = Draggable.create(bigImage, {
+    bounds: container,
+    onDrag: alignSmall,
+    onThrowUpdate: alignSmall,
+    inertia: true
+  })[0];
+
+  function alignSmall() {
+    smallX(-bigDraggable.x * imageScale);
+    smallY(-bigDraggable.y * imageScale);
+  }
+
+  let smallDraggable = Draggable.create(marker, {
+    bounds: smallImage,
+    onDrag: alignBig,
+    onThrowUpdate: alignBig,
+    inertia: true
+  })[0];
+
+  function alignBig() {
+    bigX(-smallDraggable.x / imageScale);
+    bigY(-smallDraggable.y / imageScale);
+  }
+
+  // align center initially
+  gsap.set(bigImage, {
+    x: (bigDraggable.minX + bigDraggable.maxX) / 2,
+    y: (bigDraggable.minY + bigDraggable.maxY) / 2
+  });
+  bigDraggable.update();
+  alignSmall();
+}
