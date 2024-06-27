@@ -32,7 +32,7 @@ export default function splitToLinesAndFadeUp(selector, gsap) {
 
 }
 
-export const splitElementByWords = (text) => {
+export const splitElementByWords = (text, gsap) => {
   let mathM = text.innerHTML.match(/<\s*(\w+\b)(?:(?!<\s*\/\s*\1\b)[\s\S])*<\s*\/\s*\1\s*>|\S+/g);
         if (mathM === null) return;
         mathM = mathM.map(el => `<span style="display:inline-flex"><span>${el}</span></span>`);

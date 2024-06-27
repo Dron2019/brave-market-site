@@ -90,6 +90,9 @@
   background-color: #7f855d;
   color: #f2eddb;
   --side-offset: 200px;
+  position: relative;
+  z-index: 2
+  ;
   @include to(1440px) {
     --side-offset: 140px;
   }
@@ -292,6 +295,8 @@
   padding-bottom: var(--screen-offset);
   padding-left: var(--page-side-fields);
   padding-right: var(--page-side-fields);
+  position: relative;
+  z-index: 3;
   &__top-content {
     @include row-flex();
     align-items: flex-start;
@@ -436,6 +441,8 @@
   padding-top: var(--screen-offset);
   padding-bottom: var(--screen-offset);
   text-align: center;
+  position: relative;
+  z-index: 4;
   &__title {
     color: var(--color-send);
     margin-bottom: 50px;
