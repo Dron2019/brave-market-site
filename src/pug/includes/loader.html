@@ -94,16 +94,16 @@
     }
 </style>
 
-<style data-page-elements-style-for-loader>
+<!-- <style data-page-elements-style-for-loader>
     .text-style-1920-h-2-thin-font,
     .front-screen .delimiter,
     .front-screen .text-style-1920-h-1-font,
     .front-screen__subtitle {
         opacity: 0;
     }
-</style>
+</style> -->
 
-<script src="./assets/scripts/gsap.min.js"></script>
+<!-- <script src="./assets/scripts/gsap.min.js"></script>
 
 <script>
     console.log(gsap);
@@ -147,13 +147,6 @@ function scaleTo1(el) {
 
     render(value);
 }
-
-    function linesTo0() {
-        for (let index = 0; index < document.querySelectorAll('.loader path:not(.static)').length; index++) {
-            const element = document.querySelectorAll('.loader path:not(.static)')[index];
-            scaleTo1(element);
-        }
-    }
     const splitElementByWords = (text) => {
         if (!text) return;
         let mathM = text.innerHTML.match(/<\s*(\w+\b)(?:(?!<\s*\/\s*\1\b)[\s\S])*<\s*\/\s*\1\s*>|\S+/g);
@@ -209,7 +202,7 @@ function scaleTo1(el) {
                 })      
             clearInterval(interval);
 
-            tl.play();
+            // tl.play();
         }
     }, 200);
     window.addEventListener('DOMContentLoaded',function(evt){
@@ -217,4 +210,4 @@ function scaleTo1(el) {
             loaderStatus.isDOMLoaded = true;
         }, 500);
     });
-</script>
+</script> -->

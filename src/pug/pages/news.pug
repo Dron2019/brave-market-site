@@ -23,28 +23,40 @@ block scripts
   script(defer src='./assets/scripts/vendors.bundle.js')
   script(defer src='./assets/scripts/news.bundle.js')
 block content
-  .container.news-front-screen
-    include ../includes/breadcrumbs.pug
-    .text-style-1920-h-1.text-uppercase.color-send.news-front-screen__title Новини та Акції
-    .news-filter-label 
-      .news-filter-label__text Фільтр
-      .news-filter-label__line
-    .tabs(data-news-tabs)
-      .tabs__tab.active Всі
-      .tabs__tab Новини
-      .tabs__tab Акції
-    .news-filter-label 
-      .news-filter-label__text
-      .news-filter-label__line
+  .inner-page-front-screen
+    .inner-page-front-screen__content
+        .inner-page-front-screen__text
+            div.color-gold.inner-page-front-screen__subtitle Пропозиції
+            div.color-send.text-style-h-2.inner-page-front-screen__title Останні новини
+            div.color-send.text-style-txt.inner-page-front-screen__description Будьте в курсі останніх новин та спеціальних пропозицій. Переглядайте наші актуальні акції та оновлення, щоб не пропустити вигідні можливості!
+            button(type="button" class="button-colored") 
+                span Оренда
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                    <path d="M21.8508 12H0.706055" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>
+        .inner-page-front-screen__img
+            img(src="./assets/images/news/front-bg.jpg", alt="")
   .container.news-container
-    each val in news
-      a(href="/single-news").news-card
-        .news-card__img
-          +img(val['img'])
-        .news-card__title Ексклюзивні Знижки на Центральному Ринку Ірпінь
-        .news-card__text Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!
+    .news-container__content
+      each val in news
+        a(href="/single-news").news-card
+          .news-card__content
+            .news-card__title Ексклюзивні Знижки на Центральному Ринку Ірпінь
+            .news-card__text Завітайте до нашого ринку та насолоджуйтеся ексклюзивними знижками на найпопулярніші товари. Ваші улюблені покупки стали ще доступнішими!
+            button(type="button").button-colored.button-colored--dark
+              span Детальніше
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5415 23.4229L21.8499 12.0012L10.5415 0.578125" stroke="white" stroke-width="1.41167" stroke-miterlimit="10"/>
+                <path d="M21.8508 12H0.706055" stroke="white" stroke-width="1.41167" stroke-miterlimit="10"/>
+              </svg>
+          .news-card__img-wrapper
+            .news-card__img
+              +img(val['img'])
   .container.news-more-container
-    a(href="#").button-colored.button-colored--dark Більше новин
+    a(href="#").button-colored.button-colored--dark-transparent 
+      span Більше новин
+  include ../includes/contact-screen.pug
 block footer
   include ../includes/footer.pug
 

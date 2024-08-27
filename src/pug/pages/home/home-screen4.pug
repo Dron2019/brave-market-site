@@ -1,0 +1,79 @@
+.home-screen4
+    .home-screen4__top-content
+        .color-gold.text-style-auxiliary.home-screen4__subtitle переваги
+        .text-style-h-3.color-graphite.home-screen4__title ключові Переваги центрального ринку “Ірпінь”
+    .home-screen4__content
+        .home-screen4__slider.swiper-container(data-screen4-slider)
+            -
+                var slides = [
+
+                    { 
+                        "img": "./assets/images/home/home-screen4/1.jpg",
+                        "title": "3 місяці канікул",
+                        "text": "Для перших 50 орендларів діє ексклюзивна пропозиція",},
+                    { 
+                        "img": "./assets/images/home/home-screen4/2.jpg",
+                        "title": "Оренда від 15м2",
+                        "text": "Є можливість орендувати: 15м2, 30м2, 60м2, 15м2",},
+                    { 
+                        "img": "./assets/images/home/home-screen4/3.jpg",
+                        "title": "Потужний генератор",
+                        "text": "Ваш бізнес буде працювати беззупинно",},
+                    { 
+                        "img": "./assets/images/home/home-screen4/4.jpg",
+                        "title": "Вигідне розташування",
+                        "text": "Найбільша набережна Київщини. Об’їздна дорога м.Ірпеня по вулиці Підгірній",},
+                    { 
+                        "img": "./assets/images/home/home-screen4/5.jpg",
+                        "title": "Зупинка для маршруток",
+                        "list": [
+                            "Місцеві маршрутки",
+                            "Маршрутки які їдуть на Київ",
+                            "Маршрутка від центрального ринку Ірпінь до мікрорайонів міста які будуть привозити та відвозити мешканців міста"
+                        ]},
+                    { 
+                        "img": "./assets/images/home/home-screen4/6.jpg",
+                        "title": "Є пропозиція для різної категорії бізнесів",
+                        "list": [
+                            "Продукти ",
+                            "Фаст-фуд ",
+                            "Одяг/Взуття/Білизна ",
+                            "Все для дому ",
+                            "Все для ремонту ",
+                            "Побутова хімія ",
+                            "Послуги",
+
+                        ],
+                        "text": " Щотижнева крафтова ярмарка Свіжі овочі, фрукти,крафтові виробники молочної продукції...",
+                        },
+                        {
+                            "img": "./assets/images/home/home-screen4/7.jpg",
+                            "title": "Щотижнева крафтова ярмарка",
+                            "text": "Свіжі овочі, фрукти,крафтові виробники молочної продукції..."
+                        }
+                ]
+
+            .swiper-wrapper
+                each val in slides
+                    .swiper-slide.home-screen4__slide
+                        .home-screen4__slide-img
+                            .home-screen4__slide-img-wrapper
+                                img(src=val['img'] loading="lazy")
+                        .home-screen4__slide-text
+                            .text-style-h-4.color-graphite.home-screen4__slide-title=val['title']
+                            .text-style-txt.color-graphite=val['text']
+                            if val['list']
+                                ul.text-style-txt.color-graphite
+                                    each item in val['list']
+                                        li=item
+            .home-screen4__slider-nav
+                <svg  data-screen4-slider-prev width="104" height="64" viewBox="0 0 104 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="-0.5" y="0.5" width="103" height="63" transform="matrix(-1 0 0 1 103 0)" stroke="#1F3930"/>
+                    <path d="M53.458 43.4229L42.1496 32.0012L53.458 20.5781" stroke="#1F3930" stroke-width="1.41167" stroke-miterlimit="10"/>
+                    <path d="M42.1492 32H63.2939" stroke="#1F3930" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>
+                <svg data-screen4-slider-next width="104" height="64" viewBox="0 0 104 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="103" height="63" stroke="#1F3930"/>
+                    <path d="M50.542 43.4229L61.8504 32.0012L50.542 20.5781" stroke="#1F3930" stroke-width="1.41167" stroke-miterlimit="10"/>
+                    <path d="M61.8508 32H40.7061" stroke="#1F3930" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>

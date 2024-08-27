@@ -6,43 +6,98 @@ block variable
         var id_page = 'id-page-location'
         var class_page = 'class-page-location'
         var breadcrumbsSubitem = [];
-        var cardsInfo = [
-            { 
-                title: 'Від м. Академмістечко', 
-                textItems: [
-                    "194 (кінцева зупинка)",
-                    "816 (вийти на зупинці \"Новобиличі\"), ~10 хвилин пішки",
-                    "392 (вийти на зупинці \"Гіпермаркет\"), ~10 хвилин пішки",
-                    "30 (вийти на зупинці \"вул. Газопровідна\"), ~10 хвилин пішки",
-                ], 
-                img: './assets/images/location/Image.jpg' 
+        var routes = [
+            {
+                "title1": "№20 смт.",
+                "title2": "Гостомель-Склозавод-м.Ірпінь",
+                "img": "./assets/images/location/routes/route-20.jpg",
+                "list": [
+                    {
+                        "title": "1-ше коло:",
+                        "points": ["06-15","07-20","08-25","09-45","10-45","11-55","13-15","14-55","16-20","17-30","18-55","20-35","21-40",
+                        ]
+                    },
+                    {
+                        "title": "2-ге коло:",
+                        "points": ["06-35","07-40","08-45","10-00","11-15","12-15","13-30","15-15","16-35","17-55","19-30",
+                        ]
+                    },
+                    {
+                        "title": "3-те коло:",
+                        "points": ["06-55","07-55","09-00","10-15","11-35","13-00","14-30","15-55","16-55","18-30",
+                        ]
+                    },
+                ]
             },
-            { 
-                title: 'Від м. Нивки', 
-                textItems: [
-                    "226 (вийти на зупинці “с. Берківці”), ~10 хвилин пішки",
-                    "719 (вийти на зупинці “с. Берківці”), ~10 хвилин пішки",
-                    "14 (вийти на зупинці “с. Берківці”), ~10 хвилин пішки",
-                ], 
-                img: './assets/images/location/Image-2.jpg' 
+            {
+                "title1": "№ 20-Д",
+                "title2": "смт. Гостомель – Склозавод - м. Ірпінь",
+                "img": "./assets/images/location/routes/route-20D.jpg",
+                "list": [
+                    {
+                        "title": "розклад:",
+                        "points": ["06-40","07-55","09-10","10-50","12-35","14-05","15-20","17-35",
+                        ]
+                    },
+                ]
             },
-            { 
-                title: 'Гостомель', 
-                textItems: [
-                    "386 (вийти на зупинці “Гіпермаркет”), ~10 хвилин пішки",
-                    "388 (вийти на зупинці “Гіпермаркет”), ~10 хвилин пішки",
-                    "289 (вийти на зупинці “Гіпермаркет”), ~10 хвилин пішки",
-                ], 
-                img: './assets/images/location/Image-3.jpg' 
+            {
+                "title1": "№ 99 м",
+                "title2": "Буча - м. Ірпінь (зал. ст.)",
+                "img": "./assets/images/location/routes/route-99.jpg",
+                "list": [
+                    {
+                        "title": "розклад:",
+                        "points": ["06:40","07-20","07:40","08:00","08:20","08:40","09:00","09:20","09:40","10:00","10:20","10:40","11:00","11:20","11:40","12:05","12:30","13:00","13:25","13:50","14:15","14:40","15:05","15:30","15:55","16:20","16:45","17:10","17:35","18:00","18:25","18:50","19:15","19:40","20:05",
+                        ]
+                    },
+                ],
+                "description": "Залізнична пл. Лісова Буча; Вул. Тарасівська; Станція Буча; Вул. Садова (Буча); Вул. Яблунська; ТРЦ \"Жираф\"; Вул. Щаслива; Вул. Мінеральна; Вул. Тургенівська; Вул. Садова (Ірпінь);Базар; Вул. Шевченка; Вул. Гагаріна; Вул. Пушкінська; Вул. Лича; Вул. Михайлівська; Паспортний стіл; Вул. Довженка; Вул. Озерна; Вул. Достоєвського Вул. Громадянська; МРЕВ; Станція Ірпінь."
             },
-            { 
-                title: 'Буча', 
-                textItems: [
-                    "381 (вийти на зупинці “Лісорозсадник”), ~10 хвилин пішки",
-                    "423 (вийти на зупинці “Лісорозсадник”), ~10 хвилин пішки",
-                    "816 (вийти на зупинці “Лісорозсадник”), ~10 хвилин пішки",
-                ], 
-                img: './assets/images/location/Image-3.jpg' 
+            {
+                "title1": "№ 100",
+                "title2": "м.Буча (ТЦ ``Модуль ``) - м.Ірпінь",
+                "img": "./assets/images/location/routes/route-100.jpg",
+                "list": [
+                    {
+                        "title": "розклад:",
+                        "points": ["07-00","08-00","09-00","10-00","11-00","12-00","13-00","14-00","15-00","16-00","17-00","18-00","19-00","20-00",
+                        ]
+                    },
+                ],
+                "description": "м. БУЧА (вул. Депутатська - Нове шосе - бульв. Богдана Хмельницького - вул. Енергетиків - вул. Захисників України - вул. Левка Лук'яненка (залізничний вокзал Буча) - вул. Києво-Мироцька - вул. Тячівська - вул. Сім'ї Красовських (з.п. Лісова Буча) - вул.Старо-Яблунська) - смт. Гостомель (вул. Центральна) - м. Ірпінь (Гостомельське шосе - вул. Котляревського - вул. Авіаконструктора Антонова (залізничний вокзал Ірпінь) - вул. Ветеранів Афганістану - вул. Северинівська - автостанція \"Ірпінь\")"
+            },
+            {
+                "title1": "№392 ",
+                "title2": "Ірпінь - Київ АС \"Дачна\" , автобус",
+                "img": "./assets/images/location/routes/route-392.jpg",
+                "list": [
+                    {
+                        "title": "розклад:",
+                        "points": ["07:00","07:20","07:40","07:55","08:05","08:15","08:25","08:35","08:45","08:55","09:05","09:15","09:25","09:35","09:45","10:00","10:20","10:40","11:00","11:20","11:40","12:05","12:35","13:05","13:35","14:05","14:35","15:00","15:20","15:40","16:00","16:20","16:40","17:00","17:20","17:40","18:00","18:20","18:40","19:00","19:20","19:40","20:00","20:20","20:40","21:00","21:30","22:00",
+                        ]
+                    },
+                ],
+                "description": "ст. м. Академмістечко - ст. м. Академмістечко - Нафтовик - вул. Газопровідна - Гіпермаркет - Лісорозсадник - КПП ДАІ - с. Горенка - м. Ірпінь - вул. Трудова - вул. Багірова - вул. Жовтнева - 9-а лінія - вул. Покровська - вул. Натана Рибака - 6-а лінія - вул. Кулиняка - м. Ірпінь (Автовокзал)"
+            },
+            {
+                "title1": "№18+6 ",
+                "title2": "«м. Ірпінь (вул.11 Лінія) – м. Ірпінь (з-д «Машторф»)» через залізничний вокзал.",
+                "img": "./assets/images/location/routes/route-18+6.jpg",
+                "list": [
+                    {
+                        "title": "ЖК «Ібіс:",
+                        "points": ["07:30","12:00","16:00",
+                        ]
+                    },
+                    {
+                        "title": "Вул.Садової (Храм Святого Миколая):",
+                        "points": ["08:00","12:30","16:30",
+                        ]
+                    },
+                ],
+                "description": "з ЖК «Ібіс»,11 Лінія, Гостомельське шосе, Северинівська, Піщана, Підгірна, Гуцала, Центральна (залізничний вокзал), Садова, Університетська, Північна, Степанівська, Садова",
+                "description2": "<b>Зворотній шлях:</b> Садова, Степанівська, Північна, Університетська, Садова, Центральна (залізничний вокзал), Гуцала, Підгірна,Піщана,Северинівська, Гостомельське шосе, 11 Лінія, ЖК «Ібіс»."
             },
         ]
 
@@ -55,37 +110,42 @@ block scripts
     script(defer src='./assets/scripts/vendors.bundle.js')
     script(defer src='./assets/scripts/location.bundle.js')
 block content
-    .container.news-front-screen
-        include ../includes/breadcrumbs.pug
-        .text-style-1920-h-1.text-uppercase.color-send.news-front-screen__title Як дістатися
-        .news-filter-label 
-            .news-filter-label__text Фільтр
-            .news-filter-label__line
-        .tabs(data-location-tabs)
-            .tabs__tab(data-location-tab="transport") Громадський транспорт
-            .tabs__tab(data-location-tab="auto") Авто
-        .news-filter-label 
-            .news-filter-label__text
-            .news-filter-label__line
-    .container.location-transport-container(data-location-container="transport")
-        each val in cardsInfo
-            .location-card
-                .location-card__img-wrap
-                    .location-card__img
-                        img(src=val['img'])
-                .location-card__title= val['title']
-                .location-card__text
-                    each item in val['textItems']
-                        .location-card__text-item
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g opacity="0.7">
-                                    <path d="M4 16C4 16.88 4.39 17.67 5 18.22V19.5C5 20.33 5.67 21 6.5 21C7.33 21 8 20.33 8 19.5V19H16V19.5C16 20.32 16.67 21 17.5 21C18.32 21 19 20.33 19 19.5V18.22C19.61 17.67 20 16.88 20 16V6C20 2.5 16.42 2 12 2C7.58 2 4 2.5 4 6V16ZM7.5 17C6.67 17 6 16.33 6 15.5C6 14.67 6.67 14 7.5 14C8.33 14 9 14.67 9 15.5C9 16.33 8.33 17 7.5 17ZM16.5 17C15.67 17 15 16.33 15 15.5C15 14.67 15.67 14 16.5 14C17.33 14 18 14.67 18 15.5C18 16.33 17.33 17 16.5 17ZM18 11H6V6H18V11Z" fill="#28282A"/>
-                                </g>
-                            </svg>
-                            span #{item}
-    .container.location-map-container(data-location-container="auto")
-        #map
-            .map
+    .inner-page-front-screen
+        .inner-page-front-screen__content
+            .inner-page-front-screen__text
+                div.color-gold.inner-page-front-screen__subtitle Графік руху
+                div.color-send.text-style-h-2.inner-page-front-screen__title розклад автобусів
+                div.color-send.text-style-txt.inner-page-front-screen__description Дізнайтеся, як зручно дістатися до нашого ринку різними видами транспорту. Перегляньте маршрути, розклад руху та доступні варіанти громадського транспорту.
+                a(target='_blank' type="button" class="button-colored" href="https://www.google.com/maps/dir//%D0%B2%D1%83%D0%BB%D0%B8%D1%86%D1%8F+%D0%9F%D1%96%D0%B4%D0%B3%D1%96%D1%80%D0%BD%D0%B0,+%D0%86%D1%80%D0%BF%D1%96%D0%BD%D1%8C,+%D0%9A%D0%B8%D1%97%D0%B2%D1%81%D1%8C%D0%BA%D0%B0+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/@50.5126895,30.2432543,15z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x472b33c976ed30eb:0xbbb752ac7aa526de!2m2!1d30.253554!2d50.5126763?entry=ttu") 
+                    span Побудувати маршрут
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                        <path d="M21.8508 12H0.706055" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                    </svg>
+            .inner-page-front-screen__img
+                img(src="./assets/images/for-tenants/front-bg.jpg", alt="")
+    .location-screen
+        .location-screen-container
+            each val in routes
+                .location-screen__item
+                    .location-screen__item-title 
+                        span.color-gold #{val['title1']} 
+                        span.color-graphite #{val['title2']}
+                    .location-screen__item-img
+                        img(src=val['img'] alt="")
+                    .location-screen__item-text
+                        each scheldule in val['list']
+                            .location-screen__item-part
+                                .location-screen__item-part-title #{scheldule['title']}
+                                .location-screen__item-part-list
+                                    each point in scheldule['points']
+                                        .location-screen__item-part-list-item #{point}
+                        if val['description']
+                            .location-screen__item-description
+                                p #{val['description']}
+                                if val['description2']
+                                    p !{val['description2']}
+    include ../includes/contact-screen.pug
 block footer
     include ../includes/footer.pug
 

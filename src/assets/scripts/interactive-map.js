@@ -7,7 +7,7 @@ const { default: placeElemInWrapperNearMouse } = require("./modules/helpers/plac
 gsap.registerPlugin(Draggable);
 //Master_Plan_Irpin
 
-const container = document.querySelector('.home-screen3__iframe-wrapper');
+const container = document.querySelector('.interactive-map-screen__iframe-wrapper');
 const infobox = document.querySelector('[data-interactive-map-infobox]');
 
 
@@ -236,7 +236,7 @@ function initMiniScroll(imageUrl) {
     bigX = gsap.quickSetter(bigImage, "x", "px"),
     bigY = gsap.quickSetter(bigImage, "y", "px"),
     imageScale;
-  const container = document.querySelector('.home-screen3__iframe-wrapper');
+  const container = document.querySelector('.interactive-map-screen__iframe-wrapper');
 
     smallImage.style.backgroundImage = `url(${imageUrl})`;
   function setupSizing() {

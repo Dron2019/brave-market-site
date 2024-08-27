@@ -108,7 +108,7 @@ function watch() {
     if (webPackSetting) {
       gulp.watch(paths.scripts.src, scripts); //for webpack
     }
-    gulp.watch(paths.gulpModules.src, gulpModules);
+    // gulp.watch(paths.gulpModules.src, gulpModules);
     if (typeScriptSetting) {
       gulp.watch(paths.ts.src, typeScript);
     }
@@ -116,7 +116,7 @@ function watch() {
 		gulp.watch(paths.ts.src, testJsLint);
 		gulp.watch(paths.images.src, images);
 		gulp.watch(paths.fonts.src, fonts);
-		gulp.watch(paths.libs.src, libs);
+		// gulp.watch(paths.libs.src, libs);
 		gulp.watch(paths.static.src, static);
 		gulp.watch('./src/pug/**/*.html', templates);
 		gulp.watch('./src/assets/svg-sprite/*.*', svgSprite);
@@ -340,9 +340,9 @@ gulp.task('default', gulp.series(
     watchScssTemplates,
 		svgSprite,
 		clean,
-    libs,
+    // libs,
     ...additionalTask,
-		gulp.parallel(styles, templates, fonts, gulpModules, testJsLint, images, static),
+		gulp.parallel(styles, templates, fonts, /*gulpModules,*/ testJsLint, images, static),
 		gulp.parallel(watch, server)
 ));
 

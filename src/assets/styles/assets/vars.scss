@@ -1,226 +1,176 @@
-$default-font: 'Segoe UI', sans-serif;
-$default-font2: 'Oranienbaum', sans-serif;
-$default-font3: 'Portrait Script', sans-serif;
+$default-font: 'Manrope', sans-serif;
+$default-font2: 'Cormorant Infant', sans-serif;
+$default-font3: 'Cormorant Unicase', sans-serif;
 
 :root {
-  --color-black: rgba(0, 0, 0, 1);
   --color-white: #ffffff;
-  --color-send: #f2eddb;
-  --color-graphite: #28282a;
-  --color-green: #7f855d;
+	--color-send: #f3eae1;
+	--color-graphite: #28282a;
+	--color-black: #0e0e0d;
+	--color-gold: #c0a46f;
+  --color-green: #1F3930;
   --screen-offset: 150px;
+}
+
+.color-white {
+  color: var(--color-white);
+}
+
+.color-send {
+  color: var(--color-send);
+}
+
+.color-graphite {
+  color: var(--color-graphite);
 }
 
 .color-black {
   color: var(--color-black);
 }
-.color-white {
-  color: var(--color-white);
-}
-.color-send {
-  color: var(--color-send);
-}
-.color-graphite {
-  color: var(--color-graphite);
-}
-.color-green {
-  color: var(--color-green);
+
+.color-gold {
+  color: var(--color-gold);
 }
 
-$color-black: rgba(0, 0, 0, 1);
-$color-white: rgba(255, 255, 255, 1);
-$color-send: rgba(242, 237, 219, 1);
-$color-graphite: rgba(40, 40, 42, 1);
-$color-green: rgba(127, 133, 93, 1);
-@mixin text-style-1366-h-1() {
-  font-size: 76px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 90%;
-  text-decoration: none;
-  text-transform: none;
-}
-@mixin text-style-1366-h-2() {
-  font-size: 32px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
+
+$color-white: #ffffff;
+$color-send: #f3eae1;
+$color-graphite: #28282a;
+$color-black: #0e0e0d;
+$color-gold: #c0a46f;
+$color-green: #1F3930;
+@mixin text-style-h-1() {
+	font-size: 160px;
+  font-size: Min(160px, pxWidthInVw(160));
+	font-family: "Cormorant Infant";
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: uppercase;
   line-height: 100%;
-  text-decoration: none;
-  text-transform: none;
-}
-@mixin text-style-1366-txt() {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
-  line-height: 130%;
-}
-@mixin text-style-1366-nav() {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 130%;
-  text-decoration: none;
-  text-transform: none;
-  @media screen and (max-width: 600px) {
-    font-size: 14px;
+  @media screen and (max-width:1024px){
+    font-size: 48px;
   }
 }
-@mixin text-style-1920-h-1() {
-  font-size: 120px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 90%;
-  text-decoration: none;
-  text-transform: none;
-}
-@mixin text-style-1920-h-2() {
-  font-size: 32px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
+@mixin text-style-nav() {
+	font-size: pxWidthInVw(16);
+  font-size: Min(16px, pxWidthInVw(16));
+	font-family: "Manrope";
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
   line-height: 100%;
-  text-decoration: none;
-  text-transform: none;
 }
-@mixin text-style-1920-txt() {
-  font-size: Min(1.25vw, 18px);
-  font-family: Segoe UI;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
-  line-height: 130%;
-  @media screen and (max-width: 1420px) {
-    @include text-style-1366-txt();
-  }
+@mixin text-style-btn() {
+	font-size: pxWidthInVw(16);
+	font-family: "Manrope";
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: 1.4px;
+	text-decoration: none;
+	text-transform: uppercase;
+  line-height: 100%;
 }
-@mixin text-style-1920-h-3() {
-  font-size: 24px;
-  font-family: Segoe UI;
-  font-weight: 600;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
-  line-height: 130%;
+@mixin text-style-auxiliary() {
+	font-size: 18px;
+  font-size: pxWidthInVw(18);
+  font-size: Min(18px, pxWidthInVw(18));
+	font-family: "Manrope";
+	font-weight: 500;
+	font-style: normal;
+	letter-spacing: 1.4px;
+	text-decoration: none;
+	text-transform: uppercase;
+  line-height: 150%;
 }
-@mixin text-style-1920-nav() {
-  font-size: 20px;
-  font-family: Segoe UI;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 130%;
-  text-decoration: none;
-  text-transform: none;
-  @media screen and (max-width: 1024px) {
-    font-size: 16px;
-  }
-  @media screen and (max-width: 600px) {
-    font-size: 14px;
-  }
+@mixin text-style-h-3() {
+	font-size: 64px;
+  font-size: pxWidthInVw(64);
+  font-size: Min(64px, pxWidthInVw(64));
+	font-family: "Cormorant Unicase";
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-indent: 420px;
+  line-height: 100%;
 }
-@mixin text-style-1920-description() {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
-  line-height: 130%;
+@mixin text-style-h-4() {
+	font-size: 32px;
+  font-size: pxWidthInVw(32);
+  font-size: Min(32px, pxWidthInVw(32));
+	font-family: "Cormorant Infant";
+	font-weight: 600;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: uppercase;
+  line-height: 100%;
+}
+@mixin text-style-txt() {
+	font-size: 18px;
+  font-size: pxWidthInVw(18);
+  font-size: Min(18px, pxWidthInVw(18));
+	font-family: "Manrope";
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+  line-height: 125%;
+}
+@mixin text-style-txt-letter-sp() {
+	font-size: 18px;
+	font-family: "Manrope";
+	font-weight: 500;
+	font-style: normal;
+	letter-spacing: 1.4px;
+	text-decoration: none;
+	text-transform: none;
+  line-height: 100%;
+}
+@mixin text-style-h-2() {
+	font-size: 100px;
+  font-size: pxWidthInVw(100);
+  font-size: Min(100px, pxWidthInVw(100));
+	font-family: "Cormorant Infant";
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: uppercase;
+  line-height: 100%;
 }
 
-.text-style-1366-h-1 {
-  font-size: 76px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 90%;
-  text-decoration: none;
-  text-transform: none;
+.text-style-h-1 { 
+  @include text-style-h-1();
 }
-.text-style-1366-h-2 {
-  font-size: 32px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 100%;
-  text-decoration: none;
-  text-transform: none;
+.text-style-nav { 
+  @include text-style-nav();
 }
-.text-style-1366-txt {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
+.text-style-btn { 
+  @include text-style-btn();
 }
-.text-style-1366-nav {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 130%;
-  text-decoration: none;
-  text-transform: none;
+.text-style-auxiliary { 
+  @include text-style-auxiliary();
 }
-.text-style-1920-h-1 {
-  @include text-style-1920-h-1();
-
-  @media screen and (max-width: 1420px) {
-    @include text-style-1366-h-1();
-  }
-  @media screen and (max-width: 1024px) {
-    font-size: 64px;
-  }
-  @media screen and (max-width: 600px) {
-    font-size: 42px;
-  }
+.text-style-h-3 { 
+  @include text-style-h-3();
 }
-.text-style-1920-h-2 {
-  font-size: 32px;
-  font-family: Oranienbaum;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 100%;
-  text-decoration: none;
-  text-transform: none;
+.text-style-h-4 { 
+  @include text-style-h-4();
 }
-.text-style-1920-txt {
-  @include text-style-1920-txt();
+.text-style-txt { 
+  @include text-style-txt();
 }
-.text-style-1920-h-3 {
-  font-size: 24px;
-  font-family: Segoe UI;
-  font-weight: 600;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
+.text-style-txt-letter-sp { 
+  @include text-style-txt-letter-sp();
 }
-.text-style-1920-nav {
-  @include text-style-1920-nav();
-  @media screen and (max-width: 1360px) {
-    @include text-style-1366-nav();
-  }
-}
-.text-style-1920-description {
-  font-size: 18px;
-  font-family: Segoe UI;
-  font-weight: 400;
-  font-style: normal;
-  text-decoration: none;
-  text-transform: none;
+.text-style-h-2 { 
+  @include text-style-h-2();
 }
 
 :root {
   --in: cubic-bezier(0.13, 0.81, 0.23, 0.96);
-  --header-h: 222px;
+  --header-h: 118px;
   --logo-w: 155px;
   --sliceFigure: 239px;
   --sliceFigure-big: 541px;
@@ -232,7 +182,7 @@ $color-green: rgba(127, 133, 93, 1);
 
 @media screen and (max-width: 1440px) {
   :root {
-    --header-h: 187px;
+    --header-h: 110px;
     --logo-w: 120px;
     --sliceFigure-big: 362px;
     --screen-offset: 100px;

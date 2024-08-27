@@ -1,5 +1,48 @@
+.single-news-front-screen {
+    background-color: var(--color-black);
+    padding-top: calc(var(--header-h) + 80px);
+    padding-bottom: 40px;
+    padding-left: calc(var(--page-side-fields) + 30px);
+    padding-right: calc(var(--page-side-fields) + 30px);
+    @include sideBorders();
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -1px;
+    &__content {
+        @include row-flex();
+    }
+    &__date {
+        color: var(--color-gold);
+        @include text-style-auxiliary;
+        margin-bottom: 20px;
+        @include size(24);
+        @include shift(0);
+        @include shift-padding(4);
+        text-align: center
+    }
+    &__title {
+        @include size(24);
+        @include shift(0);
+        
+        @include shift-padding(4);
+        color: var(--color-send);
+        text-align: center;
+        font-family: $default-font3;
+        font-size: 64px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+    &__img {
+        @include size(24);
+        @include shift-padding(4);
+    }
+}
+
 .single-news-container {
-    background-color: var(--color-green);
+    background-color: var(--color-black);
     @include row-flex();
     @include shift-padding(4);
     @include to(1440px){
@@ -15,11 +58,6 @@
         @include shift(0);
     }
     &__title {
-        font-size: 48px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        color: var(--color-send);
         text-transform: uppercase;
         @include size(24);
         @include shift(0);
@@ -56,16 +94,10 @@
     &__text {
         @include size(24);
         @include shift(0);
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 140%;
-        
         margin-top: 20px;
-        color: var(--color-send);
-        @include text-style-1920-txt;
     }
     &__list {
-        @include text-style-1920-txt;
+        @include text-style-txt;
         color: var(--color-send);
         @include size(24);
         @include shift(0);
@@ -81,7 +113,7 @@
 }
 
 .other-news-container {
-    background-color: var(--color-green);
+    background-color: var(--color-black);
     @include row-flex();
     padding-top: var(--screen-offset);
     padding-bottom: calc(var(--screen-offset) * 2);
@@ -96,14 +128,15 @@
     &__title {
         color: var(--color-send);
         text-align: center;
-        font-family: $default-font2;
-        font-size: 78px;
+        font-family: $default-font3;
+        font-size: pxWidthInVw(64);
         font-style: normal;
-        font-weight: 400;
-        line-height: 120%; /* 93.6px */
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
         @include size(24);
         @include shift(0);
-        margin-bottom: calc(var(--screen-offset) * 0.66);
+        margin-bottom: 40px;
         @include to(1024px){
             font-size: 64px;
         }
@@ -113,16 +146,7 @@
         }
     }
     .news-card {
-        @include size(6);
+        @include size(12);
         @include shift(0);
-        @include to(1120px){
-            
-            @include size(12);
-            @include shift(0);
-        }
-        @include to(600px){
-            @include size(24);
-            @include shift(0);
-        }
     }
 }

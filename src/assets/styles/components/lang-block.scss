@@ -1,7 +1,7 @@
 
   .sl-nav {
   display: inline;
-  @include text-style-1920-nav;
+  @include text-style-nav;
   color: var(--color-graphite);
   a {
     color: var(--color-graphite);

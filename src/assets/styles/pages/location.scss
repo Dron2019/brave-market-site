@@ -29,20 +29,6 @@
     }
 }
 
-
-.location-map-container {
-    padding-bottom: var(--section-v-offset);
-    background-color: var(--color-green);
-    animation: fadeInTopAnimation 0.25s ease-in-out;
-    @include to(1140px){
-        padding-bottom: 100px;
-    }
-    #map {
-        height: calc(100vh - var(--header-h));
-        border: 1px solid white;
-    }
-}
-
 @keyframes fadeInTopAnimation {
     0% {
         opacity: 0;
@@ -56,4 +42,98 @@
 
 .location-fade-in {
     animation: fadeInTopAnimation 0.5s ease-in-out;
+}
+
+.location-screen {
+    position: relative;
+    padding-left: var(--page-side-fields);
+    padding-right: var(--page-side-fields);
+    padding-top: var(--screen-offset);
+    padding-bottom: var(--screen-offset);
+    @include sideBorders();
+    background-color: var(--color-send);
+    &__item~&__item {
+        margin-top: 40px;
+    }
+    &__item {
+        padding: 30px;
+        border-top: 1px solid rgba($color-gold, 0.5);
+        border-bottom: 1px solid rgba($color-gold, 0.5);
+        @include row-flex();
+        margin-left: 0;
+        margin-right: 0;
+        &-title {
+            text-align: center;
+            font-family: $default-font3;
+            font-size: pxWidthInVw(64);
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-transform: uppercase;
+            @include size(24);
+            @include shift(0);
+            margin-bottom: 20px;
+        }
+        &-img {
+            @include size(12);
+            @include shift(0);
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        &-text {
+            @include size(12);
+            @include shift(0);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-content: flex-start;
+            p~p {
+                margin-top: 20px;
+            }
+        }
+        &-part~&-part {
+            margin-top: 20px;
+        }
+        &-description {
+            color: var(--color-black);
+            @include text-style-txt;
+            // margin-top: auto;
+            margin-top: 20px;
+        }
+        &-part {
+            border: 1px solid rgba($color-gold, 0.5);
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            &:last-child {
+                margin-bottom: auto;
+            }
+            &-title {
+                width: 100%;
+                @include text-style-auxiliary;
+                color: var(--color-gold);
+                margin-bottom: 20px;
+            }
+            &-list {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                &-item {
+                    padding: 18px 32px;
+                    border: 1px solid rgba($color-gold, 0.5);
+                    @include text-style-txt;
+                    width: 120px;
+                    text-align: center;
+                    @include to(1360px){
+                        width: 80px;
+                        padding: 12px 16px;
+                    }
+                }
+            }
+        }
+    }
 }

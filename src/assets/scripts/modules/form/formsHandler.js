@@ -13,7 +13,7 @@ export function formsHandler() {
 
   document.body.addEventListener('click', evt => {
     const isFormWrapper = evt.target === formWrapper;
-    const isSuccessBtn = evt.target === formWrapperSuccess.querySelector('button');
+    const isSuccessBtn = false; //evt.target === formWrapperSuccess.querySelector('button');
     const isOpenButton = evt.target.closest('[data-form="data-form"]');
     const isCloseBtn = evt.target.closest('[data-close-form="data-close-form"]');
 
@@ -53,7 +53,7 @@ export function formsHandler() {
     }
   }
 
-  const formsWithTel = ['[data-form="data-popup-form"]'];
+  const formsWithTel = ['[data-contact-screen-form]', '[data-form="data-popup-form"]'];
   formsWithTel.forEach(form => {
     const $form = document.querySelector(form);
     if ($form) {
@@ -74,7 +74,7 @@ export function formsHandler() {
             name: {
               inputWrapper: new SexyInput({
                 animation: 'none',
-                $field: $form.querySelector('[data-field-name="data-field-text"]'),
+                $field: $form.querySelector('[data-field-name="data-field-name"]'),
               }),
               rule: yup
                 .string()
@@ -101,34 +101,20 @@ export function formsHandler() {
               valid: false,
               error: [],
             },
-            email: {
-              inputWrapper: new SexyInput({
-                animation: 'none',
-                $field: $form.querySelector('[data-field-name="data-field-email"]'),
-                typeInput: 'email',
-              }),
-              rule: yup
-                .string()
-                .required(i18next.t('required'))
-                .matches(/^[A-Z0-9._%+-]+@[A-Z0-9-]+\.[A-Z]{2,3}$/i, i18next.t('invalid_email')),
-              defaultMessage: i18next.t('email'),
-              valid: false,
-              error: [],
-            },
-            activity: {
-              inputWrapper: new SexyInput({
-                animation: 'none',
-                $field: $form.querySelector('[data-field-name="data-field-activity"]'),
-                typeInput: 'text',
-              }),
-              rule: yup
-                .string()
-                .required(i18next.t('required'))
-                .min(2, i18next.t('activity_too_short', { cnt: 2 })),
-              defaultMessage: i18next.t('required'),
-              valid: false,
-              error: [],
-            },
+            // email: {
+            //   inputWrapper: new SexyInput({
+            //     animation: 'none',
+            //     $field: $form.querySelector('[data-field-name="data-field-email"]'),
+            //     typeInput: 'email',
+            //   }),
+            //   rule: yup
+            //     .string()
+            //     .required(i18next.t('required'))
+            //     .matches(/^[A-Z0-9._%+-]+@[A-Z0-9-]+\.[A-Z]{2,3}$/i, i18next.t('invalid_email')),
+            //   defaultMessage: i18next.t('email'),
+            //   valid: false,
+            //   error: [],
+            // }
           },
         },
       });

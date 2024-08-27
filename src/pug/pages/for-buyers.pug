@@ -1,0 +1,73 @@
+
+extends ../layout/main
+block variable
+  -
+    var title_page = 'for-buyers'
+    var id_page = 'id-page-for-buyers'
+    var class_page = 'class-page-for-buyers'
+    var interactiveMapClass = 'interactive-map-screen--with-bottom-margin';
+    var breadcrumbsSubitem = [
+      {
+        label: 'About',
+        link: pagesLink[0].about
+      }
+    ]
+  
+block meta
+  title= title_page
+  meta(name='description', content='')
+block head
+    link(rel='stylesheet', href="./assets/styles/main.min.css")
+block scripts
+  script(defer src='./assets/scripts/vendors.bundle.js')
+  //- script(defer src='./assets/scripts/for-buyers.bundle.js')
+  script(defer src='./assets/scripts/interactive-map.bundle.js')
+block content
+  .inner-page-front-screen
+    .inner-page-front-screen__content
+        .inner-page-front-screen__text
+            div.color-gold.inner-page-front-screen__subtitle для покупців
+            div.color-send.text-style-h-2.inner-page-front-screen__title общирний вибір товарів
+            div.color-send.text-style-txt.inner-page-front-screen__description Ласкаво просимо на нашу інтерактивну карту ринку, де ви можете швидко і зручно знайти інформацію про магазини, представлені у нас. 
+            button(type="button" class="button-colored") 
+                span Оренда
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                    <path d="M21.8508 12H0.706055" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>
+        .inner-page-front-screen__img
+            img(src="./assets/images/for-buyers/front-bg.jpg", alt="")
+  include ../includes/interactive-map-screen.pug
+  include ../includes/contact-screen.pug
+block footer
+  .interactive-map-infobox(data-interactive-map-infobox)
+      <svg data-interactive-map-infobox-close class="header-not-desktop__menu interactive-map-infobox__close " width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="54" height="54" rx="27" fill="#28282A"></rect>
+        <path d="M21.6667 20.2524L22.3738 20.9595L27.1042 25.6899L31.8345 20.9595L32.5417 20.2524L33.9559 21.6667L33.2488 22.3738L28.5184 27.1042L33.2488 31.8345L33.9559 32.5417L32.5417 33.9559L31.8345 33.2488L27.1042 28.5184L22.3738 33.2488L21.6667 33.9559L20.2524 32.5417L20.9595 31.8345L25.6899 27.1042L20.9595 22.3738L20.2524 21.6667L21.6667 20.2524Z" data-default-path="M18 19H36V21H18V19ZM24 26H36V28H24V26ZM18 33H36V35H18V33Z" fill="white"  style="opacity: 1;"></path>
+      </svg>
+      .interactive-map-infobox__left-label(data-interactive-map-infobox-left-label) ряд: 4, № 243
+      .interactive-map-infobox__right-label(data-interactive-map-infobox-right-label) right
+      .interactive-map-infobox__image
+        img(src="./assets/images/home/map-temp.jpg" data-interactive-map-infobox-image)
+      .interactive-map-infobox__content
+        .interactive-map-infobox__title(data-interactive-map-infobox-title) Ряд: 4, № 243
+        //- .interactive-map-infobox__row
+        //-   .interactive-map-infobox__row-title Статус
+        //-   .interactive-map-infobox__row-value 
+        //-     span(data-interactive-map-infobox-sale) 35 
+        .interactive-map-infobox__row
+          .interactive-map-infobox__row-title Площа
+          .interactive-map-infobox__row-value
+            span(data-interactive-map-infobox-area) 35 
+            span м²
+        .interactive-map-infobox__row
+          .interactive-map-infobox__row-title Ціна
+          .interactive-map-infobox__row-value 
+            span $&nbsp;
+            span(data-interactive-map-infobox-price) 35 
+            span / міс
+        button(type="button" data-form="data-form").interactive-map-infobox__button Подати заявку
+  include ../includes/footer.pug
+
+block header
+  include ../includes/header.pug

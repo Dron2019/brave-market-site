@@ -90,3 +90,35 @@ $screen-height: 720;
 		scrollbar-track-color: $background-color;
 	}
 }
+
+@function pxWidthInVw($px) {
+	$vwSize: $px / 1920 * 100;
+	@return #{$vwSize}vw;
+}
+@function pxInVh($px) {
+	$vwSize: $px / 1080 * 100;
+	@return #{$vwSize}vh;
+}
+
+@mixin sideBorders() {
+	&::before {
+		content: '';
+		position: absolute;
+		left: var(--page-side-fields);
+		top: 0;
+		width: 1px;
+		height: 100%;
+		background-color: rgba($color-gold, 0.5);
+		z-index: 2;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		right: var(--page-side-fields);
+		top: 0;
+		width: 1px;
+		height: 100%;
+		background-color: rgba($color-gold, 0.5);
+		z-index: 2;
+	}
+}

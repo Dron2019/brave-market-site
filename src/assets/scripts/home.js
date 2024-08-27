@@ -1,11 +1,11 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import Swiper from 'swiper';
+import { Navigation } from 'swiper';
 import splitToLinesAndFadeUp, { splitElementByWords } from './modules/effects/splitLinesAndFadeUp';
 import './modules/scroll/leniscroll';
 
 import upArrow from './modules/upArrow';
+import { paralaxesScreens } from './modules/effects/paralaxesScreens';
 
-gsap.registerPlugin(ScrollTrigger);
 
 upArrow();
 
@@ -26,7 +26,7 @@ gsap
     rotate: -4,
   }, '<');
 
-splitToLinesAndFadeUp('.text-style-1920-h-1:not(.front-screen__title):not(.front-screen__subtitle)', gsap);
+splitToLinesAndFadeUp('.home-screen5__title, .text-style-1920-h-1:not(.front-screen__title):not(.front-screen__subtitle)', gsap);
 
 function homeAnimation() {
   splitElementByWords(document.querySelector('.front-screen__title'), gsap);
@@ -50,68 +50,106 @@ function homeAnimation() {
       document.querySelector('.front-screen__title').innerHTML = text.textContent;
       document.querySelector('.front-screen__subtitle').innerHTML = text.textContent;
     })
+}
+gsap.timeline({
+  scrollTrigger: {
+    trigger: '.home-screen2',
+    start: 'top bottom',
+    end: 'bottom top',
+    markers: /localhost/.test(window.location.href),
+    scrub: true,
+  },
+})
+.to('.front-screen', {
+  y: '75%'
+})
 
-
-
-  gsap.timeline({
+document.querySelectorAll('[data-curtain-open]').forEach((el) => {
+  const tl = gsap.timeline({
+    paused: true,
     scrollTrigger: {
-      trigger: '.home-screen2',
-      start: 'top bottom',
-      end: 'bottom top',
-      markers: /localhost/.test(window.location.href),
+      trigger: el,
+      // once: true,
       scrub: true,
+      start: '0% bottom',
+      end: '100% bottom',
     },
   })
-  .to('.front-screen', {
-    y: '100%'
+  .fromTo(el.querySelector('div'), {
+    scaleY: 1,
+  }, {
+    scaleY: 0,
+    // ease: 'power4.out',
+    duration: 1.5,
   })
+
+});
+
+
+//data-curtain-open
+
+const home4Slider = new Swiper('[data-screen4-slider]', {
+  modules: [Navigation],
+  slidesPerView: 2.1,
+  spaceBetween: 30,
+  navigation: {
+    nextEl: '[data-screen4-slider-next]',
+    prevEl: '[data-screen4-slider-prev]',
+  },
+});
+
+paralaxesScreens({
+  gsap,
+  selector: '.paralax-screen',
+  amplutide: 800,
+});
+
+
+paralaxesScreens({
+  gsap,
+  selector: '.home-screen2__grid-img1, .home-screen2__grid-img2',
+  amplutide: 150,
+  scale: 1.1
+});
+
+
+// window.addEventListener('DOMContentLoaded',homeAnimation);
+
+function screenVideoHandler() {
   gsap.timeline({
     scrollTrigger: {
-      trigger: '.home-screen4',
-      start: 'top bottom',
-      end: '50% top',
-      markers: /localhost/.test(window.location.href),
-      scrub: true,
+      trigger: '.front-screen',
+      start: 'top center',
+      end: 'bottom center',
+      onLeave: () => {
+        document.querySelector('.front-screen video').pause();
+      },
+      onEnterBack: () => {
+        document.querySelector('.front-screen video').play();
+      },
     },
-  })
-  .to('.home-screen3', {
-    y: '60%'
   });
-
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.home-news-screen',
-      start: 'top bottom',
-      end: '50% top',
-      markers: /localhost/.test(window.location.href),
-      scrub: true,
-    },
-  })
-  .to('.home-screen4', {
-    y: '30%'
-  });
-
-
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: '.home-news-screen__slider',
-      once: true,
-    }
-  })
-  .from('.home-news-screen__slider .news-card', {
-    y: (index,a) => {
-      if (window.screen.width < 1024) {
-        return 50;
-      }
-      return index % 2 === 0 ? 50 : -50;
-    },
-    opacity: 0.5,
-    duration: 0.5,
-    ease: 'power2.out',
-  });
-
-
-  
 }
 
-window.addEventListener('DOMContentLoaded',homeAnimation);
+
+screenVideoHandler();
+
+
+
+document.querySelectorAll('.home-screen6__table-item--with-text, .text-style-h-3, .home-screen7__title').forEach((el) => {
+  gsap.timeline({
+    scrollTrigger: {
+      // trigger: el.parentElement,
+      trigger: el,
+      start: '100px bottom',
+      end: '200px bottom',
+      // markers: true,
+      // once: true,
+      scrub: true,
+    },
+  })
+  .fromTo(el, 
+    { clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' }, 
+    { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }
+  );
+});

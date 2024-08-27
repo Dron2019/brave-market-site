@@ -1,107 +1,51 @@
 .doc-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
+    padding: 30px;
     background-color: var(--color-send);
-    align-content: start;
-    align-items: start;
-    grid-template-areas: 
-        "img title"
-        "img text"
-        "img link"
-    ;
-    @include to(1024px){
-        grid-template-areas: 
-            "img"
-            "title"
-            "text"
-            "link"
-        ;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    @include to(600px){
-        padding: 8px;
-    }
-    &__img-wrapper {
-        grid-area: img;
-    }
-    &__img {
-        padding-bottom: 80%;
-        position: relative;
-        @include to(1024px){
-            padding-bottom: 46.5%;
-        }
-        @include to(600px){
-            padding-bottom: 63.1578947368421%;
-        }
-        img {
-            position: absolute;
-            left: 0;
-            top: 0;width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid rgba($color-gold, 0.50);
     &__title {
-        color: var(--color-graphite);
-        font-size: 32px;
+        color: var(--color-gold);
+        color: #C0A46F;
+        font-family: $default-font3;
+        font-size: pxWidthInVw(64);
         font-style: normal;
-        font-weight: 600;
+        font-weight: 500;
         line-height: normal;
-        grid-area: title;
+        text-transform: uppercase;
+        margin-right: auto;
         @include to(600px){
             font-size: 24px;
         }
     }
-    &__text {
-        color: var(--color-graphite);
-        opacity: 0.7;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        grid-area: text;
-        @include to(600px){
-            font-size: 14px;
-        }
+    &__date {
+        color: var(--Colors-Gray-900, #1A1E21);
+        @include text-style-txt;
     }
     &__link {
-        grid-area: link;
-        background-color: var(--color-graphite);
-        border-radius: 100px;
-        padding: 16px 24px;
-        color: var(--color-send);
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
         width: max-content;
-        @include to(600px){
-            font-size: 14px;
+        margin-left: 20px;
+    }
+    
+    @media (hover: hover) {
+        &:hover &__title {
+            transform: translateX(10px);
         }
-        svg {
-            margin-right: 10px;
-            @include to(600px){
-                width: 24px;
-                height: 24px;
+        &:hover .doc-card__link {
+            [fill] {
+                fill: var(--color-white);
             }
         }
-        @media (hover: hover) {
+        &__title {
+            transition: .25s ease-out;
+        }
+        &__link{
+
             transition: .25s ease-out;
             [fill] {
                 transition: .25s ease-out;
-            }
-            &:hover {
-                background-color: var(--color-green);
-                [fill] {
-                    fill: var(--color-white);
-                }
-                color: var(--color-white);
             }
         }
     }

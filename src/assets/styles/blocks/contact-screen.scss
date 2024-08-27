@@ -1,0 +1,93 @@
+.contact-screen {
+  background-color: var(--color-black);
+
+  padding-top: var(--screen-offset);
+  padding-bottom: var(--screen-offset);
+  padding-left: var(--page-side-fields);
+  padding-right: var(--page-side-fields);
+  &--on-single-page {
+    padding-top: calc(var(--screen-offset) + var(--header-h));
+  }
+  @include sideBorders();
+  @include row-flex();
+
+  &__img {
+    @include size(12);
+    @include shift(0);
+    padding-left: 30px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__content {
+    @include size(12);
+    @include shift(0);
+    @include shift-padding-left(0.25);
+    padding-right: 30px;
+
+  }
+  &__title {
+    color: var(--color-send);
+    font-family: $default-font2;
+    font-size: Min(64px, pxWidthInVw(64));
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  &__form {
+    @include row-flex();
+    margin-top: 40px;
+    .input-group {
+      @include size(12);
+      @include shift(0);
+      input,textarea {
+        width: 100%;
+        padding: 20px;
+        border: 1px solid rgba(192, 164, 111, 0.50);
+        background-color: var(--color-black);
+        color: hsla(30, 43%, 92%, 0.50);
+        font-family: $default-font;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 125%;
+        text-transform: none;
+        &::placeholder {
+          color: hsla(30, 43%, 92%, 0.50);
+        }
+      }
+      textarea {
+        resize: none;
+        height: 160px;
+      }
+    }
+    .input-group~.input-group {
+      margin-top: 20px;
+    }
+    .input-group:first-child {
+      @include size(24);
+    }
+    .input-group:last-of-type {
+      @include size(24);
+    }
+    .button-colored {
+      @include shift(0);
+      margin-top: 40px;
+    }
+    .field-error__message {
+      margin-top: 4px;
+      transition: .25s ease-out;
+      font-size: 10px;
+      &:empty {
+        opacity: 0;
+      }
+    }
+
+    .iti__flag-container~input {
+      padding-left: 50px;
+    }
+  }
+}

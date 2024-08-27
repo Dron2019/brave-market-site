@@ -1,14 +1,32 @@
 .news-card {
-    padding: 20px;
+    padding: 30px;
     border: 1px solid rgba(133, 106, 59, 0.20);
     background: var(--color-send);
     text-decoration: none;
     color: var(--color-graphite);
+    @include row-flex();
+    text-align: left;
+
     @include to(600px){
         padding: 8px;
     }
+
+    &__content {
+        @include size(16);
+        @include shift(0);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    &__img-wrapper {
+        @include size(8);
+        @include shift(0);
+    }
+
     &__img {
-        padding-bottom: 75%;
+        padding-bottom: 115%;
         position: relative;
         overflow: hidden;
         margin-bottom: 24px;
@@ -23,16 +41,29 @@
         }
     }
     &__title {
-        @include text-style-1920-h-3;
-        margin-bottom: 10px;
-        text-align: center
+        @include text-style-h-4;
+        color: var(--color-gold);
+        margin-bottom: 20px;
+        text-align: left;
     }
     &__text {
-        @include text-style-1920-description;
-        opacity: 0.7;
-        text-align: center;
+        @include text-style-txt;
+        color: var(--color-graphite);
+        text-align: left;
+    }
+    .button-colored {
+        margin-top: auto;
     }
     &:hover &__img img {
         transform: scale(1.1);
+    }
+
+
+    &--transparent {
+        background-color: transparent;
+        
+    }
+    &--transparent &__text {
+        color: var(--color-send);
     }
 }

@@ -1,12 +1,19 @@
 .social-link {
-    border-radius: 50%;
-    width: 43.5px;
-    height: 43.5px;
-    border: 1px solid var(--color-graphite);
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--color-send);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: .25s ease-out;
+    svg {
+        [fill] {
+            fill: var(--color-send);
+        }
+        [stroke] {
+            stroke: var(--color-send);
+        }
+    }
     [fill] {
         transition: fill .25s ease-out;
     }
@@ -17,12 +24,12 @@
 
 .desktop {
     .social-link:hover {
-        background-color: var(--color-graphite);
+        background-color: var(--color-send);
         [fill] {
-            fill: var(--color-send);
+            fill: var(--color-black);
         }
         [stroke] {
-            stroke: var(--color-send);
+            stroke: var(--color-black);
         }
     }
 }

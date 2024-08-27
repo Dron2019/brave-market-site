@@ -4,6 +4,7 @@ block variable
     var title_page = 'Контакти'
     var id_page = 'id-page-contacts'
     var class_page = 'class-page-contacts'
+    var contactScreenCustomClass = 'contact-screen--on-single-page';
 block meta
     title= title_page
     meta(name='description', content='')
@@ -14,15 +15,7 @@ block scripts
     script(defer src='./assets/scripts/contacts.bundle.js')
 
 block content
-    .container.contacts-container
-        include ../includes/breadcrumbs.pug
-        .text-style-1920-h-1.text-uppercase.color-send.contacts-container__title Контакти
-        .news-filter-label 
-            .news-filter-label__text
-            .news-filter-label__line
-    .container.location-map-container(data-location-container="auto")
-        #map
-            .map
+    include ../includes/contact-screen.pug
 block footer
     include ../includes/footer.pug
 

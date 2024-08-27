@@ -5,21 +5,11 @@
   width: 100%;
   padding: 12px 24px;
   z-index: 1000;
-  background-color: var(--color-white);
+  background-color: var(--color-black);
   display: none;
   align-items: center;
   flex-wrap: wrap;
   column-gap: 16px;
-  &:after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: #d9d9d9;
-  }
-  // @include from(1240px) {
-  //   display: none;
-  // }
   @media (max-width: 1240px) {
     display: flex;
   }

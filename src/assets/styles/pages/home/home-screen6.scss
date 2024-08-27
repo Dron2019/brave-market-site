@@ -1,0 +1,84 @@
+.home-screen6 {
+    position: relative;
+    background-color: var(--color-black);
+    
+    padding: var(--screen-offset) calc(var(--page-side-fields) + 40px);
+    @include sideBorders();
+    &__subtitle {
+        margin-bottom: -1.5em;
+    }
+
+    &__digit {
+        color: #C0A46F;
+
+        text-align: center;
+        font-family: $default-font2;
+        font-size: pxWidthInVw(124);
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        align-self: flex-end;
+        margin-bottom: -30px;
+    }
+    &__subdigit {
+        color: var(--color-gold);
+        font-family: $default-font;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 125%;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        align-self: flex-end;
+    }
+    &__table {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        margin-left: -39px;
+        margin-right: -39px;
+        &-item {
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            border: 1px solid rgba($color-gold, 0.5);
+            &.no-padding {
+                padding: 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            }
+            &--with-text {
+                width: 25%;
+            }
+            &--with-img {
+                width: 50%;
+            }
+        }
+        &-item:nth-child(5),
+        &-item:nth-child(1) {
+            border-left: none;
+        }
+        &-item:nth-child(3),
+        &-item:nth-child(4),
+        &-item:nth-child(2),
+        &-item:nth-child(1) {
+            border-bottom: none;
+        }
+        &-item:nth-child(1),
+        &-item:nth-child(2),
+        &-item:nth-child(3),
+        &-item:nth-child(4),
+        &-item:nth-child(5),
+        &-item:nth-child(6) {
+            border-right: none;
+        }
+
+    }
+}

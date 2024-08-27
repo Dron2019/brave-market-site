@@ -1,28 +1,59 @@
 .button-colored {
     padding: 16px 24px;
-    border-radius: 100px;
-    color: #f2eddb;
-    background-color: #7F855D;
-    @include text-style-1920-nav;
-    border: 1px solid transparent;
+    color: var(--color-graphite);
+    background-color: var(--color-send);
+    @include text-style-btn;
+    border: 1px solid var(--color-white);
     transition: .25s ease-out;
     @include to(600px){
         padding:16px;
     }
+
+    @include from-to(1025px, 1360px){
+        padding: 16px;
+    }
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    svg {
+        height: 24px;
+        width: auto;
+        margin-left: 20px;
+    }
     &--dark {
-        background-color: var(--color-graphite);
+        background-color: var(--color-green);
+        border-color: var(--color-green);
         color: var(--color-send);
+    }
+    &--transparent {
+        background-color: transparent;
+        color: var(--color-send);
+        border-color: var(--color-send);
+    }
+    &--dark-transparent {
+        background-color: transparent;
+        color: var(--color-graphite);
+        border-color: var(--color-graphite);
+        padding: 20px 40px;
     }
 }
 
 .desktop {
     .button-colored:hover {
-        background-color: var(--color-graphite);
+        background-color: var(--color-black);
         color: var(--color-send);
+        svg {
+            [fill] {
+                fill: var(--color-send);
+            }
+            [stroke] {
+                stroke: var(--color-send);
+            }
+        }
     }
     .button-colored--dark:hover {
-        background-color: #7F855D;
-        color: #f2eddb;
+        background-color: var(--color-send);
+        color: var(--color-graphite);
         border-color: var(--color-send);
     }
 }

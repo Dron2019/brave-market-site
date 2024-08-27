@@ -9,10 +9,12 @@ const config = {
     index: './src/assets/scripts/index-app.js',
     news: './src/assets/scripts/news.js',
     contacts: './src/assets/scripts/contacts.js',
+    documents: './src/assets/scripts/documents.js',
     about: './src/assets/scripts/about.js',
     location: './src/assets/scripts/location.js',
     'interactive-map': './src/assets/scripts/interactive-map.js',
     common: './src/assets/scripts/common.js',
+    'for-tenants': './src/assets/scripts/for-tenants.js',
   },
   output: {
     filename: '[name].bundle.js',

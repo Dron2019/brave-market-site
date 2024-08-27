@@ -11,7 +11,7 @@
     }
     &__tab {
         background-color: var(--color-send);
-        @include text-style-1920-nav;
+        @include text-style-nav;
         padding: 12px 40px;
         border-radius: 100px;
         cursor: pointer;
