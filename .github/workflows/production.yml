@@ -24,6 +24,7 @@ jobs:
       run: |
         yarn install --silent
         gulp deploy
+        gulp scripts --production
         ls
 #global
     - name: 📂 scripts
