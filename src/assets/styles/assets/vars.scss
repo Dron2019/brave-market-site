@@ -63,7 +63,7 @@ $color-green: #1F3930;
   line-height: 100%;
 }
 @mixin text-style-btn() {
-	font-size: pxWidthInVw(16);
+	font-size: Min(18px, pxWidthInVw(16));
 	font-family: "Manrope";
 	font-weight: 400;
 	font-style: normal;

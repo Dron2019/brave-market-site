@@ -65,23 +65,50 @@ gsap.timeline({
 })
 
 document.querySelectorAll('[data-curtain-open]').forEach((el) => {
+  const curtain = el.querySelector('div');
+  const img = el.querySelector('img');
+  const curtainDuration = 0.65;
+
+  gsap.set(img, {
+    autoAlpha: 0,
+  })
+  gsap.set(curtain, {
+    scaleY: 0,
+  })
   const tl = gsap.timeline({
-    paused: true,
     scrollTrigger: {
       trigger: el,
-      // once: true,
-      scrub: true,
-      start: '0% bottom',
-      end: '100% bottom',
+      once: true,
+      // scrub: true,
+      start: '50% bottom',
     },
   })
-  .fromTo(el.querySelector('div'), {
+  .fromTo(el, {
+    opacity: 0,
+  }, {
+    opacity: 1,
+    duration: 0.25,
+  })
+  .fromTo(curtain, {
+    scaleY: 0,
+  }, {
+    scaleY: 1,
+    ease: 'power4.out',
+    duration: curtainDuration,
+    transformOrigin: 'bottom',
+  }, '<')
+  .to(img, {
+    autoAlpha: 1,
+    duration: 0.05,
+  })
+  .fromTo(curtain, {
     scaleY: 1,
   }, {
     scaleY: 0,
-    // ease: 'power4.out',
-    duration: 1.5,
-  })
+    ease: 'power4.out',
+    duration: curtainDuration,
+    transformOrigin: 'top',
+  }, '<')
 
 });
 
