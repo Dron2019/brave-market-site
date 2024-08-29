@@ -345,6 +345,14 @@ gulp.task('default', gulp.series(
 		gulp.parallel(styles, templates, fonts, /*gulpModules,*/ testJsLint, images, static),
 		gulp.parallel(watch, server)
 ));
+gulp.task('deploy', gulp.series(
+    watchScssTemplates,
+		svgSprite,
+		clean,
+    // libs,
+    ...additionalTask,
+		gulp.parallel(_styles, templates, fonts, images, static)
+));
 
 
 // -- BUILD PRODUCTION
