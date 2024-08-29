@@ -153,3 +153,6 @@ document.querySelectorAll('.home-screen6__table-item--with-text, .text-style-h-3
     { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }
   );
 });
+
+
+console.log('home.js');
