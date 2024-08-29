@@ -33,6 +33,6 @@ jobs:
         remote-user: customsh
         ssh-port: 22
         private-ssh-key: ${{ secrets.DEPLOY_SECRET }}
-        source-path: ./dist
-        destination-path: ~/smarto.com.ua/rynok-irpin-new
+        source-path: ./dist/
+        destination-path: ~/smarto.com.ua/rynok-irpin-new/
         rsync-options: --archive --verbose --compress --human-readable --progress --exclude=.git* --exclude=.git/ --exclude=README.md --exclude=readme.md --exclude=.gitignore  --size-only --checksum --log-file=mylog.log

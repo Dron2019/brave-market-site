@@ -351,7 +351,7 @@ gulp.task('deploy', gulp.series(
 		clean,
     // libs,
     ...additionalTask,
-		gulp.parallel(_styles, templates, fonts, images, static)
+		gulp.parallel(styles, templates, fonts, images, static)
 ));
 
 
