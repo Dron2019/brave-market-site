@@ -94,8 +94,8 @@ body input, body textarea {
 
 
 ::selection {
-  background-color: #fff;
-  color: #fff;
+  color: var(--color-black);
+  background-color: var(--color-white);
 }
 
 ::placeholder {
