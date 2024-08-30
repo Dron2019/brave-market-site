@@ -4,7 +4,8 @@
   "description": "work builder",
   "main": "index.js",
   "scripts": {
-    "prod_scripts_styles": "gulp styles && gulp _styles && gulp scripts --production"
+    "prod_scripts_styles": "gulp styles && gulp _styles && gulp scripts --production",
+    "deploy": "node ./deploy.js"
   },
   "browserslist": [
     "last 3 version"
@@ -20,13 +21,13 @@
   },
   "lint-staged": {},
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
-    "@typescript-eslint/parser": "^3.9.0",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.2",
-    "babel-loader": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "autoprefixer": "^8.6.0",
     "babel-eslint": "^8.2.3",
+    "babel-loader": "^8.3.0",
     "browser-sync": "^2.24.4",
     "browserify": "^16.5.2",
     "cssnano": "^4.1.10",
@@ -62,6 +63,7 @@
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
     "prettier": "^1.14.3",
+    "prompt-confirm": "^2.0.4",
     "sass": "^1.62.1",
     "smart-grid": "^2.1.2",
     "swiper": "^9.3.1",
