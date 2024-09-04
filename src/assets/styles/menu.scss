@@ -1,9 +1,16 @@
 .menu {
   background-color: rgba(#fff, 0.7);
+  @include sideBorders;
+  &:before {
+    left: 16px;
+  }
+  &:after {
+    right: 16px;
+  }
 
   &__link-s {
     text-decoration: none;
-    color: var(--color-graphite);
+    color: var(--color-black);
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -14,48 +21,44 @@
   }
 
   &__link {
-    font-size: 42px;
-    line-height: 110%;
-    color: var(--color-black);
+    color: var(--color-send);
     text-decoration: none;
     position: relative;
     transition: 0.25s ease-out;
-    color: transparent;
+    color: var(--color-send);
     overflow: hidden;
     white-space: nowrap;
-    font-family: $default-font2;
-    text-align: left;
-    margin-bottom: 16px;
-
-    &:after {
-      content: attr(data-title);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-
-      font-size: 42px;
-      line-height: 110%;
-      color: var(--color-black);
-      font-family: $default-font2;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include text-style-tablet-h-3;
+    padding: 24px;
+    border-bottom: 1px solid rgba(192, 164, 111, 0.50);
+    border-top: 1px solid rgba(192, 164, 111, 0.50);
+    width: 100%;
+    margin-top: -1px;
+    &-inner {
+      width: 100%;      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
       transition: 0.25s ease-out;
-      transform: translateY(-100%);
+      pointer-events: none;
+      transition-delay: 0s; 
+      height: 0;
     }
-
-    &:before {
-      content: attr(data-title);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-
-      font-size: 42px;
-      line-height: 110%;
-      color: var(--color-black);
-      transition: 0.25s ease-out;
-      transform: none;
+    &.active &-inner {
+      opacity: 1;
+      height: auto;
+      pointer-events: auto;
+      transition-delay: .25s;
+    }
+    &:first-child {
+      border-top: none;
     }
 
     @media (hover: hover) {
@@ -70,13 +73,13 @@
   }
 
   &__item-inner {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 
     @include to(600px) {
       padding-left: 16px;
@@ -148,10 +151,9 @@
   &__socials {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 10px;
-    padding: 24px;
-    border-top: 1px solid #d9d9d9;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
 
     &__link {
       font-size: 42px;
@@ -290,56 +292,42 @@
 .menu {
   text-align: center;
   width: 100%;
-  max-height: calc(100vh - var(--header-h));
+  height: calc(100vh - var(--header-h));
   overflow-y: auto;
-  background-color: var(--color-white);
+  background-color: var(--color-black);
   position: fixed;
   left: 0;
-  z-index: 2001;
+  z-index: 39;
   pointer-events: none;
   visibility: hidden;
   top: var(--header-h);
+  padding-top: var(--header-h);
   display: grid;
+  height: calc((var(--vh, 1vh) * 100));
   grid-template-areas:
-    'menu-links contacts'
-    'menu-links socials';
+    'menu-links'
+    'contacts';
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 1fr;
+  padding-bottom: 24px;
 
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr auto;
-  padding-top: 12px;
-  overflow-y: auto;
-
-  @include to(600px) {
-    grid-template-areas:
-      'menu-links'
-      'contacts'
-      'socials';
-    grid-template-rows: repeat(3, auto);
-    grid-template-columns: auto;
-    height: calc((var(--vh, 1vh) * 100) - var(--header-h));
-    top: var(--header-h);
-  }
-
-  .menu__item--1 {
-    grid-area: menu-links;
-
-    @include from(601px) {
-      border-right: 1px solid #d9d9d9;
-    }
-
-    @include to(600px) {
-      border-bottom: 1px solid #d9d9d9;
-    }
-  }
-
-  .menu__header {
-    grid-area: contacts;
-    text-align: left;
-  }
+  top: 0;
 }
 
-.mobile,
-.tablet {
-  .menu {
+.when-opened {
+  @include closedClipPath;
+  transition: .25s ease-out;
+}
+.when-closed {
+  transition: .25s ease-out;
+}
+.menu-opened {
+  [data-menu-call] {
+    .when-closed {
+      @include closedClipPath;
+    }
+    .when-opened {
+      @include openedClipPath;
+    }
   }
 }

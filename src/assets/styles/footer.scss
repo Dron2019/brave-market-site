@@ -8,6 +8,10 @@
   padding-bottom: 50px;
   position: relative;
   margin-top: -1px;
+  @media screen and (max-width:1024px){
+    padding-left: calc(16px + var(--page-side-fields));
+    padding-right: calc(16px + var(--page-side-fields));
+  }
   @include to(600px) {
     padding-top: 62px;
     padding-left: calc(var(--page-side-fields) - 24px);
@@ -21,6 +25,9 @@
     margin-left: -30px;
     margin-right: -30px;
     position: relative;
+    @include to(1024px){
+      height: 1px;
+    }
     &:before {
       content: '';
       position: absolute;
@@ -30,6 +37,10 @@
       height: 1px;
       background-color: rgba(192, 164, 111, 0.50);
       transform: translateY(-50%);
+      @include to(1024px){
+        left: 16px;
+        width: calc(100% - 31px);
+      }
     }
     svg {
       position: relative;
@@ -37,6 +48,9 @@
       margin-left: auto;
       display: block;
       margin-right:  pxWidthInVw(516);
+      @include to(1024px){
+        display: none;
+      }
     }
   }
   &__title {
@@ -84,27 +98,18 @@
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: flex-start;
-
-
-    
+    @include to(1024px){
+      @include size(24);
+      justify-content: space-between;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(192, 164, 111, 0.5);
+    }
     .footer__title {
       width: 100%;
-    }
-
-    @include to(1024px) {
-      order: 5;
-      column-count: 1;
-      display: flex;
-      flex-wrap: wrap;
-      a {
-        width: 50%;
+      @include to(1024px){
+        display: none;
       }
-    }
-    @include to(600px) {
-      @include size(24);
-      @include shift(0);
-      border-bottom: 1px solid #d9d9d9;
-      padding-bottom: 16px;
     }
     & > a {
       break-inside: avoid-column;
@@ -172,10 +177,24 @@
         width: 25%;
       }
     }
+    @include from-to(601px, 1024px){
+      .footer__group:nth-child(3) {
+        order: 1;
+      }
+    }
+    @include to(1024px){
+      padding-top: 40px;
+      padding-bottom: 40px;
+      row-gap: 24px;
+      .footer__group {
+        width: 50%;
+      }
+    }
   }
   &__group {
     display: flex;
     flex-wrap: wrap;
+    
     .social-link~.social-link {
       margin-left: 20px;
     }

@@ -122,3 +122,10 @@ $screen-height: 720;
 		z-index: 2;
 	}
 }
+
+@mixin openedClipPath {
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+@mixin closedClipPath {
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}

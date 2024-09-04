@@ -5,7 +5,7 @@
     padding-left: var(--page-side-fields);
     padding-right: var(--page-side-fields);
     padding-top: var(--screen-offset);
-    // padding-bottom: var(--screen-offset);
+    padding-bottom: var(--screen-offset);
     &--with-bottom-margin {
         padding-bottom: var(--screen-offset);
     }
@@ -35,8 +35,15 @@
     &__subtitle {
         margin-right: auto;
         text-align: left;
-        margin-bottom: -1.5em;
         padding-left: var(--page-side-fields);
+        @include from(1025px){
+            margin-bottom: -1.5em;
+        }
+        @include to(1024px){
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
     }
 
     &__iframe-wrapper {

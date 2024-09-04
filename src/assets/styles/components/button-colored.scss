@@ -7,6 +7,9 @@
     border: 1px solid var(--color-white);
     transition: .25s ease-out;
     position: relative;
+    @media screen and (max-width:1024px){
+        padding: 20px 40px;
+    }
     @include to(600px){
         padding:16px;
     }

@@ -15,7 +15,7 @@
 
   &__subtitle {
     text-transform: uppercase;
-    @include from(601px) {
+    @include from(1025px) {
       width: 50%;
     }
     @include to(600px) {
@@ -47,7 +47,9 @@
   }
   &__title {
     color: #f2eddb;
-    margin-top: auto;
+    @include from(1025px){
+      margin-top: auto; 
+    }
     max-width: 1460px;
   }
   &__subtitle {
@@ -55,6 +57,10 @@
     margin-bottom: auto;
     margin-top: auto;
     max-width: 550px;
+    @media screen and (max-width:1024px){
+      margin-top: 16px;
+      margin-bottom: 32px;
+    }
   }
   &__bg {
     position: absolute;
@@ -148,10 +154,22 @@
   
   &__subtitle {
     // margin-bottom: 40px;
-    margin-bottom: -1.5em;
+    @include from(1025px){
+      margin-bottom: -1.5em;
+    }
+    @include to(1024px){
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 8px;
+    }
   }
   &__title {
     margin-bottom: 50px;
+    
+    @include to(1024px){
+      width: 100%;
+      margin-bottom: 24px;
+    }
   }
   &__grid {
     position: relative;
@@ -168,6 +186,15 @@
       "img1 decor text"
       "img1 img2 text"
       "img1 img2 text"; 
+    @include to(1024px){
+      grid-template-columns: 2fr 1fr;
+      column-gap: 8px;
+      padding: 16px;
+      grid-template-areas: 
+      "img1 img2"
+      "img1  img2"
+      "text text"; 
+    }
     &-img1 {
       grid-area: img1;
       overflow: hidden;
@@ -180,6 +207,9 @@
     &-img2 {
       grid-area: img2;
       overflow: hidden;
+      @media screen and (max-width:1024px){
+        padding-top: 100px;
+      }
       img {
         width: 100%;
         height: 100%;
@@ -191,14 +221,30 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      padding-left: 50px;
       align-items: flex-start;
       align-content: flex-start;
-      margin-bottom: calc(var(--padding) * -1);
-      margin-top: calc(var(--padding) * -1);
-      padding-bottom: var(--padding);
-      padding-top: var(--padding);
-      border-left: 1px solid var(--color-gold);
+      @include from(1025px){
+        padding-left: 50px;
+        margin-bottom: calc(var(--padding) * -1);
+        margin-top: calc(var(--padding) * -1);
+        padding-bottom: var(--padding);
+        padding-top: var(--padding);
+        border-left: 1px solid var(--color-gold);
+      }
+      @include to(1024px){
+        padding: 16px;
+        margin-top: 16px;
+        position: relative;
+        &:before {
+          content: '' ;
+          position: absolute;
+          left: -16px;
+          top: 0;
+          width: calc(100% + 32px);
+          height: 1px;
+          background-color: rgba(192, 164, 111, 0.50);
+        }
+      }
       &>:nth-child(2),
       &>:first-child {
         margin-bottom: 20px;
@@ -222,11 +268,17 @@
       svg {
         transform: translateY(calc(var(--grid-empty-cell-height) * -0.8));
       }
+      @include to(1024px){
+        display: none;
+      }
     }
     .button-colored {
       width: 100%;
       justify-content: center;
       margin-top: auto;
+      @include to(1024px){
+        margin-top: 24px;
+      }
     }
   }
 
@@ -240,9 +292,20 @@
   padding-bottom: var(--screen-offset);
   padding-left: var(--page-side-fields);
   padding-right: var(--page-side-fields);
+  padding-top: 40px;
   position: relative;
   z-index: 3;
+  &__top-border {
+    position: absolute;
+    top: 0;
+    left: var(--page-side-fields);
+    width: calc(100% - (var(--page-side-fields) * 2));
+    height: 1px;
+    background-color: rgba($color-gold, 0.5);
+  }
   @include sideBorders();
+  @include to(1024px){
+  }
   &__top-content {
     @include row-flex();
     padding-left: 30px;
@@ -259,7 +322,8 @@
       width: 10px;
     }
     @include to(1024px) {
-      @include size(19);
+      @include size(24);
+      text-align: center;
     }
   }
   &__subtitle {
@@ -267,7 +331,9 @@
     @include shift(0);
     margin-bottom: 40px;
     @include to(1024px) {
-      margin-bottom: 24px;
+      @include size(24);
+      margin-bottom: 8px;
+      text-align: center
     }
     @include to(600px) {
       @include size(24);
@@ -304,6 +370,10 @@
     flex-wrap: wrap;
     border: 1px solid var(--color-gold);
     padding: 30px;
+    position: relative;
+    @include to(1024px){
+      padding: 16px;
+    }
     li {
       list-style-type: disc;
       transform: translateX(15px);
@@ -313,13 +383,17 @@
     &-title {
       margin-bottom: 20px;
     }
+    &-logo {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 95px;
+      height: auto;
+    }
     &-text {
       width: 50%;
       padding-left: 30px;
       @include to(1024px) {
-        width: 100%;
-        padding-right: 0;
-        margin-bottom: 30px;
       }
     }
     &-img-wrapper {
@@ -357,6 +431,10 @@
   z-index: 3;
   overflow: hidden;
   @include sideBorders();
+  @include to(1024px){
+    padding-left: calc(var(--page-side-fields) + 16px);
+    padding-right: calc(var(--page-side-fields) + 16px);
+  }
   &__bg {
     position: absolute;
     left: 0;
@@ -386,9 +464,15 @@
     }
     &>:first-child {
       margin-bottom: 20px;
+      @include to(1024px){
+        margin-bottom: 16px;
+      }
     }
     &>:nth-child(2) {
       margin-bottom: 40px;
+      @include to(1024px){
+        margin-bottom: 32px;
+      }
     }
   }
   &__title {
@@ -400,6 +484,9 @@
     font-weight: 600;
     line-height: 120%;
     text-transform: uppercase;
+    @include to(1024px){
+      @include text-style-tablet-h-3;
+    }
   }
 
 }

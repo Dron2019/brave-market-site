@@ -39,6 +39,53 @@ $color-graphite: #28282a;
 $color-black: #0e0e0d;
 $color-gold: #c0a46f;
 $color-green: #1F3930;
+
+@mixin text-style-tablet-h-1() {
+	font-size: 84px;
+	font-family: Cormorant Infant;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-tablet-h-3() {
+	font-size: 42px;
+	font-family: Cormorant Unicase;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: uppercase;
+  text-indent: 0;
+}
+@mixin text-style-tablet-txt() {
+	font-size: 16px;
+	font-family: Manrope;
+	font-weight: 500;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+@mixin text-style-tablet-h-4() {
+	font-size: 28px;
+	font-family: Cormorant Infant;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+@mixin text-style-tablet-h-2() {
+	font-size: 64px;
+	font-family: Cormorant Infant;
+	font-weight: 500;
+	font-style: normal;
+	line-height: 120%;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
 @mixin text-style-h-1() {
 	font-size: 160px;
   font-size: Min(160px, pxWidthInVw(160));
@@ -49,7 +96,7 @@ $color-green: #1F3930;
 	text-transform: uppercase;
   line-height: 100%;
   @media screen and (max-width:1024px){
-    font-size: 48px;
+    @include text-style-tablet-h-1;
   }
 }
 @mixin text-style-nav() {
@@ -61,6 +108,10 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: none;
   line-height: 100%;
+  @media screen and (max-width:1024px){
+    font-size: 16px;
+    line-height: 125%;
+  }
 }
 @mixin text-style-btn() {
 	font-size: Min(18px, pxWidthInVw(16));
@@ -71,6 +122,9 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: uppercase;
   line-height: 100%;
+  @media screen and (max-width:1024px){
+    font-size: 18px;
+  }
 }
 @mixin text-style-auxiliary() {
 	font-size: 18px;
@@ -83,6 +137,9 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: uppercase;
   line-height: 150%;
+  @media screen and (max-width:1024px){
+    font-size: 18px;
+  }
 }
 @mixin text-style-h-3() {
 	font-size: 64px;
@@ -117,6 +174,9 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: none;
   line-height: 125%;
+  @media screen and (max-width:1024px){
+    @include text-style-tablet-txt();
+  }
 }
 @mixin text-style-txt-letter-sp() {
 	font-size: 18px;
@@ -154,9 +214,15 @@ $color-green: #1F3930;
 }
 .text-style-h-3 { 
   @include text-style-h-3();
+  @media screen and (max-width:1024px){
+    @include text-style-tablet-h-3();
+  }
 }
 .text-style-h-4 { 
   @include text-style-h-4();
+  @media screen and (max-width:1024px){
+    @include text-style-tablet-h-4();
+  }
 }
 .text-style-txt { 
   @include text-style-txt();
@@ -192,45 +258,21 @@ $color-green: #1F3930;
 
 @media screen and (max-width: 1240px) {
   :root {
-    // БЫЛО
-    // --header-h: 134px;
-
-    // Добавил
     --header-h: 154px;
   }
 }
 
 @media screen and (max-width: 1024px) {
   :root {
-    // БЫЛО
-    // --header-h: 80px;
-
-    // Добавил
-    --header-h: 154px;
+    --header-h: 104px;
     --logo-w: 90px;
     --sliceFigure-big: 44px;
     --page-side-fields: 24px;
+    --screen-offset: 80px;
   }
 }
-// НЕ БЫЛО
-@media screen and (max-width: 768px) {
-  :root {
-    --header-h: 118px;
-    // --header-h: 60px;
-  }
-}
-// НЕ БЫЛО
-// @media screen and (max-width: 600px) {
-//   :root {
-//     --header-h: 118px;
-//   }
-// }
 @media screen and (max-width: 600px) {
   :root {
-    // БЫЛО
-    // --header-h: 79px;
-
-    // Добавил
     --header-h: 110px;
     --sliceFigure: 100px;
     --sliceFigure-big: 100px;
@@ -245,30 +287,6 @@ $color-green: #1F3930;
   }
 }
 
-.tablet {
-  --page-side-fields: 20px;
-  --section-v-offset: 50px;
-  // --header-h: 80px;
-  --g-container-offset: 100px;
-  .page__inner {
-    max-width: 100vw;
-    overflow: hidden;
-  }
-}
-
-.mobile {
-  --page-side-fields: 10px;
-  --section-v-offset: 50px;
-  // БЫЛО
-  // --header-h: 85px;
-
-  // --header-h: 118px;
-  --g-container-offset: 60px;
-  .page__inner {
-    max-width: 100vw;
-    overflow: hidden;
-  }
-}
 
 :root {
   --color-black: rgba(0, 0, 0, 1);

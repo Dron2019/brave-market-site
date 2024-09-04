@@ -98,6 +98,14 @@ export default function menu() {
       .progress(0)
       .play();
   });
+
+  document.body.addEventListener('click', function(evt) {
+    const target = evt.target.closest('[data-menu-link-dropdown]');
+
+    if (!target) return;
+    target.classList.toggle('active');
+    
+  });
 }
 
 /** Mobile callback popup */

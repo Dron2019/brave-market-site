@@ -5,16 +5,37 @@
   padding-bottom: var(--screen-offset);
   padding-left: var(--page-side-fields);
   padding-right: var(--page-side-fields);
+  @include to(1024px){
+    padding-left: calc(var(--page-side-fields)  + 16px); 
+    padding-right: calc(var(--page-side-fields)  + 16px); 
+    padding-bottom: 40px;
+
+  }
   &--on-single-page {
     padding-top: calc(var(--screen-offset) + var(--header-h));
   }
   @include sideBorders();
   @include row-flex();
 
+  &__subtitle {
+    @include to(1024px){
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center
+    }
+  }
+
   &__img {
     @include size(12);
     @include shift(0);
-    padding-left: 30px;
+    @include from(1025px){
+      padding-left: 30px;
+    }
+    @include to(1024px){
+      @include size(24);
+      
+      margin-bottom: 40px;
+    }
     img {
       width: 100%;
       height: auto;
@@ -23,7 +44,12 @@
   &__content {
     @include size(12);
     @include shift(0);
-    @include shift-padding-left(0.25);
+    @include from(1025px){
+      @include shift-padding-left(0.25);
+    }
+    @include to(1024px){
+      @include size(24);
+    }
     padding-right: 30px;
 
   }
@@ -36,6 +62,13 @@
     line-height: normal;
     text-transform: uppercase;
     margin-top: 20px;
+    @include to(1024px){
+      @include text-style-tablet-h-3;
+      text-align: center;
+      max-width: 588px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   &__form {
     @include row-flex();
@@ -66,6 +99,9 @@
     }
     .input-group~.input-group {
       margin-top: 20px;
+      @include to(1024px){
+        margin-top: 16px;
+      }
     }
     .input-group:first-child {
       @include size(24);

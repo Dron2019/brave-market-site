@@ -17,6 +17,16 @@
   }
   @include to(1440px) {
     @include text-style-nav;
+
+  }
+
+  @include from-to(1025px, 1360px){
+    svg {
+      margin-right: 0;
+    }
+    span {
+      display: none;
+    }
   }
   @media (hover: hover) {
     transition: 0.25s ease-out;
