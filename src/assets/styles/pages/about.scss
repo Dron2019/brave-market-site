@@ -10,6 +10,11 @@
 
   &__content {
     @include row-flex();
+    position: relative;
+    z-index: 3;
+    @include to(1024px){
+      height: 100%;
+    }
   }
   &__text {
     @include size(12);
@@ -20,23 +25,65 @@
     align-items: center;
     align-content: center;
     column-gap: 12px;
+    position: relative;
+    z-index: 3;
     @include from(1361px){
       button~button {
         margin-left: 20px;
       }
     }
+    @include to(1024px){
+      @include size(24);
+      position: relative;
+      z-index: 3;
+      justify-content: center;
+      padding-right: 42px;
+      padding-left: 42px;
+      button {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+        max-width: 55%;
+        // max-width: 308px;
+      }
+      button~button {
+        margin-top: 16px;
+      }
+    }
+    @media screen and (max-width:600px){
+      padding-left: var(--page-side-fields);
+      padding-right: var(--page-side-fields);
+      button {
+        max-width: 264px;
+      }
+    }
   }
   &__title {
     margin-bottom: 40px;
+    @include to(1024px){
+      text-align: center;
+      margin-bottom: 16px;
+
+    }
   }
   &__subtitle {
     margin-bottom: 20px;
     width: 100%;
     text-transform: uppercase;
+    @include to(1024px){
+      text-align: center;
+      margin-bottom: 8px;
+      @include text-style-auxiliary;
+    }
   }
   &__description {
     margin-bottom: 40px;
     padding-right: 50%;
+    @include to(1024px){
+      padding-right: 0;
+      margin-bottom: 32px;
+      text-align: center;
+    }
   }
   &__img {
     padding: 30px;
@@ -44,6 +91,34 @@
     @include shift(0);
     max-height: calc(100vh - var(--header-h));
     overflow: hidden; 
+    @include from(1025px){
+      position: relative;
+      z-index: 3;
+    }
+    @include to(1024px){
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      // z-index: -1;
+      margin-left: 0;
+      padding: 0;
+      max-height: 100%;
+    }
+    @include to(600px){
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%);
+        pointer-events: none;
+      }
+    }
     img {
       width: 100%;
       height: 100%;
@@ -74,8 +149,20 @@
       align-items: center;
       text-align: center;
       border: 1px solid rgba($color-gold, 0.5);
+      @include to(1024px){
+        width: 50%;
+        padding: 47px 16px;
+      }
+      @media screen and (max-width:600px){
+        width: 100%;
+        padding: 24px 16px;
+        margin-top: -1px;
+      }
       &>:first-child {
         margin-bottom: 20px;
+        @media screen and (max-width:600px){
+          margin-bottom: 8px;
+        }
       }
     }
     &-center-item {
@@ -87,6 +174,18 @@
       text-align: center;
       padding: 30px 30px 0 30px;
       border: 1px solid rgba($color-gold, 0.5);
+      @include to(1024px){
+        width: 100%;
+        order: -1;
+      }
+      @media screen and (max-width:600px){
+        padding-left: 48px;
+        padding-right: 48px;
+        svg {
+          width: 100%;height: auto;
+        }
+        
+      }
       &-title {
         color: var(--color-graphite);
         text-align: center;
@@ -99,6 +198,12 @@
         text-transform: uppercase;
         margin-bottom: 10px;
         margin-top: 20px;
+        @include to(1024px){
+          @include text-style-tablet-h-3;
+        }
+        @media screen and (max-width:600px){
+          margin-bottom: 16px;
+        }
       }
     }
   }

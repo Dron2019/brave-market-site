@@ -10,6 +10,14 @@
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
+  @include to(1024px){
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @include to(600px){
+    padding-left: 8px;
+    padding-right: 8px;
+  }
   &.active {
     opacity: 1;
     visibility: visible;
@@ -29,6 +37,13 @@
   z-index: 1002;
   opacity: 0;
   visibility: hidden;
+  @include to(1024px){
+    padding: 32px;
+  }
+  @include to(600px){
+    padding: 16px 8px;
+    overflow: hidden
+  }
   &-main {
     @include row-flex();
     row-gap: 20px;
@@ -38,8 +53,10 @@
       @include shift(0);
     }
     .form-type-business__row {
-      margin-top: 20px;
-      margin-bottom: 20px;
+      @include from(1025px){
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
     }
     .form-field-input--textarea {
       @include size(24);
@@ -73,6 +90,9 @@
     position: absolute;
     top: 100%;
     left: 0;
+    @include to(600px){
+      font-size: 12px;
+    }
   }
 }
 .form-header {
@@ -107,6 +127,10 @@
   z-index: 1003;
   background-color: $color-green;
   transition: background-color 0.3s ease;
+  @include to(600px){
+    width: 42px;
+    height: 42px;
+  }
   &:hover {
     background-color: $color-gold;
     .form-close__icon path {
@@ -179,11 +203,11 @@
   width: 100%;
   display: grid;
   grid-template: 65px / repeat(3, 1fr);
-  &.business-subject {
-    grid-template: 120px / repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 65px;
-  }
   gap: 20px;
+  @include to(600px){
+    grid-template: 42px / repeat(3, 1fr);
+    gap: 8px;
+  }
   li {
     border: 1px solid rgba(192, 164, 111, 0.50);
     input {
@@ -215,6 +239,9 @@
       color: rgba($color-green, 0.5);
       cursor: pointer;
       transition: all 0.3s ease;
+      @include to(600px){
+        font-size: 14px;
+      }
       &:hover {
         background-color: transparentize($color-send, 0.1);
       }
@@ -240,6 +267,9 @@
   margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
+  @include to(1024px){
+    margin-top: 16px;
+  }
 }
 [data-animation='focus'] .input-message {
   color: var(--color-gray);
@@ -269,6 +299,10 @@
   border: none;
   border-bottom: 1px solid transparentize($color-graphite, 0.9);
   border: 1px solid rgba($color-gold, 0.5);
+  @include to(600px){
+    padding: 12px 8px;
+    font-size: 14px;
+  }
   &::placeholder {
     transition: 0.25s ease-out;
   }
@@ -287,6 +321,9 @@
 textarea.form-field__input {
   resize: none;
   height: 150px;
+  @include to(600px){
+    height: 80px;
+  }
 }
 .mask-absolute {
   color: var(--color-gray);
@@ -498,98 +535,6 @@ textarea.form-field__input {
     z-index: 1;
   }
 }
-.mobile {
-  .form-description {
-    font-size: 12px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-  [data-btn-submit] {
-    margin-top: 20px;
-  }
-}
-.form-delimiter {
-  height: 1px;
-  width: 100%;
-  background-image: linear-gradient(188deg, #ffffff00 0%, #ffffff 52%, #ffffff00 100%);
-}
-// .tablet,
-// .mobile {
-//   .form-delimiter {
-//     margin-bottom: 40px;
-//   }
-// }
-.form-subtitle {
-  @extend .front-screen__subtitle;
-  margin-bottom: 0 !important;
-  
-}
-// .tablet,
-// .mobile {
-// }
-.form-delimiter-big {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(#000, 0.1);
-  margin-bottom: 40px;
-}
-// .tablet,
-// .mobile {
-//   .form-delimiter-big {
-//     margin-bottom: 20px;
-//   }
-// }
 body.active {
   overflow: hidden !important;
-}
-@media (max-width: 600px) {
-  .form {
-    padding: 74px 8px 8px !important;
-    // padding: 44px 10px;
-    width: 100%;
-  }
-  .form-type-business__row,
-  .form-user-info {
-    gap: 8px !important;
-  }
-  .form-type-business__row {
-    &.business-subject {
-      grid-template: repeat(2, 120px) / repeat(2, minmax(100px, 1fr));
-    }
-  }
-  .form-user-info,
-  .form-description {
-    margin-bottom: 24px;
-  }
-  .form-description {
-    gap: 8px !important;
-  }
-}
-@media (max-width: 720px) {
-  .form-user-info {
-    grid-template: repeat(4, 120px) / 1fr;
-  }
-  .form {
-    padding: 44px 25px;
-  }
-  .form-header {
-    min-height: 191px;
-    margin-bottom: 48px;
-  }
-  .form-type-business__row,
-  .form-user-info {
-    gap: 16px;
-  }
-}
-@media (max-width: 1000px) {
-  .form {
-    padding-top: 74px;
-  }
-  .form-close {
-    width: 42px;
-    height: 42px;
-  }
-  .form-description {
-    gap: 25px;
-  }
 }

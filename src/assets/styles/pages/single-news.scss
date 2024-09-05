@@ -8,6 +8,13 @@
     align-items: center;
     justify-content: center;
     margin-bottom: -1px;
+    @include to(1024px){
+        padding-top: calc(var(--header-h) + 40px);
+    }
+    @media screen and (max-width:600px){
+        padding-left: calc(var(--page-side-fields) + 8px);
+        padding-right: calc(var(--page-side-fields) + 8px);
+    }
     &__content {
         @include row-flex();
     }
@@ -24,7 +31,6 @@
         @include size(24);
         @include shift(0);
         
-        @include shift-padding(4);
         color: var(--color-send);
         text-align: center;
         font-family: $default-font3;
@@ -34,10 +40,22 @@
         line-height: normal;
         text-transform: uppercase;
         margin-bottom: 40px;
+        @include from(1025px){
+            @include shift-padding(4);
+        }
+        @include to(1024px){
+            @include text-style-tablet-h-3;
+            margin-bottom: 24px;
+        }
     }
     &__img {
         @include size(24);
-        @include shift-padding(4);
+        @include from(1025px){
+            @include shift-padding(4);
+        }
+        @include to(1024px){
+            @include shift(0);
+        }
     }
 }
 
@@ -48,8 +66,18 @@
     @include to(1440px){
         @include shift-padding(2);
     }
-    @include to(600px){
+    @include to(1024px){
         @include shift-padding(0);
+        &>* {
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+    }
+    @media screen and (max-width:600px){
+        &>* {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
     }
     img {
         border-radius: 10px;
@@ -68,6 +96,7 @@
         }
         @include to(600px){
             font-size: 20px;
+            margin-top: 0;
         }
     }
     &__date {
@@ -104,6 +133,9 @@
         margin-top: 20px;
         li {
             list-style-type: disc;
+            @media screen and (max-width:600px){
+                margin-left: 16px;
+            }
         }
     }
     .button-30 {
@@ -120,9 +152,34 @@
     margin-top: -2px;
     @include to(1024px){
         padding-bottom: var(--screen-offset);
+        padding-left: calc(var(--page-side-fields) + 16px);
+        padding-right: calc(var(--page-side-fields) + 16px);
+        position: relative;
+        padding-top: calc(var(--screen-offset) + 80px);
+        &::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            width: calc(100% - 54px);
+            height: 1px;
+            top: var(--screen-offset);
+            background-color: #7F855D;
+        }
     }
     @include to(600px){
-        row-gap: 16px;
+        padding-top: calc(var(--screen-offset) + 60px);
+        row-gap: 0px;
+        padding-bottom: 0;
+        &:after {
+            content: '';
+            display: block;
+            width: calc(100% + 16px);
+            height: 1px;
+            background-color:  rgba(192, 164, 111, 0.5);
+            margin-top: var(--screen-offset);
+            margin-left: -6px;
+            margin-right: -6px;
+        }
     }
 
     &__title {
@@ -138,15 +195,27 @@
         @include shift(0);
         margin-bottom: 40px;
         @include to(1024px){
-            font-size: 64px;
+            @include text-style-tablet-h-3;
         }
         @include to(600px){
-            font-size: 42px;
             margin-bottom: 8px;
         }
     }
     .news-card {
         @include size(12);
         @include shift(0);
+        @include to(1024px){
+            @include size(24);
+        }
+    }
+    @include to(1024px){
+        .news-card~.news-card {
+            margin-top: 16px;
+        }
+    }
+    @include to(600px){
+        .news-card~.news-card {
+            margin-top: 8px;
+        }
     }
 }

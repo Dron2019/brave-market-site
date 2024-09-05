@@ -39,6 +39,9 @@
     border-top: 1px solid rgba(192, 164, 111, 0.50);
     width: 100%;
     margin-top: -1px;
+    @include to(600px){
+      padding: 16px;
+    }
     &-inner {
       width: 100%;      
       display: flex;

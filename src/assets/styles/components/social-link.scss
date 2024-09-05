@@ -8,6 +8,10 @@
     justify-content: center;
     transition: .25s ease-out;
     --hover-element-bg: var(--color-white);
+    @include to(600px){
+        width: 58px;
+        height: 58px;
+    }
     svg {
         position: relative;
         z-index: 2;

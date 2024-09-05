@@ -1,34 +1,3 @@
-.location-transport-container {
-    @include row-flex();
-    row-gap: 20px;;
-    background-color: var(--color-green);
-    padding-bottom: var(--section-v-offset);
-    animation: fadeInTopAnimation 0.25s ease-in-out;
-    @include to(600px){
-        row-gap: 16px;
-        justify-content: center;
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 8px;
-        padding-right: 8px;
-        padding-bottom: 64px;
-    }
-    .location-card {
-        @include size(12);
-        @include shift(0);
-        @include to(1140px){
-            @include size(24);
-            @include shift(0);
-        }
-        @include to(600px){
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-        }
-    }
-}
-
 @keyframes fadeInTopAnimation {
     0% {
         opacity: 0;
@@ -54,6 +23,9 @@
     background-color: var(--color-send);
     &__item~&__item {
         margin-top: 40px;
+        @media screen and (max-width:600px){
+            margin-top: 24px;
+        }
     }
     &__item {
         padding: 30px;
@@ -62,6 +34,12 @@
         @include row-flex();
         margin-left: 0;
         margin-right: 0;
+        @include to(1024px){
+            padding: 16px;
+        }
+        @media screen and (max-width:600px){
+            padding: 16px 0px;
+        }
         &-title {
             text-align: center;
             font-family: $default-font3;
@@ -73,10 +51,20 @@
             @include size(24);
             @include shift(0);
             margin-bottom: 20px;
+            @include to(1024px){
+                font-size: 42px;
+            }
+            @media screen and (max-width:600px){
+                font-size: 24px;
+                margin-bottom: 8px;
+            }
         }
         &-img {
             @include size(12);
             @include shift(0);
+            @include to(1024px){
+                @include size(24);
+            }
             img {
                 width: 100%;
                 height: auto;
@@ -90,6 +78,10 @@
             align-items: flex-start;
             justify-content: flex-start;
             align-content: flex-start;
+            @include to(1024px){
+                @include size(24);
+                margin-top: 16px;
+            }
             p~p {
                 margin-top: 20px;
             }
@@ -108,6 +100,12 @@
             padding: 30px;
             display: flex;
             flex-wrap: wrap;
+            @include to(1024px){
+                padding: 16px;
+            }
+            @media screen and (max-width:600px){
+                padding: 8px;
+            }
             &:last-child {
                 margin-bottom: auto;
             }
@@ -116,6 +114,9 @@
                 @include text-style-auxiliary;
                 color: var(--color-gold);
                 margin-bottom: 20px;
+                @include to(1024px){
+                    margin-bottom: 8px;
+                }
             }
             &-list {
                 width: 100%;
@@ -128,9 +129,14 @@
                     @include text-style-txt;
                     width: 120px;
                     text-align: center;
-                    @include to(1360px){
+                    flex-shrink: 0;
+                    @include from-to(1025px, 1360px){
                         width: 80px;
                         padding: 12px 16px;
+                    }
+                    @media screen and (max-width:600px){
+                        width: 70px;
+                        padding: 16px 12px;
                     }
                 }
             }

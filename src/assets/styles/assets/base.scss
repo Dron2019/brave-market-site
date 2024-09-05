@@ -67,6 +67,12 @@ body input, body textarea {
 	outline: none;
 }
 
+@media screen and (max-width:600px){
+	.page__inner {
+		max-width: 100vw;
+		overflow: hidden;
+	}
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -265,4 +271,25 @@ input[type=number]::-webkit-outer-spin-button {
 .paralax-screen-wrapper-scale {
 	width: 100%;
 	height: 100%;
+}
+
+.show-on-desktop {
+	@include to(1024px){
+		display: none !important;
+	}
+}
+
+.show-on-tablet {
+	@include from(1025px){
+		display: none !important;
+	}
+	@include to(600px){
+		display: none !important;
+	}
+}
+
+.show-on-mobile {
+	@include from(601px){
+		display: none !important;
+	}
 }

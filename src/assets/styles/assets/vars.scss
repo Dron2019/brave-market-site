@@ -58,6 +58,9 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: uppercase;
   text-indent: 0;
+  @media screen and (max-width:600px){
+    font-size: 24px;
+  }
 }
 @mixin text-style-tablet-txt() {
 	font-size: 16px;
@@ -98,6 +101,9 @@ $color-green: #1F3930;
   @media screen and (max-width:1024px){
     @include text-style-tablet-h-1;
   }
+  @media screen and (max-width:600px){
+    font-size: 42px;
+  }
 }
 @mixin text-style-nav() {
 	font-size: pxWidthInVw(16);
@@ -125,6 +131,9 @@ $color-green: #1F3930;
   @media screen and (max-width:1024px){
     font-size: 18px;
   }
+  @media screen and (max-width:600px){
+    font-size: 14px;
+  }
 }
 @mixin text-style-auxiliary() {
 	font-size: 18px;
@@ -139,6 +148,9 @@ $color-green: #1F3930;
   line-height: 150%;
   @media screen and (max-width:1024px){
     font-size: 18px;
+  }
+  @media screen and (max-width:600px){
+    font-size: 14px;
   }
 }
 @mixin text-style-h-3() {
@@ -163,6 +175,9 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: uppercase;
   line-height: 100%;
+  @media screen and (max-width:1024px){
+    @include text-style-tablet-h-4();
+  }
 }
 @mixin text-style-txt() {
 	font-size: 18px;
@@ -176,6 +191,9 @@ $color-green: #1F3930;
   line-height: 125%;
   @media screen and (max-width:1024px){
     @include text-style-tablet-txt();
+  }
+  @media screen and (max-width:600px){
+    font-size: 14px;
   }
 }
 @mixin text-style-txt-letter-sp() {
@@ -198,6 +216,12 @@ $color-green: #1F3930;
 	text-decoration: none;
 	text-transform: uppercase;
   line-height: 100%;
+  @media screen and (max-width:1024px){
+    @include text-style-tablet-h-2;
+  }
+  @media screen and (max-width:600px){
+    font-size: 32px;
+  }
 }
 
 .text-style-h-1 { 
@@ -222,6 +246,9 @@ $color-green: #1F3930;
   @include text-style-h-4();
   @media screen and (max-width:1024px){
     @include text-style-tablet-h-4();
+  }
+  @media screen and (max-width:600px){
+    font-size: 20px;
   }
 }
 .text-style-txt { 
@@ -267,23 +294,20 @@ $color-green: #1F3930;
     --header-h: 104px;
     --logo-w: 90px;
     --sliceFigure-big: 44px;
-    --page-side-fields: 24px;
+    --page-side-fields: 16px;
     --screen-offset: 80px;
   }
 }
 @media screen and (max-width: 600px) {
   :root {
-    --header-h: 110px;
-    --sliceFigure: 100px;
-    --sliceFigure-big: 100px;
-    --screen-offset: 64px;
+    --header-h: 66px;
+    --screen-offset: 60px;
+    --page-side-fields: 8px;
   }
 }
 
 @media screen and (max-width: 400px) {
   :root {
-    --header-h: 88px;
-    // --header-h: 60px;
   }
 }
 

@@ -8,15 +8,23 @@
     flex-wrap: wrap;
     position: relative;
     align-items: center;
+    @media screen and (max-width:600px){
+        padding-left: calc(var(--page-side-fields) + 8px);
+        padding-right: calc(var(--page-side-fields) + 8px);
+    }   
     @include sideBorders();
     &__content {
         @include row-flex();
+        flex-grow: 1;
     }
     .doc-card {
         @include size(24);
         @include shift(0);
         &:nth-last-child(n+2) {
             margin-bottom: 20px;
+            @include to(1024px){
+                margin-bottom: 16px;
+            }
         }
         @include to(1024px){
             @include size(24);

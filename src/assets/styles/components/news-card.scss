@@ -1,14 +1,17 @@
 .news-card {
     padding: 30px;
-    border: 1px solid rgba(133, 106, 59, 0.20);
+    border: 1px solid rgba(192, 164, 111, 0.50);
     background: var(--color-send);
     text-decoration: none;
     color: var(--color-graphite);
     @include row-flex();
     text-align: left;
 
+    @include to(1024px){
+        padding: 16px;
+    }
     @include to(600px){
-        padding: 8px;
+        padding: 8px 0;
     }
 
     &__content {
@@ -19,10 +22,18 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        @media screen and (max-width:600px){
+            @include size(24);
+        }
     }
     &__img-wrapper {
         @include size(8);
         @include shift(0);
+        @media screen and (max-width:600px){
+            @include size(24);
+            order: -1;
+            margin-bottom: 8px;
+        }
     }
 
     &__img {
@@ -30,6 +41,13 @@
         position: relative;
         overflow: hidden;
         margin-bottom: 24px;
+        @include to(1024px){
+            padding-bottom: 135%;
+            margin-bottom: 0;
+        }
+        @media screen and (max-width:600px){
+            padding-bottom: 52.5%;
+        }
         img {
             position: absolute;
             left: 0;
@@ -45,6 +63,10 @@
         color: var(--color-gold);
         margin-bottom: 20px;
         text-align: left;
+        @media screen and (max-width:600px){
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
     }
     &__text {
         @include text-style-txt;
@@ -53,6 +75,9 @@
     }
     .button-colored {
         margin-top: auto;
+        @media screen and (max-width:600px){
+            margin-top: 16px;
+        }
     }
     &:hover &__img img {
         transform: scale(1.1);

@@ -117,7 +117,7 @@ document.querySelectorAll('[data-curtain-open]').forEach((el) => {
 
 const home4Slider = new Swiper('[data-screen4-slider]', {
   modules: [Navigation],
-  slidesPerView: document.documentElement.classList.contains('dekstop') ? 2.1 : 1,
+  slidesPerView: window.screen.width > 1024 ? 2.1 : 1,
   spaceBetween: 30,
   navigation: {
     nextEl: '[data-screen4-slider-next]',

@@ -16,6 +16,11 @@
   @include sideBorders();
   padding-left: calc(var(--page-side-fields) + 30px);
   padding-right: calc(var(--page-side-fields) + 30px);
+
+  @include to(1024px){
+    padding-left: calc(var(--page-side-fields) + 16px);
+    padding-right: calc(var(--page-side-fields) + 16px);
+  }
   &.loading {
     &::before {
       content: '';
@@ -60,6 +65,9 @@
   &__content {
     @include row-flex();
     row-gap: 20px;
+    @media screen and (max-width:600px){
+      row-gap: 8px;
+    }
   }
   .news-card {
     @include size(12);

@@ -27,13 +27,14 @@
             each val, index in menuL
                 if index === 3
                     .menu__link(data-menu-link-dropdown) 
-                        span #{val}
+                        span Мапа ринку
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 10L12 15L17 10H7Z" fill="#F3EAE1"/>
                         </svg>
                         .menu__link-inner
                             a(href="/for-tenants" data-menu-close data-title=val).color-gold.text-style-h-4 для орендарів
                             a(href="/for-buyers" data-menu-close data-title=val).color-gold.text-style-h-4 для покупців
+                    a(href='/location' data-menu-close data-title=val).menu__link.show-on-mobile Як дістатися
                 else 
                     a(href=menuLHrefs[index] data-menu-close data-title=val).menu__link= val
 
