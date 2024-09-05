@@ -42,7 +42,17 @@ footer.footer
         .color-gold.text-style-auxiliary.footer__subtitle Меню
         a(href="/" data-title="Головна") Головна
         a(href="#" data-title="Про проєкт") Про проєкт
-        a(href="#" data-title="Орендарям") Орендарям
+        .header-links-dropdown.color-send
+            .header-links-dropdown-title 
+                span Мапа ринку
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10L12 15L17 10H7Z" fill="#F3EAE1"/>
+                </svg>
+            ul.header-links-dropdown-list 
+                li 
+                    a(href="/for-buyers") Для покупців
+                li 
+                    a(href="/for-tenants") Для орендарів
         a(href="#" data-title="Магазини") Магазини
         a(href="/news" data-title="Новини") Новини
         a(href="/contacts" data-title="Контакти") Контакти

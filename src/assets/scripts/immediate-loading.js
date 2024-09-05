@@ -5,6 +5,10 @@ function calculateViewportHeight() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
-window.addEventListener('resize', calculateViewportHeight);
-
+// window.addEventListener('resize', calculateViewportHeight);
+// window.addEventListener('load', calculateViewportHeight);
+window.addEventListener('DOMContentLoaded', calculateViewportHeight);
+if (document.documentElement.classList.contains('desktop')) {
+    window.addEventListener('resize', calculateViewportHeight);
+}
 calculateViewportHeight()

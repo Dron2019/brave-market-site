@@ -4,6 +4,9 @@
     color: var(--color-graphite);
     background-color: var(--color-send);
     border: 1px solid var(--color-send);
+    @include from(1025px){
+        font-size: 16px;
+    }
     @media screen and (max-width:1024px){
         padding: 17px 24px;
     }
@@ -14,9 +17,6 @@
 
         height: 18px;
         width: auto;
-    }
-    @include to(1440px){
-        @include text-style-nav;
     }
     @media (hover: hover) {
         transition: .25s ease-out;

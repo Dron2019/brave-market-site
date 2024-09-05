@@ -17,6 +17,9 @@
       margin-top: -2px;
     }
   }
+  @media (max-width: 1024px) {
+    display: flex;
+  }
   @include to(1024px){
     height: var(--header-h);
   }
@@ -34,9 +37,7 @@
     height: 1px;
     background-color: rgba(192, 164, 111, 0.50);
   }
-  @media (max-width: 1240px) {
-    display: flex;
-  }
+
   &__callback,
   &__menu {
     cursor: pointer;

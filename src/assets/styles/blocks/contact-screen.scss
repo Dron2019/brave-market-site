@@ -5,9 +5,16 @@
   padding-bottom: var(--screen-offset);
   padding-left: var(--page-side-fields);
   padding-right: var(--page-side-fields);
+  position: relative;
+  @include sideBorders();
+  &__wrapper {
+    @include row-flex();
+  }
   @media screen and (max-width:600px){
     // max-width: 100vw;
     // overflow: hidden;
+    margin-left: 0;
+    margin-right: 0;
   }
   @include to(1024px){
     padding-left: calc(var(--page-side-fields)  + 16px); 
@@ -22,8 +29,7 @@
   &--on-single-page {
     padding-top: calc(var(--screen-offset) + var(--header-h));
   }
-  @include sideBorders();
-  @include row-flex();
+
 
   &__subtitle {
     @include to(1024px){

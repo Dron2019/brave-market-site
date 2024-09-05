@@ -106,7 +106,7 @@
       padding: 0;
       max-height: 100%;
     }
-    @include to(600px){
+    @include to(1024px){
       &:before {
         content: '';
         position: absolute;

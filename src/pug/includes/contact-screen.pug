@@ -1,26 +1,27 @@
 div.contact-screen(class=contactScreenCustomClass)
-  .contact-screen__img
-    img(src="./assets/images/contact-screen-img.jpg", alt="" loading="lazy")
-  .contact-screen__content
-    .contact-screen__subtitle.color-gold.text-style-auxiliary Контакти
-    .contact-screen__title Напишіть нам, ми завжди на зв'язку!
-    form(data-contact-screen-form).contact-screen__form
-      .input-group(data-field-input data-field-name="data-field-name")
-        input(type="text" name="name" placeholder="Ім'я")
-        div(data-input-message).field-error__message
-      .input-group(data-field-input data-field-name="data-field-phone")
-        input(type="text" name="phone" placeholder="Телефон")
-        div(data-input-message).field-error__message
-      .input-group(data-field-input data-field-name="data-field-email")
-        input(type="text" name="email" placeholder="E-mail")
-        div(data-input-message).field-error__message
-      .input-group
-        textarea(name="message" placeholder="Повідомлення")
-      button.button-colored(type="submit" data-btn-submit)
-        span Надіслати
-        span(data-btn-submit-text )
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
-          <path d="M21.8508 12H0.706055" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
-        </svg>
+  .contact-screen__wrapper
+    .contact-screen__img
+      img(src="./assets/images/contact-screen-img.jpg", alt="" loading="lazy")
+    .contact-screen__content
+      .contact-screen__subtitle.color-gold.text-style-auxiliary Контакти
+      .contact-screen__title Напишіть нам, ми завжди на зв'язку!
+      form(data-contact-screen-form).contact-screen__form
+        .input-group(data-field-input data-field-name="data-field-name")
+          input(type="text" name="name" placeholder="Ім'я")
+          div(data-input-message).field-error__message
+        .input-group(data-field-input data-field-name="data-field-phone")
+          input(type="text" name="phone" placeholder="Телефон")
+          div(data-input-message).field-error__message
+        .input-group(data-field-input data-field-name="data-field-email")
+          input(type="text" name="email" placeholder="E-mail")
+          div(data-input-message).field-error__message
+        .input-group
+          textarea(name="message" placeholder="Повідомлення")
+        button.button-colored(type="submit" data-btn-submit)
+          span Надіслати
+          span(data-btn-submit-text )
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+            <path d="M21.8508 12H0.706055" stroke="#28282A" stroke-width="1.41167" stroke-miterlimit="10"/>
+          </svg>
 
