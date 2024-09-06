@@ -66,15 +66,35 @@
         text-align: center;
         padding: 12px;
         @include text-style-btn;
-        margin-top: 32px;
+        margin-top: 20px;
         width: 100%;
         transition: .25s ease-out;
         padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            margin-left: 8px;
+        }
         @media (hover: hover) {
             &:hover {
                 background: var(--color-graphite);
             }
         }
+    }
+    &__subtitle {
+        color: #28282A;
+
+        text-align: center;
+        /* 1920/txt */
+        font-family: Manrope;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 20px;
+        text-decoration: none;
+        display: block;
     }
     &__left-label  {
         position: absolute;
@@ -139,7 +159,7 @@
         }
     }
     &__row~&__row {
-        margin-top: 10px;
+        margin-top: -1px;
     }
 
 }

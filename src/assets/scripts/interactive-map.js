@@ -1,14 +1,55 @@
 import axios from 'axios';
 import gsap from 'gsap';
 import Draggable from 'gsap/Draggable';
+import { get } from 'lodash';
 const { useState } = require("./modules/helpers/helpers");
 const { default: placeElemInWrapperNearMouse } = require("./modules/helpers/placeElemNearMouse");
 
 gsap.registerPlugin(Draggable);
 //Master_Plan_Irpin
 
+const infoboxesSelectors = {
+  standart: '[data-interactive-map-infobox]',
+  large: '[data-interactive-map-infobox-large]',
+}
+
+const infoboxOpenTriggers = {
+  standart: document.documentElement.classList.contains('desktop') ? 'mouseover' : 'touchstart',
+  large: document.documentElement.classList.contains('desktop') ? 'click' : 'touchstart',
+}
+
+const infoboxesUpdate = {
+  standart: (state) => {
+
+    console.log('infoboxesUpdate');
+    
+    // document.querySelector('[data-interactive-map-infobox-left-label]').textContent = state.data.leftLabel;
+    // document.querySelector('[data-interactive-map-infobox-right-label]').textContent = state.data.rightLabel;
+    document.querySelector('[data-interactive-map-infobox-image]').src = state.data.img;
+    document.querySelector('[data-interactive-map-infobox-title]').textContent = state.data.title;
+    // document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
+    document.querySelector('[data-interactive-map-infobox-row]').textContent = state.data.row_number;
+    document.querySelector('[data-interactive-map-infobox-place]').textContent = state.data.place_number;
+    document.querySelector('[data-interactive-map-infobox-link]').href = state.data.link;
+    document.querySelector('[data-interactive-map-infobox-phone]').href = 'tel:'+state.data.phone_number;
+    document.querySelector('[data-interactive-map-infobox-phone]').textContent = state.data.phone_number;
+  },
+  large: (data) => {
+    console.log('state', data);
+    
+    document.querySelector('[data-infobox-large-row]').textContent = data.data.row_number;
+    document.querySelector('[data-infobox-large-number]').textContent = data.data.place_number;
+    document.querySelector('[data-infobox-large-area]').textContent = data.data.area;
+    document.querySelector('[data-infobox-large-price]').textContent = data.data.price;
+  }
+}
+
 const container = document.querySelector('.interactive-map-screen__iframe-wrapper');
-const infobox = document.querySelector('[data-interactive-map-infobox]');
+
+const infoBoxType = get(container.dataset, 'infoboxType', 'standart');
+
+const infobox = document.querySelector(infoboxesSelectors[infoBoxType]);
+
 
 
 const [ appartments, setAppartments ] = useState([]);
@@ -32,7 +73,7 @@ document.body.addEventListener('click', (e) => {
   
   const target = e.target.closest('[data-id]');
   const infobox = e.target.closest('[data-interactive-map-infobox]');
-  if (!target && !infobox) {
+  if (!target && !infobox && infoBoxType === 'standart') {
     closeInfobox();
     return; 
   }
@@ -63,12 +104,12 @@ infobox.addEventListener('click', (e) => {
   closeInfobox();
 });
 
-container.addEventListener('mouseover', (e) => {
+container.addEventListener(infoboxOpenTriggers[infoBoxType], (e) => {
+  console.log('fef');
+  
   const target = e.target.closest('[data-id]');
-  if (!target) {
-    return; 
-  }
-  const id = target.dataset.id;
+  if (!target) return; 
+  const { id } = target.dataset;
   if (id == infoboxState().data.id) return;
   const appartment = appartments().find(appartment => appartment.id == id) || {};
 
@@ -80,14 +121,18 @@ container.addEventListener('mouseover', (e) => {
       ...infoboxState().data,
       ...setNewApartmentData(appartment),
     }
-  })
+  });
+
+  if (infoBoxType === 'large' || !document.documentElement.classList.contains('desktop')) {
+    setInfoboxView({
+      show: true,
+    });
+  }
 });
 
 container.addEventListener('mousemove', (e) => {
   const target = e.target.closest('[data-id]');
-  if (!target) {
-    return;
-  }
+  if (!target || infoBoxType === 'large') return;
   setInfoboxView({
     show: true,
     coords: { x: e.clientX, y: e.clientY },
@@ -96,6 +141,8 @@ container.addEventListener('mousemove', (e) => {
 });
 
 useInfoboxViewEffect((view) => {
+  console.log('view', view);
+  
   infobox.classList.toggle('active', view.show);
   const position = placeElemInWrapperNearMouse(infobox, container, { pageX: view.coords.x, pageY: view.coords.y });
   if (window.matchMedia('(max-width: 1024px)').matches) return;
@@ -103,13 +150,7 @@ useInfoboxViewEffect((view) => {
 });
 
 useInfoboxStateEffect((state) => {
-  document.querySelector('[data-interactive-map-infobox-left-label]').textContent = state.data.leftLabel;
-  document.querySelector('[data-interactive-map-infobox-right-label]').textContent = state.data.rightLabel;
-  document.querySelector('[data-interactive-map-infobox-image]').src = state.data.img;
-  document.querySelector('[data-interactive-map-infobox-title]').textContent = state.data.title;
-  // document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
-  document.querySelector('[data-interactive-map-infobox-area]').textContent = state.data.area;
-  document.querySelector('[data-interactive-map-infobox-price]').textContent = state.data.price;
+  infoboxesUpdate[infoBoxType](state);
 
   window.dispatchEvent(new CustomEvent('interactive-map-infobox-open', {
     detail: state.data,
@@ -161,6 +202,8 @@ function setNewApartmentData(apartment) {
     leftLabel: 'Ряд: ' + apartment.type + ', №' + apartment.number,
     row_number: apartment.type,
     place_number: apartment.number,
+    phone_number: document.documentElement.dataset.status === 'local' ? '093 111 11 11' : apartment.phone_number,
+    link: apartment.link,
   }
 }
 
@@ -218,11 +261,7 @@ function createSvg(imgURL, width, height, polygons = '') {
       svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
       container.innerHTML = '';  
     return svg;
-
   }
-
-
-
 }
 
 

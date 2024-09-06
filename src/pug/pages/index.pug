@@ -57,6 +57,61 @@ block content
   
 
 block header
+  .infobox-large-wrapper(data-interactive-map-infobox-large)
+    .infobox-large
+      .infobox-large__container
+        .infobox-large__close(data-interactive-map-infobox-close)
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 8L8 24" stroke="#F3EAE1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 8L24 24" stroke="#F3EAE1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        .infobox-large__info
+          .infobox-large__title 
+            span №
+            span(data-infobox-large-number) 25
+          .infobox-large__table
+            .infobox-large__table-row
+              .infobox-large__table-row-title Ряд
+              .infobox-large__table-row-value
+                span(data-infobox-large-row) 25 
+            .infobox-large__table-row
+              .infobox-large__table-row-title Номер
+              .infobox-large__table-row-value
+                span(data-infobox-large-number) 25 
+            .infobox-large__table-row
+              .infobox-large__table-row-title Площа
+              .infobox-large__table-row-value
+                span(data-infobox-large-area) 25 
+                span м²
+            .infobox-large__table-row
+              .infobox-large__table-row-title Ціна
+              .infobox-large__table-row-value
+                span(data-infobox-large-price) 25 
+                span грн\м²
+          button.button-colored.button-colored--dark(type="button" data-form="data-form" data-interactive-map-infobox-close) 
+            span Орендувати
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.042 23.4229L22.3504 12.0012L11.042 0.578125" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+              <path d="M22.3508 12H1.20605" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+            </svg>
+
+        .infobox-large__slider 
+          .infobox-large__label Доступно
+          .swiper-container
+            .infobox-large__slider-navigation
+              button(type="button").infobox-large__slider-navigation-item
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.458 23.4229L2.14963 12.0012L13.458 0.578125" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+                  <path d="M2.14924 12H23.2939" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>
+              button(type="button").infobox-large__slider-navigation-item
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.542 23.4229L21.8504 12.0012L10.542 0.578125" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+                  <path d="M21.8508 12H0.706055" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+                </svg>
+            .swiper-wrapper 
+              .swiper-slide
+                img(src="./assets/images/home/map-temp.jpg")
   .interactive-map-infobox(data-interactive-map-infobox)
       <svg data-interactive-map-infobox-close class="header-not-desktop__menu interactive-map-infobox__close " width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="54" height="54" rx="0" fill="#28282A"></rect>
@@ -73,17 +128,29 @@ block header
         //-   .interactive-map-infobox__row-value 
         //-     span(data-interactive-map-infobox-sale) 35 
         .interactive-map-infobox__row
-          .interactive-map-infobox__row-title Площа
+          .interactive-map-infobox__row-title Ряд
           .interactive-map-infobox__row-value
-            span(data-interactive-map-infobox-area) 35 
-            span м²
+            span(data-interactive-map-infobox-row) 35 
         .interactive-map-infobox__row
-          .interactive-map-infobox__row-title Ціна
+          .interactive-map-infobox__row-title Місце
           .interactive-map-infobox__row-value 
             span $&nbsp;
-            span(data-interactive-map-infobox-price) 35 
-            span / міс
-        button(type="button" data-form="data-form").interactive-map-infobox__button Подати заявку
+            span(data-interactive-map-infobox-place) 35
+        a(href="#" data-interactive-map-infobox-phone).interactive-map-infobox__subtitle
+        a(href="#" data-interactive-map-infobox-link target='_blank').interactive-map-infobox__button 
+          span Перейти на сайт
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1601_9885)">
+            <path d="M10.542 23.7488L21.8504 12.3272L10.542 0.904053" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+            <path d="M21.8508 12.3259H0.706055" stroke="#F3EAE1" stroke-width="1.41167" stroke-miterlimit="10"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_1601_9885">
+            <rect width="24" height="24" fill="white" transform="translate(0 0.325928)"/>
+            </clipPath>
+            </defs>
+          </svg>
+
   include ../includes/header.pug
 block footer
   include ../includes/footer.pug

@@ -1,0 +1,255 @@
+.infobox-large-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: pxInVh(100) 40px;
+    z-index: 150;
+    background: rgba(0, 0, 0, 0.80);
+    opacity: 0;
+    z-index: 1999;
+    visibility: hidden;
+    pointer-events: none;
+    transform: none !important;
+    @media screen and (max-width:1024px){
+        padding: 24px;
+    }
+    @media screen and (max-width:600px){
+        padding: 8px;
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+.infobox-large {
+    background-color: var(--color-send);
+    position: relative;
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    @media screen and (max-width:1024px){
+        padding: 16px;
+    }
+    @media screen and (max-width:600px){
+        padding: 8px;
+        max-height: 630px;
+    }
+    &__container {
+        @include row-flex;
+        height: 100%;   
+        @media screen and (max-width:1024px){
+            row-gap: 16px;
+        }
+    }
+    &__close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: var(--color-green);
+        width: 64px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 2;
+        @media screen and (max-width:1024px){
+            width: 42px;
+            height: 42px;
+        }
+        svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--color-send);     
+            position: relative;
+            z-index: 2;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-graphite);
+            z-index: 1;
+            transition: .25s ease-out;
+            @include closedClipPath;
+        }
+        &:hover:after {
+            @include openedClipPath;
+        }
+    }
+    &__slider {
+        @include size(16);
+        @include shift(0);
+        @include from(1025px){
+            height: 100%;
+        }
+        @media screen and (max-width:1024px){
+            @include size(24);
+            order: -1;
+            height: 70%;
+        }
+        @media screen and (max-width:600px){
+            height: 58%;
+        }
+        &-navigation {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 2;
+            padding-left: 30px;
+            padding-right: 30px;
+            @media screen and (max-width:1024px){
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            @media screen and (max-width:600px){
+                left: 0;
+                top: auto;
+                transform: none;
+                bottom: 8px;
+                padding: 0 8px;
+            }   
+            &-item {
+                background: var(--green, #1F3930);
+                padding: 20px 40px;position: relative;
+                svg {
+                    position: relative;
+                    z-index: 2;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--color-graphite);
+                    z-index: 1;
+                    transition: .25s ease-out;
+                    left: 0;
+                    top: 0;
+                    @include closedClipPath;
+                }
+                &:hover:after {
+                    @include openedClipPath;
+                }
+                @media screen and (max-width:600px){
+                    padding: 16px 24px;
+                }
+            }
+        }
+        .swiper-container {
+            height: 100%;
+            .swiper-slide {
+                height: 100%;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+    &__label {
+        width: max-content;
+        height: 61px;
+        padding: 18px 32px;
+        background-color: var(--color-gold);
+        margin-bottom: -61px;
+        position: relative;
+        z-index: 2;
+        @include text-style-txt-letter-sp;
+    }
+    &__info {
+        @include size(8);
+        @include shift(0);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: flex-start;
+        @media screen and (max-width:1024px){
+            @include size(24);
+            height: max-content;
+        }
+        button {
+            margin-top: 40px;
+            width: 100%;
+            justify-content: center;
+            @media screen and (max-width:1024px){
+                margin-top: 32px;
+            }
+            @media screen and (max-width:600px){
+                margin-top: 16px;
+            }
+        }
+    }
+    &__title {
+        color: var(--color-graphite);
+        @include text-style-h-1;
+        @media screen and (max-width:1024px){
+            display: none;
+        }
+    }
+    &__table {
+        margin-top: auto;
+        border: 1px solid rgba(192, 164, 111, 0.50);
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        &-row {
+            border-bottom: 1px solid rgba(192, 164, 111, 0.50);
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            width: 100%;
+            @include from(1025px){
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+            @media screen and (min-width:601px) and (max-width:1024px){
+                width: 50%;
+                margin-bottom: -1px;
+                &:nth-child(2n) {
+                    border-left: 1px solid rgba(192, 164, 111, 0.50);
+                }
+            }
+            @media screen and (max-width:600px){
+                padding: 12px 8px;
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+        td {
+            padding: 20px;
+        }
+        &-row-title {
+            @include text-style-txt-letter-sp;
+            color: rgba($color-graphite, 0.2);
+            @media screen and (max-width:600px){
+                font-size: 14px;
+            }
+        }
+        &-row-value {
+            @include text-style-txt;
+            font-size: 18px;
+            color: #28282A;
+            text-align: right;
+        }
+        &-row:last-child &-row-value {
+            font-weight: 600;
+        }
+    }
+}

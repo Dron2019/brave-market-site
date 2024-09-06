@@ -7,7 +7,8 @@
         cursor: pointer;
         transition: fill 0.3s, stroke 0.3s;
         &:hover {
-            fill: rgba(127, 133, 93, 0.85);
+            // fill: rgba(127, 133, 93, 0.85);
+            fill: var(--color-green);
         }
     }
 }
@@ -35,7 +36,7 @@
 
 @include to(600px) {
     .mini-map {
-        width: 80px;
-        height: calc(80px * 0.5067708);
+        width: 135px;
+        height: calc(135px * 0.5067708);
     }
 }

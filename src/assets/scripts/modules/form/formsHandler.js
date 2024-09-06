@@ -63,11 +63,35 @@ export function formsHandler() {
         elements: {
           $form,
           showSuccessMessage: false,
-          successAction: () => {
-            formWrapperSuccess.classList.add('active');
-            modal.classList.remove('active');
-            gsap.fromTo(formWrapperSuccess, { opacity: 0 }, { opacity: 1 });
-            timerId = setTimeout(() => animateForm(false), 3000);
+          successAction: () => { 
+            $form.insertAdjacentHTML('beforeend', `
+              <div data-success style="
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--color-white);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                z-index: 2;
+              ">
+              
+                <div style="text-align: center; margin-bottom: 10px; text-indent: 0;"  class="text-style-h-3 text-uppercase">
+                  Заявка успішно відправлена
+                </div>
+                <button data-form-popup-close onclick="this.closest('[data-success]').remove()" class="button-colored button-colored--dark" type="button">
+                  <span>Закрити</span>
+                </button>
+              </div>
+            
+            `);
+            
+            setTimeout(() => {
+                $form.querySelector('[data-success]').remove();
+            }, 6000);
           },
           $btnSubmit: $form.querySelector('[data-btn-submit]'),
           fields: {

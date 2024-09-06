@@ -91,6 +91,7 @@
     "intl-tel-input": "^17.0.12",
     "jquery": "^3.7.0",
     "locomotive-scroll": "^4.0.6",
+    "lodash": "^4.17.21",
     "materialize-css": "^1.0.0-rc.2",
     "on-change": "^2.2.1",
     "webpack-stream": "^7.0.0",
