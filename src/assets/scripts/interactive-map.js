@@ -41,6 +41,7 @@ const infoboxesUpdate = {
     document.querySelector('[data-infobox-large-number]').textContent = data.data.place_number;
     document.querySelector('[data-infobox-large-area]').textContent = data.data.area;
     document.querySelector('[data-infobox-large-price]').textContent = data.data.price;
+    document.querySelector('[data-infobox-large-status]').textContent = data.data.sale_text;
   }
 }
 
@@ -190,6 +191,16 @@ function closeInfobox() {
 }
 
 function setNewApartmentData(apartment) {
+
+  const saleText = {
+    '0': 'Продано', 
+    '1': 'Вільно', 
+    '2': 'Резерв', 
+    '3': 'Заброньовано', 
+    '4': 'Недоступно', 
+    '5': 'Заблоковано'
+  }
+
   return {
     title: 'Ряд: ' + apartment.type + ', №' + apartment.number,
     appartment: apartment.number,
@@ -201,6 +212,7 @@ function setNewApartmentData(apartment) {
     rightLabel: apartment.statu_text,
     leftLabel: 'Ряд: ' + apartment.type + ', №' + apartment.number,
     row_number: apartment.type,
+    sale_text: saleText[apartment.sale],
     place_number: apartment.number,
     phone_number: document.documentElement.dataset.status === 'local' ? '093 111 11 11' : apartment.phone_number,
     link: apartment.link,

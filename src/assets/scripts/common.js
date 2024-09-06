@@ -30,7 +30,8 @@ document.body.addEventListener('click', (evt) => {
     if (!target) return;
     const videoPopup = document.querySelector('[data-video-popup-wrapper]');
     videoPopup.classList.add('active');
-    videoPopup.querySelector('video').play();
+    // videoPopup.querySelector('video').play();
+    videoPopup.querySelector('iframe').src = videoPopup.querySelector('iframe').dataset.src;
 });
 
 document.body.addEventListener('click', (evt) => {
@@ -38,7 +39,8 @@ document.body.addEventListener('click', (evt) => {
     if (!target) return;
     const videoPopup = document.querySelector('[data-video-popup-wrapper]');
     videoPopup.classList.remove('active');
-    videoPopup.querySelector('video').pause();
+    // videoPopup.querySelector('video').pause();
+    videoPopup.querySelector('iframe').removeAttribute('src');
 });
 
 document.body.addEventListener('keydown', (evt) => {
@@ -46,6 +48,7 @@ document.body.addEventListener('keydown', (evt) => {
         const videoPopup = document.querySelector('[data-video-popup-wrapper]');
         if (!videoPopup.classList.contains('active')) return;
         videoPopup.classList.remove('active');
-        videoPopup.querySelector('video').pause();
+        // videoPopup.querySelector('video').pause();
+        videoPopup.querySelector('iframe').removeAttribute('src');
     }
 });
