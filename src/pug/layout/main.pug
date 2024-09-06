@@ -58,6 +58,16 @@ html(lang="uk" data-status="local")
     block header
     // END HEADER
     +form('data-popup-form')
+    .video-popup-wrapper(data-video-popup-wrapper)
+      .video-popup
+        .video-popup__container
+          .video-popup__content
+            button.video-popup__close(data-video-popup-wrapper-close)
+              svg(width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg")
+                path(d="M18 6L6 18" stroke="#fff" stroke-width="1.41167" stroke-miterlimit="10")
+                path(d="M6 6L18 18" stroke="#fff" stroke-width="1.41167" stroke-miterlimit="10")
+            video(playsinline controls loop poster="./assets/images/home/video-poster.jpg")
+              source(src='./assets/images/home/front-screen-video.mp4', type='video/mp4')
     .page__inner(data-scroll-container data-v="1.1")
       .page__content
         block content

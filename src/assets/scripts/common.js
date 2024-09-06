@@ -23,3 +23,29 @@ menu();
 upArrow();
 formsHandler();
 formsScroll();
+
+
+document.body.addEventListener('click', (evt) => {
+    const target = evt.target.closest('[data-video-popup-wrapper-open]');
+    if (!target) return;
+    const videoPopup = document.querySelector('[data-video-popup-wrapper]');
+    videoPopup.classList.add('active');
+    videoPopup.querySelector('video').play();
+});
+
+document.body.addEventListener('click', (evt) => {
+    const target = evt.target.closest('[data-video-popup-wrapper-close]');
+    if (!target) return;
+    const videoPopup = document.querySelector('[data-video-popup-wrapper]');
+    videoPopup.classList.remove('active');
+    videoPopup.querySelector('video').pause();
+});
+
+document.body.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        const videoPopup = document.querySelector('[data-video-popup-wrapper]');
+        if (!videoPopup.classList.contains('active')) return;
+        videoPopup.classList.remove('active');
+        videoPopup.querySelector('video').pause();
+    }
+});

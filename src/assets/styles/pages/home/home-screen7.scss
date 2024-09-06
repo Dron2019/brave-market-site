@@ -107,6 +107,9 @@
             margin-bottom: 8px;
         }
     }
+    a {
+        width: max-content;
+    }
     &__text {
         margin-bottom: 40px;
         @include to(600px){

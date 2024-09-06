@@ -173,7 +173,7 @@
     .header-links-dropdown.color-send {
       .header-links-dropdown-title svg {
         width: 20px;
-        height: 16px;
+        height: 10px;
       }
     }
     .header-links-dropdown,
@@ -184,6 +184,7 @@
       text-decoration: none;
       @include text-style-nav;
       color: transparent;
+      line-height: 125%;
       @include to(600px){
         width: 49%;
       }
