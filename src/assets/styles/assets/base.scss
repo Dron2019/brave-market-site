@@ -309,6 +309,7 @@ input[type=number]::-webkit-outer-spin-button {
 	opacity: 0;
 	transition: opacity 0.3s ease, visibility 0.3s ease;
 	padding: 20px;
+	padding: calc(var(--header-h) + 20px) 20px 20px 20px;
   }
 .video-popup-wrapper.active {
 visibility: visible;
