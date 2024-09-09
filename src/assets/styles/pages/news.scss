@@ -12,6 +12,7 @@
   position: relative;
   background-color: var(--color-send);
   padding-top: var(--screen-offset);
+  padding-bottom: var(--screen-offset);
 
   @include sideBorders();
   padding-left: calc(var(--page-side-fields) + 30px);

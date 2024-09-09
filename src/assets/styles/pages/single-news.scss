@@ -40,6 +40,7 @@
         line-height: normal;
         text-transform: uppercase;
         margin-bottom: 40px;
+       
         @include from(1025px){
             @include shift-padding(4);
         }
@@ -90,6 +91,8 @@
         @include size(24);
         @include shift(0);
         margin-top: 20px;
+        text-indent: 0;
+        text-align: center;
         @include to(1024px){
             font-size: 32px;
             margin-top: 24px;
@@ -148,8 +151,10 @@
     background-color: var(--color-black);
     @include row-flex();
     padding-top: var(--screen-offset);
-    padding-bottom: calc(var(--screen-offset) * 2);
+    padding-bottom: 0;
     margin-top: -2px;
+    padding-left: calc(var(--page-side-fields) + 16px);
+    padding-right: calc(var(--page-side-fields) + 16px);
     @include to(1024px){
         padding-bottom: var(--screen-offset);
         padding-left: calc(var(--page-side-fields) + 16px);
