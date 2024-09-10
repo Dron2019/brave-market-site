@@ -25,7 +25,7 @@ const infoboxesUpdate = {
     
     // document.querySelector('[data-interactive-map-infobox-left-label]').textContent = state.data.leftLabel;
     // document.querySelector('[data-interactive-map-infobox-right-label]').textContent = state.data.rightLabel;
-    document.querySelector('[data-interactive-map-infobox-image]').src = state.data.img;
+    document.querySelector('[data-interactive-map-infobox-image]').src = state.data.logo_url;
     document.querySelector('[data-interactive-map-infobox-title]').textContent = state.data.title;
     // document.querySelector('[data-interactive-map-infobox-sale]').textContent = state.data.sale;
     document.querySelector('[data-interactive-map-infobox-row]').textContent = state.data.row_number;
@@ -215,7 +215,8 @@ function setNewApartmentData(apartment) {
     sale_text: saleText[apartment.sale],
     place_number: apartment.number,
     phone_number: document.documentElement.dataset.status === 'local' ? '093 111 11 11' : apartment.phone_number,
-    link: apartment.link,
+    link: apartment.url,
+    logo_url: apartment.logo_url,
   }
 }
 
