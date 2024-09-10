@@ -73,6 +73,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        &[href="null"],
         &[href="#"],
         &[href*="undefined"] {
             display: none;
