@@ -66,17 +66,17 @@ export function formsHandler() {
           successAction: () => { 
             $form.insertAdjacentHTML('beforeend', `
               <div data-success style="
-                position: absolute;
+                position: fixed;
                 left: 0;
                 top: 0;
                 width: 100%;
                 height: 100%;
-                background-color: var(--color-white);
+                background-color: var(--color-send);
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                z-index: 2;
+                z-index: 30;
               ">
               
                 <div style="text-align: center; margin-bottom: 10px; text-indent: 0;"  class="text-style-h-3 text-uppercase">

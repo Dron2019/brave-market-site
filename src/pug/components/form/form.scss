@@ -538,3 +538,8 @@ textarea.form-field__input {
 body.active {
   overflow: hidden !important;
 }
+
+
+[data-btn-submit-text] {
+  display: none  !important;
+}

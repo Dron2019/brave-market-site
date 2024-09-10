@@ -70,8 +70,8 @@
     svg {
       width: 157px;
       height: auto;
-      @include to(400px) {
-        width: 76px;
+      @include to(600px) {
+        width: 110px;
       }
     }
   }

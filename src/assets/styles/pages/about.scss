@@ -39,13 +39,17 @@
       justify-content: center;
       padding-right: 42px;
       padding-left: 42px;
+      a,
       button {
         flex-grow: 1;
         text-align: center;
         justify-content: center;
         max-width: 55%;
+        width: 100%;
         // max-width: 308px;
       }
+      button~a,
+      a~button,
       button~button {
         margin-top: 16px;
       }
@@ -53,6 +57,7 @@
     @media screen and (max-width:600px){
       padding-left: var(--page-side-fields);
       padding-right: var(--page-side-fields);
+      a,
       button {
         max-width: 264px;
       }
