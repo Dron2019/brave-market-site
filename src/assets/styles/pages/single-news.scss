@@ -51,6 +51,10 @@
     }
     &__img {
         @include size(24);
+        @include from(1024px){
+            max-height: 80vh;
+            object-fit: contain;
+        }   
         @include from(1025px){
             @include shift-padding(4);
         }

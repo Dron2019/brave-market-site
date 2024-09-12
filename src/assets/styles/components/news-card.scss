@@ -63,6 +63,9 @@
         color: var(--color-gold);
         margin-bottom: 20px;
         text-align: left;
+        @include from-to(1024px, 1240px){
+            font-size: 32px;
+        }
         @media screen and (max-width:600px){
             font-size: 20px;
             margin-bottom: 8px;
@@ -72,6 +75,7 @@
         @include text-style-txt;
         color: var(--color-graphite);
         text-align: left;
+        margin-bottom: 12px;
     }
     .button-colored {
         margin-top: auto;
