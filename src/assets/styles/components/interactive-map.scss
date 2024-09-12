@@ -1,14 +1,21 @@
 .interactive-map {
     
     polygon {
-        fill: rgba(127, 133, 93, 0.40);
+        fill: rgba(127, 133, 93, 0.3);
         stroke-width: 2px;
-        stroke: #F2EDDB;
+        stroke-width: 0;
+        stroke: #c4a86f;
         cursor: pointer;
         transition: fill 0.3s, stroke 0.3s;
+        &[data-sale="0"] {
+            fill: rgba(gold, 0.5);
+        }
+
+        
+
         &:hover {
             // fill: rgba(127, 133, 93, 0.85);
-            fill: var(--color-green);
+            fill: rgba($color-green, 0.5);
         }
     }
 }
@@ -20,7 +27,8 @@
     bottom: var(--page-side-fields);
     left: calc(var(--page-side-fields) + 15px);
     width: 160px;
-    height: calc(160px * 0.5067708);
+    // height: calc(160px / 1920 * 973);
+    height: calc(160px * 0.52);
     z-index: 20000;
     border-radius: 12px;
     border: 2px solid var(--color-gold);
@@ -37,6 +45,6 @@
 @include to(600px) {
     .mini-map {
         width: 135px;
-        height: calc(135px * 0.5067708);
+        height: calc(135px / 1920 * 973);
     }
 }

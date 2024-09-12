@@ -1,7 +1,9 @@
 import axios from 'axios';
+import { driver } from 'driver.js';
 import gsap from 'gsap';
 import Draggable from 'gsap/Draggable';
 import { get } from 'lodash';
+import tippy from 'tippy.js';
 const { useState } = require("./modules/helpers/helpers");
 const { default: placeElemInWrapperNearMouse } = require("./modules/helpers/placeElemNearMouse");
 
@@ -70,6 +72,21 @@ container.addEventListener('scroll', (e) => {
   closeInfobox();
 });
 
+if (infoBoxType === 'large') {
+  container.addEventListener('mouseover', (e) => {
+    const target = e.target.closest('[data-sale="0"]');
+    if (!target) return;
+    tippy(target, {
+      content: "Здано",
+      trigger: 'mouseenter',
+      onHide: (e) => {
+        e.popperInstance.destroy();
+      }
+    });
+    return;
+  });
+}
+
 document.body.addEventListener('click', (e) => {
   
   const target = e.target.closest('[data-id]');
@@ -113,6 +130,8 @@ container.addEventListener(infoboxOpenTriggers[infoBoxType], (e) => {
   const { id } = target.dataset;
   if (id == infoboxState().data.id) return;
   const appartment = appartments().find(appartment => appartment.id == id) || {};
+
+  if (target.dataset.sale == 0) return;
 
   setInfoboxState({
     ...infoboxState(),
@@ -230,28 +249,67 @@ async function initInteractiveMap() {
 
     console.log(polygons);
 
+    const apartmentsRequest = await getApartments();
+    const apartments = apartmentsRequest.data;
+
     //get image size
     const imgSize = new Image();
     imgSize.src = imgURL;
     imgSize.onload = function() {
         console.log(imgSize.width, imgSize.height);
-        container.appendChild(createSvg(imgURL, imgSize.width, imgSize.height, polygons));
+        container.appendChild(createSvg(imgURL, imgSize.width, imgSize.height, polygons, apartments));
         container.scrollTo(container.scrollWidth / 2 - container.getBoundingClientRect().width / 2, 5000);
         initMiniScroll(imgUrl);
     }
-    const apartmentsRequest = await getApartments();
-    const apartments = apartmentsRequest.data;
+    const driverObj = driver({
+      showProgress: true,
+      nextBtnText: 'Далі',
+      prevBtnText: 'Назад',
+      doneBtnText: 'Завершити',
+      steps: [
+        {
+          element: '.interactive-map-screen__iframe-wrapper',
+          popover: {
+            title: 'Використання інтерактивної карти',
+            description: 'Натистіть та переміщуйте карту',
+          }
+        },
+        {
+          element: '#miniMap',
+          popover: {
+            title: 'Використання міні-карти',
+            description: 'Для зручності огляду використовуйте міні-карту.',
+          }
+        },
+        {
+          element: 'polygon[data-id="97"]',
+          popover: {
+            title: 'Переглядайте інформацію про приміщення',
+            description: 'Натистіть для детальної інформації',
+          }
+        },
+      ]
+    });
+    
+    document.querySelector('[data-map-screen-helper]').addEventListener('click', (e) => {
+      driverObj.drive();
+    });
+    
     setAppartments(apartments);
 }
 
-function createSvg(imgURL, width, height, polygons = '') {
+function createSvg(imgURL, width, height, polygons = '', apartments = []) {
 
   const isPolygonsFromServer = typeof polygons === 'object';
   let polygonsFromServer = '';
 
   if (isPolygonsFromServer) {
     polygonsFromServer = Object.entries(polygons.cords).reduce((acc, [key, value], index) => {
-      return acc + `<polygon data-id="${polygons.flatsIds[index]}" points="${value}" />`;
+      const apartment = apartments.find(apartment => apartment.id == polygons.flatsIds[index]);
+      const sale = apartment ? apartment.sale : 0;
+      console.log(apartments);
+      
+      return acc + `<polygon data-sale="${sale}" data-id="${polygons.flatsIds[index]}" points="${value}" />`;
     }, '');
 
 

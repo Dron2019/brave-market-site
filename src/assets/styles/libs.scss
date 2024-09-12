@@ -3,8 +3,39 @@
 @import '../../../node_modules/swiper/modules/effect-fade/effect-fade';
 @import '../../../node_modules/accordion-js/dist/accordion.min';
 @import '../../../node_modules/intl-tel-input/build/css/intlTelInput.min';
+@import '../../../node_modules/tippy.js/dist/tippy';
+@import '../../../node_modules/driver.js/dist/driver';
 
+.tippy-content {
+  font-family: $default-font !important;
+  font-size: 18px;
+}
 
+.driver-popover * {
+  font-family: $default-font !important;
+}
+
+.driver-popover {
+  background-color: var(--color-send);
+}
+.driver-popover-arrow {
+  border-color: var(--color-send) transparent transparent transparent;
+  display: none !important;
+}
+
+.driver-popover-footer button {
+  border-radius: 0;
+  color: var(--color-white);
+  background: var(--color-green);
+  box-shadow: none;
+  font-size: 16px;
+  text-shadow: none;
+  border-color: var(--color-green);
+}
+
+.driver-popover-footer button:hover, .driver-popover-footer button:focus {
+  background-color: var(--color-black);
+}
 
 .iti {
     width: 100%;
