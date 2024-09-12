@@ -15,6 +15,7 @@
     visibility: hidden;
     pointer-events: none;
     transform: none !important;
+    transition: .25s ease-out;
     @media screen and (max-width:1024px){
         padding: 24px;
     }

@@ -73,16 +73,23 @@ container.addEventListener('scroll', (e) => {
 });
 
 if (infoBoxType === 'large') {
-  container.addEventListener('mouseover', (e) => {
+  container.addEventListener(window.screen.width < 1024 ? 'click' : 'mouseover', (e) => {
+    
     const target = e.target.closest('[data-sale="0"]');
     if (!target) return;
-    tippy(target, {
+    console.log(e.target, 'fewfewf');
+    const ttt = tippy(target, {
       content: "Здано",
-      trigger: 'mouseenter',
+      // trigger: window.screen.width < 1024 ? 'touchstart' : 'mouseenter',
       onHide: (e) => {
+        console.log('hide');
+        
         e.popperInstance.destroy();
       }
     });
+    ttt.show();
+    console.log(ttt);
+    
     return;
   });
 }
