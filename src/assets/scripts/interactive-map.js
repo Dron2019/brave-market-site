@@ -40,7 +40,7 @@ const infoboxesUpdate = {
     console.log('state', data);
     
     document.querySelector('[data-infobox-large-row]').textContent = data.data.row_number;
-    document.querySelector('[data-infobox-large-number]').textContent = data.data.place_number;
+    document.querySelectorAll('[data-infobox-large-number]').forEach(elem => elem.textContent = data.data.place_number);
     document.querySelector('[data-infobox-large-area]').textContent = data.data.area;
     document.querySelector('[data-infobox-large-price]').textContent = data.data.price;
     document.querySelector('[data-infobox-large-status]').textContent = data.data.sale_text;
@@ -226,6 +226,7 @@ function setNewApartmentData(apartment) {
     '4': 'Недоступно', 
     '5': 'Заблоковано'
   }
+  
 
   return {
     title: 'Ряд: ' + apartment.type + ', №' + apartment.number,
