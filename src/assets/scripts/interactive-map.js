@@ -3,7 +3,7 @@ import { driver } from 'driver.js';
 import gsap from 'gsap';
 import Draggable from 'gsap/Draggable';
 import { get } from 'lodash';
-import tippy from 'tippy.js';
+import tippy, { followCursor } from 'tippy.js';
 const { useState } = require("./modules/helpers/helpers");
 const { default: placeElemInWrapperNearMouse } = require("./modules/helpers/placeElemNearMouse");
 
@@ -71,6 +71,24 @@ const [ infoboxState, setInfoboxState, useInfoboxStateEffect ] = useState({
 container.addEventListener('scroll', (e) => {
   closeInfobox();
 });
+
+container.addEventListener(window.screen.width < 1024 ? 'click' : 'mouseover', (e) => {
+  const target = e.target.closest('[data-tooltip]');
+    if (!target) return;
+    const ttt = tippy(target, {
+      content: target.dataset.text,
+      placement: 'right',
+      followCursor: window.screen.width < 1024 ? 'vertical' : false,
+      plugins: [followCursor],
+      // trigger: window.screen.width < 1024 ? 'touchstart' : 'mouseenter',
+      onHide: (e) => {
+        console.log('hide');
+        
+        e.popperInstance.destroy();
+      }
+    });
+    ttt.show();
+})
 
 if (infoBoxType === 'large') {
   container.addEventListener(window.screen.width < 1024 ? 'click' : 'mouseover', (e) => {
@@ -329,6 +347,11 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
       svg.insertAdjacentHTML('beforeend', `<image href="${document.documentElement.dataset.base}/assets${polygons['url']}" width="${polygons.size[0]}" height="${polygons.size[1]}" />`);
       svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
       container.innerHTML = '';  
+      svg.insertAdjacentHTML('beforeend', `
+        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="461,691,884.5,694.5,885.33333333333,741.33333333333,920,741.5,920,694.5,953.5,695.5,955.5,526,920,525.5,922,439,957.5,439.5,958,282,924.5,280.5,924.5,196.5,959.5,197,960,38,569,35.5,569.5,192,822.5,193.5,820,279.5,500,278,498,435.5,818.5,438.5,818,523,462.5,521.5"/>
+        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="1025,38,1250,37,1253,76,1245,82,1034,82,1025,73"/>
+      `);
+      
     return svg;
   } else {
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -338,6 +361,10 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
       svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
       svg.insertAdjacentHTML('beforeend', `<image href="${imgURL}" width="${width}" height="${height}" />`);
       svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
+      svg.insertAdjacentHTML('beforeend', `
+        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="461,691,884.5,694.5,885.33333333333,741.33333333333,920,741.5,920,694.5,953.5,695.5,955.5,526,920,525.5,922,439,957.5,439.5,958,282,924.5,280.5,924.5,196.5,959.5,197,960,38,569,35.5,569.5,192,822.5,193.5,820,279.5,500,278,498,435.5,818.5,438.5,818,523,462.5,521.5"/>
+        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="1025,38,1250,37,1253,76,1245,82,1034,82,1025,73"/>
+      `);
       container.innerHTML = '';  
     return svg;
   }

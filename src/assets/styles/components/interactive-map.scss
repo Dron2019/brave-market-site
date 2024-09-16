@@ -10,6 +10,9 @@
         &[data-sale="0"] {
             fill: rgba(197, 168, 112, 0.71);
         }
+        &[data-tooltip] {
+            fill: transparent;
+        }
         touch-action: initial !important;
 
         
@@ -17,6 +20,9 @@
         &:hover {
             // fill: rgba(127, 133, 93, 0.85);
             fill: rgba($color-green, 0.5);
+            &[data-tooltip] {
+                fill: rgba($color-green, 0.1);
+            }
         }
     }
 }
