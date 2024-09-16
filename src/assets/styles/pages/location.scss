@@ -127,6 +127,10 @@
                     padding: 18px 32px;
                     border: 1px solid rgba($color-gold, 0.5);
                     @include text-style-txt;
+                    @include from(1025px){
+                        font-size: 18px;
+
+                    }
                     width: 120px;
                     text-align: center;
                     flex-shrink: 0;

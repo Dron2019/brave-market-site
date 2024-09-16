@@ -8,7 +8,7 @@
         cursor: pointer;
         transition: fill 0.3s, stroke 0.3s;
         &[data-sale="0"] {
-            fill: rgba(gold, 0.5);
+            fill: rgba(197, 168, 112, 0.71);
         }
         touch-action: initial !important;
 

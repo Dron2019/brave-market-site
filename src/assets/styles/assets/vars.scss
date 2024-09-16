@@ -186,9 +186,9 @@ $color-green: #1F3930;
   }
 }
 @mixin text-style-txt() {
-	font-size: 18px;
-  font-size: pxWidthInVw(18);
-  font-size: Min(18px, pxWidthInVw(18));
+	font-size: 24px;
+  font-size: pxWidthInVw(24);
+  font-size: Min(24px, pxWidthInVw(24));
 	font-family: "Manrope";
 	font-weight: 500;
 	font-style: normal;
