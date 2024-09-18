@@ -344,7 +344,7 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
     svg.setAttribute("width", "100%");
     svg.setAttribute("height", "100%");
       svg.setAttribute("viewBox", `0 0 ${polygons.size[0]} ${polygons.size[1]}`);
-      svg.insertAdjacentHTML('beforeend', `<image href="${document.documentElement.dataset.base}/assets${polygons['url']}" width="${polygons.size[0]}" height="${polygons.size[1]}" />`);
+      svg.insertAdjacentHTML('beforeend', `<image href="${document.documentElement.dataset.base}/assets${polygons['url']}" width="${polygons.size[0]+1}" height="${polygons.size[1]+1}" />`);
       svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
       container.innerHTML = '';  
       svg.insertAdjacentHTML('beforeend', `
