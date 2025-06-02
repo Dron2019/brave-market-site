@@ -123,6 +123,7 @@ document.body.addEventListener('click', (e) => {
   }
 
   if (infobox) return;
+  if (!target) return;
 
   const id = target.dataset.id;
   const appartment = appartments().find(appartment => appartment.id == id) || {};
@@ -376,8 +377,12 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
 
         svg.insertAdjacentHTML('beforeend', $rowTitles());
       }
+      // svg.insertAdjacentHTML('beforeend', `
+      //   <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="461,691,884.5,694.5,885.33333333333,741.33333333333,920,741.5,920,694.5,953.5,695.5,955.5,526,920,525.5,922,439,957.5,439.5,958,282,924.5,280.5,924.5,196.5,959.5,197,960,38,569,35.5,569.5,192,822.5,193.5,820,279.5,500,278,498,435.5,818.5,438.5,818,523,462.5,521.5"/>
+      //   <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="1025,38,1250,37,1253,76,1245,82,1034,82,1025,73"/>
+      // `);
       svg.insertAdjacentHTML('beforeend', `
-        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="461,691,884.5,694.5,885.33333333333,741.33333333333,920,741.5,920,694.5,953.5,695.5,955.5,526,920,525.5,922,439,957.5,439.5,958,282,924.5,280.5,924.5,196.5,959.5,197,960,38,569,35.5,569.5,192,822.5,193.5,820,279.5,500,278,498,435.5,818.5,438.5,818,523,462.5,521.5"/>
+        <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="448,985 946,988 945.5,1191.5 901,1190 901,1297.5 944,1300 942.5,1501.5 898,1500.5 896,1610.5 940.5,1611.5 940.5,1829 907,1828.5 908.5,1850.5 313.5,1846.5 314.5,1821.5 308.5,1821.5 311.5,1605 765,1608 766.5,1501 355,1495.5 358.5,1294 769,1298 771.5,1188 446.5,1186"/>
         <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="1025,38,1250,37,1253,76,1245,82,1034,82,1025,73"/>
       `);
       
@@ -467,131 +472,140 @@ function initMiniScroll(imageUrl) {
 
 
 function $rowTitles() {
+  const rowTitleStyle = `font-size: 12px; font-weight: 600;`;
   return `
-      <path id="map_foodcourt"d="M 1050 156 L 1251 159" fill="none"></path>
+      <path id="map_foodcourt"d="M 1042 1148 L 1285 1151" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_foodcourt" startOffset="50%" text-anchor="middle">Фуд зона</textPath>
       </text>
-      <path id="map_poslygy"d="M 1043 225 L 1251 227" fill="none"></path>
+      <path id="map_poslygy"d="M 1042 1235 L 1285 1238" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_poslygy" startOffset="50%" text-anchor="middle">Послуги</textPath>
       </text>
-      <path id="map_remont"d="M 1042 293 L 1285 296" fill="none"></path>
+      <path id="map_remont" d="M 1042 1330 L 1320 1333" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_remont" startOffset="50%" text-anchor="middle">Все для ремонту</textPath>
       </text>
-      <path id="map_khymia"d="M 1042 362 L 1285 364" fill="none"></path>
+      <path id="map_khymia"d="M 1042 1420 L 1350 1423" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_khymia" startOffset="50%" text-anchor="middle">Все для дому та хімія</textPath>
       </text>
-      <path id="map_kids-wear"d="M 1042 430 L 1320 433" fill="none"></path>
+      <path id="map_kids-wear" d="m1042.37 1500 304.53 2.7875" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_kids-wear" startOffset="50%" text-anchor="middle">Дитячий одяг</textPath>
       </text>
-      <path id="map_mans-wear"d="M 1042 500 L 1350 502" fill="none"></path>
+      <path id="map_mans-wear" d="m1042 1595 335.2 4.8781" fill="none"></path>
       <text class="ff2">
         <textPath href="#map_mans-wear" startOffset="50%" text-anchor="middle">Чоловічий одяг</textPath>
       </text>
       <g xmlns="http://www.w3.org/2000/svg" id="layer1" transform="translate(144.98 -10.849)">
-        <path id="path20" d="m833 191.31 52.738 1.2265"/>
-        <text style="font-size: 8px;">
+        <path id="path20" d="m833 1181.31 52.738 1.2265"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path20">Ряд 20</textPath>
         </text>
-        <path id="path19" d="m833 212.65h50.285"/>
-        <text style="font-size: 8px;">
+        <path id="path19" d="m833 1205.65h50.285"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path19">Ряд 19</textPath>
         </text>
-        <path id="path18" d="m835.46 258.27 42.926.98117"/>
-        <text style="font-size: 8px;">
+        <path id="path18" d="m835.46 1272.27 42.926.98117"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path18">Ряд 18</textPath>
         </text>
-        <path id="path17" d="m835.46 279.12 42.926.2453"/>
-        <text style="font-size: 8px;">
+        <path id="path17" d="m835.46 1295.12 42.926.2453"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path17">Ряд 17</textPath>
         </text>
-        <path id="path16" d="m835.46 328.18 42.926.73589"/>
-        <text style="font-size: 8px;">
+        <path id="path16" d="m835.46 1358.18 42.926.73589"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path16">Ряд 16</textPath>
         </text>
-        <path id="path15" d="m835.46 345.84 42.926.24534"/>
-        <text style="font-size: 8px;">
+        <path id="path15" d="m835.46 1383.84 42.926.24534"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path15">Ряд 15</textPath>
         </text>
-        <path id="path14" d="m835.46 396.13 42.926.7359"/>
-        <text style="font-size: 8px;">
+        <path id="path14" d="m835.46 1445.13 42.926.7359"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path14">Ряд 14</textPath>
         </text>
-        <path id="path13" d="m835.46 413.54 40.964.98119"/>
-        <text style="font-size: 8px;">
+        <path id="path13" d="m835.46 1470.54 40.964.98119"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path13">Ряд 13</textPath>
         </text>
-        <path id="path12" d="m835.46 463.34 40.964.73589"/>
-        <text style="font-size: 8px;">
+        <path id="path12" d="m835.46 1540.34 40.964.73589"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path12">Ряд 12</textPath>
         </text>
-        <path id="path11" d="m835.46 480.51 42.926 1.2265"/>
-        <text style="font-size: 8px;">
+        <path id="path11" d="m835.46 1565 42.926 1.2265"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path11">Ряд 11</textPath>
         </text>
-        <path id="path10" d="m835.46 532.27 42.926.73589"/>
-        <text style="font-size: 8px;">
+        <path id="path10" d="m835.46 1628.27 42.926.73589"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path10">Ряд 10</textPath>
         </text>
-        <path id="path9" d="m835.46 551.4 42.926.73589"/>
-        <text style="font-size: 8px;">
+        <path id="path9" d="m835.46 1653.4 42.926.73589"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path9">Ряд 9</textPath>
         </text>
-        <path id="path8" d="m835.46 602.42 44.153.98115"/>
-        <text style="font-size: 8px;">
+        <path id="path8" d="m835.46 1720.42 44.153.98115"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path8">Ряд 8</textPath>
         </text>
-        <path id="path7" d="m835.46 617.14 42.926.24534"/>
-        <text style="font-size: 8px;">
+        <path id="path7" d="m835.46 1745.14 42.926.24534"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path7">Ряд 7</textPath>
         </text>
-        <path id="path6" d="m835.46 669.59 42.926.86725"/>
-        <text style="font-size: 8px;">
+        <path id="path6" d="m835.46 1806 42.926.86725"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path6">Ряд 6</textPath>
         </text>
-        <path id="path5" d="m835.46 686.76 42.926.86725"/>
-        <text style="font-size: 8px;">
+        <path id="path5" d="m835.46 1830.76 42.926.86725"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path5">Ряд 5</textPath>
         </text>
-        <path id="path4" d="m837.61 736.54 37.812 1.2141"/>
-        <text style="font-size: 8px;">
+        <path id="path4" d="m837.61 1895.54 37.812 1.2141"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path4">Ряд 4</textPath>
         </text>
-        <path id="path3" d="m837.61 754.75 37.812 1.2142"/>
-        <text style="font-size: 8px;">
+        <path id="path3" d="m837.61 1920 37.812 1.2142"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path3">Ряд 3</textPath>
         </text>
-        <path id="path2" d="m247.49 782.22 39.247.98115"/>
-        <text style="font-size: 8px;">
+        <path id="path2" d="m115.49 1920.22 39.247.98115"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path2">Ряд 2</textPath>
         </text>
-        <path id="path1" d="m252.4 880.34 44.153-.98115"/>
-        <text style="font-size: 8px;">
+        <path id="path1" d="m80 1980.34 44.153-.98115"/>
+        <text style="${rowTitleStyle}">
           <textPath startOffset="50%" text-anchor="middle" href="#path1">Ряд 1</textPath>
         </text>
-          <path id="path27" d="m893.37 580 304.53 2.7875"/>
+          <path id="path27" d="m893.37 1695 335.2 4.1812"/>
           <text>
             <textPath startOffset="50%" text-anchor="middle" href="#path27">Жіночий одяг</textPath>
           </text>
-          <path id="path28" d="m893.37 648 335.2 4.8781"/>
+          <path id="path28" d="m893.37 1784 335.2 4.1812"/>
           <text>
             <textPath startOffset="50%" text-anchor="middle" href="#path28">Мобільні аксесуари</textPath>
           </text>
-          <path id="path29" d="m893.37 718 335.2 4.1812"/>
+          <path id="path29" d="m875.42 1875 378.93 1.3938"/>
           <text>
             <textPath startOffset="50%" text-anchor="middle" href="#path29">Краса та догляд + алкоголь</textPath>
           </text>
-          <path id="path30" d="m330.99 840.77 475.27 1.3938"/>
+          <path id="path29_1" d="m893.37 1945 335.2 4.1812"/>
+          <text>
+            <textPath startOffset="50%" text-anchor="middle" href="#path29_1">Продукти</textPath>
+          </text>
+          <path id="path30" d="m130.99 1955 675.27 1.3938"/>
           <text>
             <textPath startOffset="50%" text-anchor="middle" href="#path30">Всі види бізнесу</textPath>
           </text>
-          <path id="path31" d="m875.42 840.77 378.93 1.3938"/>
+          <path id="path31" d="m875.42 1965 570.93 1.3938"/>
           <text>
             <textPath startOffset="50%" text-anchor="middle" href="#path31">Продукти</textPath>
+          </text>
+          <path id="druga_cherga" d="m175.42 1420 600.93 1.3938"/>
+          <text style="${rowTitleStyle}">
+            <textPath startOffset="50%" text-anchor="middle" href="#druga_cherga">Друга Черга</textPath>
           </text>
       </g>
       <style>

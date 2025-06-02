@@ -128,15 +128,15 @@
         svg {
             left: 0;
             top: 0;
-            width: 150%;
+            width: 135%;
             height: auto;
 
             @include to(1024px) {
-                width: 350%;
+                width: 250%;
             }
 
             @include to(600px) {
-                width: 450%;
+                width: 350%;
             }
         }
 
