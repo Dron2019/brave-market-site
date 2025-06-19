@@ -348,15 +348,10 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
       const apartment = apartments.find(apartment => apartment.id == polygons.flatsIds[index]);
       const sale = apartment ? apartment.sale : 0;
       const { x, y } = center(normalizepolygonPoints(value));
-      if (isDevFeatures()) {
-        return acc + `
+      return acc + `
         <polygon data-sale="${sale}" data-id="${polygons.flatsIds[index]}" points="${value}" />
         <text x="${x}" y="${y}" fill="black" style="transform-origin: center;transform-box: fill-box;transform: translate(-50%, 40%);font-size: 10px;">${apartment['number']}</text>
         `
-      }
-      return acc + `
-        <polygon data-sale="${sale}" data-id="${polygons.flatsIds[index]}" points="${value}" />
-      `;
     }, '');
 
 
@@ -365,18 +360,13 @@ function createSvg(imgURL, width, height, polygons = '', apartments = []) {
     svg.setAttribute("width", "100%");
     svg.setAttribute("height", "100%");
       svg.setAttribute("viewBox", `0 0 ${polygons.size[0]} ${polygons.size[1]}`);
-      if (isDevFeatures()) {
-        svg.insertAdjacentHTML('beforeend', `<image href="/wp-content/themes/3d/assets/img/projects/1/1/_____plan-2222.jpg" width="${polygons.size[0]+1}" height="${polygons.size[1]+1}" />`);
-
-      } else {
-        svg.insertAdjacentHTML('beforeend', `<image href="${document.documentElement.dataset.base}/assets${polygons['url']}" width="${polygons.size[0]+1}" height="${polygons.size[1]+1}" />`);
-      }
+        
+      svg.insertAdjacentHTML('beforeend', `<image href="/wp-content/themes/3d/assets/img/projects/1/1/_____plan-2222.jpg" width="${polygons.size[0]+1}" height="${polygons.size[1]+1}" />`);
       svg.insertAdjacentHTML('beforeend', isPolygonsFromServer ? polygonsFromServer : polygons);
       container.innerHTML = '';  
-      if (isDevFeatures()) {
-
-        svg.insertAdjacentHTML('beforeend', $rowTitles());
-      }
+      
+      
+      svg.insertAdjacentHTML('beforeend', $rowTitles());
       // svg.insertAdjacentHTML('beforeend', `
       //   <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="461,691,884.5,694.5,885.33333333333,741.33333333333,920,741.5,920,694.5,953.5,695.5,955.5,526,920,525.5,922,439,957.5,439.5,958,282,924.5,280.5,924.5,196.5,959.5,197,960,38,569,35.5,569.5,192,822.5,193.5,820,279.5,500,278,498,435.5,818.5,438.5,818,523,462.5,521.5"/>
       //   <polygon data-tooltip data-text="Відкриття 3 квартал 2025 року" points="1025,38,1250,37,1253,76,1245,82,1034,82,1025,73"/>
